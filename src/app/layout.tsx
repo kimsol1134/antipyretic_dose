@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   description:
     '우리 아이 체중과 나이만 입력하면 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산해드립니다. 안전한 해열제 용량, 복용 간격, 하루 최대량을 확인하세요.',
   metadataBase: new URL('https://antipyretic-dose.vercel.app'),
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: '어린이 해열제 복용량 계산기',
     description:
@@ -15,12 +19,21 @@ export const metadata: Metadata = {
     siteName: '어린이 해열제 복용량 계산기',
     locale: 'ko_KR',
     type: 'website',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: '어린이 해열제 복용량 계산기',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: '어린이 해열제 복용량 계산기',
     description:
       '체중과 나이만 입력하면 타이레놀, 챔프, 부루펜, 맥시부펜의 정확한 복용량을 계산해드립니다',
+    images: ['/opengraph-image.png'],
   },
 };
 
