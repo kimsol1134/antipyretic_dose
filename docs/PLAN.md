@@ -34,6 +34,62 @@ const config: Config = {
 export default config;
 ```
 
+### 6. 외부 의약품 정보 연동 (e약은요 API)
+
+#### `/lib/easy-drug.ts`
+
+  * e약은요 API 응답(JSON)을 안전하게 파싱하는 Zod 스키마와 fetch 헬퍼를 정의합니다.
+  * `EasyDrugItem` 타입은 `itemSeq`, `itemName`, `entpName`, `mainIngr`, `efcyQesitm`, `useMethodQesitm`, `atpnWarnQesitm`, `atpnQesitm`, `intrcQesitm`, `seQesitm`, `depositMethodQesitm`, `itemImage` 필드를 포함해야 합니다.
+  * HTML `<br>` 태그는 줄바꿈으로 정규화하고, 그 외 태그는 모두 제거합니다.
+  * API 키는 반드시 `process.env.EASY_DRUG_API_KEY`에서만 읽습니다.
+
+```typescript
+import { z } from 'zod';
+
+const easyDrugItemSchema = z.object({
+  itemSeq: z.string(),
+  itemName: z.string(),
+  entpName: z.string().optional(),
+  mainIngr: z.string().optional(),
+  efcyQesitm: z.string().optional(),
+  useMethodQesitm: z.string().optional(),
+  atpnWarnQesitm: z.string().optional(),
+  atpnQesitm: z.string().optional(),
+  intrcQesitm: z.string().optional(),
+  seQesitm: z.string().optional(),
+  depositMethodQesitm: z.string().optional(),
+  itemImage: z.string().url().optional(),
+});
+
+export type EasyDrugItem = z.infer<typeof easyDrugItemSchema>;
+
+export async function fetchEasyDrugList(params: {
+  itemName?: string;
+  ingredient?: string;
+}) {
+  // fetch + schema.parse
+}
+```
+
+#### `/app/api/easy-drug/route.ts`
+
+  * Next.js App Router API 라우트입니다.
+  * Query: `ingredient`(optional), `itemName`(optional). 두 값 모두 없으면 400을 반환합니다.
+  * `fetchEasyDrugList`를 호출하여 파싱된 데이터를 JSON으로 반환합니다.
+  * 서버 라우트에서만 API 키를 읽도록 `runtime = 'edge'`를 사용하지 않습니다.
+
+#### `/app/components/DosageResultDisplay.tsx`
+
+  * 결과 카드 내에 "유사 약품 보기" 버튼을 추가합니다.
+  * 클릭 시 `/api/easy-drug`를 호출하여 동일 성분·유사 농도의 약품 목록을 로드하고 표시합니다.
+  * 로딩/에러 상태를 표시하고, API 응답 내용을 Tailwind 카드로 표 형태로 배치합니다.
+  * 외부 HTML 문자열은 `dangerouslySetInnerHTML`로 출력하지 말고, 줄바꿈만 보존한 평문으로 노출합니다.
+
+#### `/src/lib/easy-drug.test.ts`
+
+  * `fetchEasyDrugList`가 HTML 문자열을 정규화하고, API 오류 시 커스텀 에러를 throw하는지에 대한 단위 테스트를 작성합니다.
+  * 실제 네트워크 호출 대신 고정 fixture(JSON)를 사용하세요.
+
 -----
 
 ### 2\. 데이터 및 핵심 로직 (Data & Libs)
