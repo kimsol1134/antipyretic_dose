@@ -42,13 +42,14 @@ export default async function HomePage() {
     <main className="container mx-auto max-w-lg p-4 pt-8 sm:pt-12">
       <header className="text-center mb-8">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-          소아 해열제 계산기
+          우리 아이 해열제<br/>얼마나 먹이면 될까요?
         </h1>
-        <p className="mt-2 text-lg text-gray-600">
-          나이와 체중만 입력하면, 주요 해열제 4종의 용량을 바로 알려드려요.
+        <p className="mt-3 text-base text-gray-600">
+          체중과 나이만 입력하면<br/>
+          <span className="font-semibold text-blue-600">타이레놀·챔프·부루펜·맥시부펜</span> 정확한 복용량을 알려드려요
         </p>
-        <p className="mt-2 text-sm text-gray-500">
-          본 계산기는 정보 제공 목적으로만 사용되며, 전문적인 의학적 조언, 진단 또는 치료를 대체할 수 없습니다. 정확한 복용량은 반드시 의사 또는 약사와 상담하세요.
+        <p className="mt-4 text-xs text-gray-500 bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+          ⚠️ 이 계산기는 참고용입니다. 실제 투약 전 반드시 의사·약사와 상담하세요.
         </p>
       </header>
 
