@@ -29,13 +29,9 @@ const BANNER_SIZES = {
 } as const;
 
 export default function CoupangBanner() {
-  const [isMobile, setIsMobile] = useState(false);
   const [bannerError, setBannerError] = useState(false);
 
   useEffect(() => {
-    // 클라이언트 환경에서만 크기 결정
-    setIsMobile(window.innerWidth < 768);
-
     // 스크립트 로드 확인
     if (window.PartnersCoupang) {
       initBanner(window.innerWidth < 768);
@@ -83,14 +79,7 @@ export default function CoupangBanner() {
 
   return (
     <div className="w-full flex justify-center my-6">
-      <div
-        className="relative bg-gray-100 rounded-lg animate-pulse"
-        style={{
-          width: isMobile ? '320px' : '728px',
-          height: isMobile ? '100px' : '90px',
-        }}
-        aria-label="쿠팡 광고 배너 로딩 중"
-      />
+      {/* 쿠팡 배너 스크립트가 자동으로 광고를 삽입할 컨테이너 */}
     </div>
   );
 }
