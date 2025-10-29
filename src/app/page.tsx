@@ -4,6 +4,7 @@ import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap } from '@/lib/types';
 import DosageForm from './components/DosageForm';
 import DosageResultDisplay from './components/DosageResultDisplay';
+import CoupangBanner from './components/ads/CoupangBanner';
 
 async function getValidatedProducts(): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
@@ -57,10 +58,16 @@ export default async function HomePage() {
         <DosageForm products={products} />
       </section>
 
+      {/* ✅ 배너: 계산 폼과 결과 사이에 배치 */}
+      <CoupangBanner />
+
       <DosageResultDisplay similarProductsMap={similarProducts} />
 
       <footer className="mt-12 text-center text-xs text-gray-500 space-y-2">
         <p>출처: 식품의약품안전처_의약품개요정보(e약은요) (2025-10-27 검토)</p>
+        <p className="text-gray-400 mt-4">
+          이 사이트는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+        </p>
       </footer>
     </main>
   );
