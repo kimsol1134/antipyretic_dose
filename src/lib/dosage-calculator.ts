@@ -9,6 +9,14 @@ function roundMl(value: number): number {
   return Math.round(value * factor) / factor;
 }
 
+/**
+ * 권장 용량(mg/kg)을 계산합니다.
+ * 최소와 최대의 중간값을 그대로 반환합니다 (반올림하지 않음).
+ */
+function getRecommendedMgPerKg(product: Product): number {
+  return (product.min_dose_mg_per_kg + product.max_dose_mg_per_kg) / 2;
+}
+
 function calculateSingleDosage(
   weightKg: number,
   ageMonths: number,
@@ -17,6 +25,7 @@ function calculateSingleDosage(
   if (ageMonths < product.min_age_months) {
     return {
       status: 'age_block',
+      recommended_ml: null,
       min_ml: null,
       max_ml: null,
       max_single_ml: null,
@@ -30,6 +39,7 @@ function calculateSingleDosage(
     console.error(`[안전 오류] 제품 ${product.id}의 농도가 0 이하입니다.`);
     return {
       status: 'error',
+      recommended_ml: null,
       min_ml: null,
       max_ml: null,
       max_single_ml: null,
@@ -37,6 +47,10 @@ function calculateSingleDosage(
       message: '제품 데이터 오류 (농도 0).',
     };
   }
+
+  // 권장 용량 계산 (mg/kg의 중간값을 정수로 반올림)
+  const recommendedMgPerKg = getRecommendedMgPerKg(product);
+  let recommendedMg = weightKg * recommendedMgPerKg;
 
   // 최소 용량 계산 (mg)
   let minMg = weightKg * product.min_dose_mg_per_kg;
@@ -53,8 +67,12 @@ function calculateSingleDosage(
   if (minMg > product.max_single_mg) {
     minMg = product.max_single_mg;
   }
+  if (recommendedMg > product.max_single_mg) {
+    recommendedMg = product.max_single_mg;
+  }
 
   // mL로 변환
+  const recommendedMl = recommendedMg / product.strength_mg_per_ml;
   const minMl = minMg / product.strength_mg_per_ml;
   const maxMl = maxMg / product.strength_mg_per_ml;
   const maxSingleMl = product.max_single_mg / product.strength_mg_per_ml;
@@ -69,12 +87,13 @@ function calculateSingleDosage(
   }
 
   // 유한성 검증
-  if (!Number.isFinite(minMl) || !Number.isFinite(maxMl) || !Number.isFinite(maxSingleMl) || !Number.isFinite(maxDailyMl)) {
+  if (!Number.isFinite(recommendedMl) || !Number.isFinite(minMl) || !Number.isFinite(maxMl) || !Number.isFinite(maxSingleMl) || !Number.isFinite(maxDailyMl)) {
     console.error(
       `[안전 오류] 제품 ${product.id} 계산 결과가 유한하지 않습니다`
     );
     return {
       status: 'error',
+      recommended_ml: null,
       min_ml: null,
       max_ml: null,
       max_single_ml: null,
@@ -85,6 +104,7 @@ function calculateSingleDosage(
 
   return {
     status: 'success',
+    recommended_ml: Math.round(recommendedMl),
     min_ml: roundMl(minMl),
     max_ml: roundMl(maxMl),
     max_single_ml: roundMl(maxSingleMl),

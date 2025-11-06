@@ -112,12 +112,20 @@ export default function DosageResultDisplay({
                   ))}
                 </div>
 
-                {result.status === 'success' && result.min_ml !== null && result.max_ml !== null && (
+                {result.status === 'success' && result.recommended_ml !== null && result.min_ml !== null && result.max_ml !== null && (
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    {/* 1회 복용량 */}
+                    {/* 권장 복용량 */}
                     <div className="mb-3">
-                      <p className="text-sm text-gray-600 mb-1">1회 복용량</p>
-                      <p className="text-4xl font-extrabold text-blue-600">
+                      <p className="text-sm text-gray-600 mb-1">1회 복용량 (권장)</p>
+                      <p className="text-5xl font-extrabold text-blue-600">
+                        {formatMl(result.recommended_ml)} mL
+                      </p>
+                    </div>
+
+                    {/* 복용 가능 범위 */}
+                    <div className="mb-3">
+                      <p className="text-sm text-gray-500 mb-1">복용 가능 범위</p>
+                      <p className="text-xl font-semibold text-gray-700">
                         {formatMl(result.min_ml)} ~ {formatMl(result.max_ml)} mL
                       </p>
                     </div>

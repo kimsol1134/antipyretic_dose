@@ -21,10 +21,26 @@ describe('calculateAllDosages', () => {
     const [result] = calculateAllDosages(input, [ibuprofen]);
 
     expect(result.status).toBe('age_block');
+    expect(result.recommended_ml).toBeNull();
     expect(result.min_ml).toBeNull();
     expect(result.max_ml).toBeNull();
     expect(result.max_daily_ml).toBeNull();
     expect(result.message).toBe('6개월 미만 영아는 의사 상담이 필요합니다.');
+  });
+
+  it('calculates recommended dose as rounded mid-point of min and max', () => {
+    const tylenol = findProduct('tylenol_susp_100ml_kr');
+    const input: DosageInput = { weight: 10, age: 12, ageUnit: 'months' };
+
+    const [result] = calculateAllDosages(input, [tylenol]);
+
+    // 타이레놀: 10-15 mg/kg, 중간값 12.5 mg/kg (정수 반올림 하지 않음)
+    // 10kg × 12.5mg/kg = 125mg
+    // 125mg ÷ 32mg/mL = 3.90625mL → 4mL (정수 반올림)
+    expect(result.status).toBe('success');
+    expect(result.recommended_ml).toBe(4);
+    expect(result.min_ml).toBeCloseTo(3.1, 1);
+    expect(result.max_ml).toBeCloseTo(4.7, 1);
   });
 
   it('caps dosage at product max_single_mg and returns warning message', () => {

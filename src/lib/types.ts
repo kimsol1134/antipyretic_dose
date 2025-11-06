@@ -10,6 +10,7 @@ export type DosageResultStatus = 'success' | 'age_block' | 'error';
 export type DosageResult = {
   product: Product;
   status: DosageResultStatus;
+  recommended_ml: number | null;  // 권장 복용량 (mL)
   min_ml: number | null;
   max_ml: number | null;
   max_single_ml: number | null;  // 1회 최대 복용량 (mL)
