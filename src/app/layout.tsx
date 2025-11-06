@@ -8,6 +8,20 @@ export const metadata: Metadata = {
   description:
     '우리 아이 체중과 나이만 입력하면 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산해드립니다. 안전한 해열제 용량, 복용 간격, 하루 최대량을 확인하세요.',
   metadataBase: new URL('https://antipyretic-dose.vercel.app'),
+  category: 'medical',
+  creator: 'pinecone',
+  publisher: 'pinecone',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: 'https://antipyretic-dose.vercel.app',
+  },
   verification: {
     google: 'P43T628mnEgd-vtZnh8tPdOizYwrH_d688uJ4attLgY',
     other: {
@@ -45,9 +59,46 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': ['MedicalWebPage', 'WebApplication'],
+    name: '어린이 해열제 복용량 계산기',
+    description:
+      '우리 아이 체중과 나이만 입력하면 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산해드립니다.',
+    url: 'https://antipyretic-dose.vercel.app',
+    inLanguage: 'ko-KR',
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    medicalAudience: {
+      '@type': 'MedicalAudience',
+      audienceType: '부모 및 보호자',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'pinecone',
+      url: 'https://litt.ly/solkim',
+    },
+    datePublished: '2025-01-01',
+    dateModified: new Date().toISOString().split('T')[0],
+    isPartOf: {
+      '@type': 'WebSite',
+      name: '어린이 해열제 복용량 계산기',
+      url: 'https://antipyretic-dose.vercel.app',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'KRW',
+    },
+  };
+
   return (
     <html lang="ko">
       <body className="bg-gray-50 font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         {children}
         <Analytics />
       </body>
