@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     '우리 아이 체중과 나이만 입력하면 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산해드립니다. 안전한 해열제 용량, 복용 간격, 하루 최대량을 확인하세요.',
   metadataBase: new URL('https://antipyretic-dose.vercel.app'),
+  verification: {
+    google: 'P43T628mnEgd-vtZnh8tPdOizYwrH_d688uJ4attLgY',
+  },
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
