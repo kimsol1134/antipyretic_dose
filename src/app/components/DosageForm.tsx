@@ -84,7 +84,7 @@ export default function DosageForm({ products }: DosageFormProps) {
             className="block w-full px-4 py-3 text-lg border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="months">개월</option>
-            <option value="years">세</option>
+            <option value="years">세(만나이)</option>
           </select>
         </div>
       </div>
