@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://antipyretic-dose.vercel.app'),
   verification: {
     google: 'P43T628mnEgd-vtZnh8tPdOizYwrH_d688uJ4attLgY',
+    other: {
+      'naver-site-verification': '05b0dc19249d5a5e6d42f0832ab3a6671ed8bc0d',
+    },
   },
   icons: {
     icon: '/icon.png',
