@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import Image from 'next/image';
 import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap } from '@/lib/types';
 import DosageForm from './components/DosageForm';
@@ -63,9 +64,71 @@ export default async function HomePage() {
 
       <DosageResultDisplay similarProductsMap={similarProducts} />
 
-      <footer className="mt-12 text-center text-xs text-gray-500 space-y-2">
+      <footer className="mt-12 text-center text-xs text-gray-500 space-y-3">
+        {/* 출처 정보 */}
         <p>출처: 식품의약품안전처_의약품개요정보(e약은요) (2025-10-27 검토)</p>
-        <p className="text-gray-400 mt-4">
+
+        {/* 제작자 정보 (E-A-T) */}
+        <div className="pt-3 border-t border-gray-200">
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-gray-600">
+              제작자:{' '}
+              <a
+                href="https://litt.ly/solkim"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+                aria-label="pinecone 프로필"
+              >
+                pinecone
+              </a>
+            </p>
+            <a
+              href="https://litt.ly/solkim"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="제작자 프로필"
+            >
+              <Image
+                src="/images/profile.png"
+                alt="pinecone 프로필"
+                width={32}
+                height={32}
+                className="rounded-full hover:opacity-80 transition-opacity"
+              />
+            </a>
+          </div>
+        </div>
+
+        {/* 유용한 정보 */}
+        <div className="pt-3 border-t border-gray-200">
+          <p className="text-gray-600 font-semibold mb-2">📖 유용한 정보</p>
+          <div className="space-y-1 text-gray-600">
+            <p>
+              <a
+                href="https://blog.naver.com/kimsol1015/224054587927"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                • 아이 열날 때 해열제, 언제 먹여야 할까?
+              </a>
+            </p>
+            <p>
+              <a
+                href="https://blog.naver.com/kimsol1015"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                • 더 많은 육아 건강 정보 보기
+              </a>
+            </p>
+          </div>
+        </div>
+
+        {/* 쿠팡 파트너스 고지 */}
+        <p className="text-gray-400 pt-3">
           이 사이트는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
         </p>
       </footer>
