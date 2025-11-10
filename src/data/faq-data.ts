@@ -208,9 +208,16 @@ export const faqData: FAQItem[] = [
         description: '어린이부루펜시럽 허가사항',
       },
       {
-        name: 'Fever Coach 소아과 전문의',
-        url: 'https://home.fevercoach.net',
-        type: 'medical',
+        name: '삼일제약 공식 홈페이지',
+        url: 'https://www.samil-pharm.com/',
+        type: 'official',
+        description: '부루펜 제조사',
+      },
+      {
+        name: 'K-Health 소아해열제 사용법',
+        url: 'https://www.k-health.com/news/articleView.html?idxno=58679',
+        type: 'reference',
+        description: '부루펜 복용 간격 가이드',
       },
     ],
     keywords: ['부루펜', '이부프로펜', '복용 간격', '6시간'],
@@ -353,15 +360,16 @@ export const faqData: FAQItem[] = [
       '본 정보는 일반적인 참고 자료입니다. 교차 복용은 원칙적으로 권장되지 않으며, 필요한 경우 반드시 의사 또는 약사와 상담하세요.',
     sources: [
       {
-        name: '약사 가이드 - 소아 해열제 교차 복용',
-        url: 'https://www.ckup.co.kr/bbs/board.php?bo_table=notice&wr_id=10151',
-        type: 'medical',
-        description: '교차 복용 가이드라인',
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=199603002',
+        type: 'official',
+        description: '어린이타이레놀현탁액 허가사항',
       },
       {
-        name: 'Fever Coach - 올바른 교차복용',
-        url: 'https://home.fevercoach.net/올바른-해열제-교차복용-방법은/',
-        type: 'medical',
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=198601920',
+        type: 'official',
+        description: '어린이부루펜시럽 허가사항',
       },
       {
         name: '세계일보 - 교차복용 효과 연구',
