@@ -66,6 +66,45 @@ export default async function HomePage() {
 
       <DosageResultDisplay similarProductsMap={similarProducts} />
 
+      {/* 자주 묻는 질문 섹션 */}
+      <section className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">
+        <h2 className="text-xl font-bold text-center mb-4 text-gray-900">
+          자주 묻는 질문
+        </h2>
+        <div className="grid gap-2">
+          <a
+            href="/faq#tylenol-interval"
+            className="text-blue-600 hover:underline text-sm"
+          >
+            ❓ 타이레놀 복용 간격은?
+          </a>
+          <a
+            href="/faq#tylenol-brufen-difference"
+            className="text-blue-600 hover:underline text-sm"
+          >
+            ❓ 타이레놀과 부루펜 차이는?
+          </a>
+          <a
+            href="/faq#cross-dosing"
+            className="text-blue-600 hover:underline text-sm"
+          >
+            ❓ 해열제 교차 복용 방법은?
+          </a>
+          <a
+            href="/faq#fever-temperature-guide"
+            className="text-blue-600 hover:underline text-sm"
+          >
+            ❓ 아이 열이 몇 도일 때 먹여야 하나요?
+          </a>
+        </div>
+        <a
+          href="/faq"
+          className="block text-center mt-4 text-blue-600 font-semibold hover:underline"
+        >
+          전체 FAQ 보기 →
+        </a>
+      </section>
+
       <footer className="mt-12 text-center text-xs text-gray-500 space-y-3">
         {/* 출처 정보 */}
         <p>출처: 식품의약품안전처_의약품개요정보(e약은요) (2025-10-27 검토)</p>
