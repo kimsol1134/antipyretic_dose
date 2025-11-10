@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { FAQItem } from '@/data/faq-data';
+import { FAQItem, faqData } from '@/data/faq-data';
 import SourceBadge from '../shared/SourceBadge';
 
 export default function FAQAccordion({ faq }: { faq: FAQItem }) {
@@ -79,16 +79,19 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
                 🔗 관련 질문:
               </p>
               <div className="flex flex-wrap gap-2">
-                {faq.relatedFAQs.map((relatedId) => (
-                  <a
-                    key={relatedId}
-                    href={`#${relatedId}`}
-                    className="text-xs text-blue-600 hover:underline bg-blue-50 px-3 py-1 rounded"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    이동 →
-                  </a>
-                ))}
+                {faq.relatedFAQs.map((relatedId) => {
+                  const relatedFaq = faqData.find((f) => f.id === relatedId);
+                  return (
+                    <a
+                      key={relatedId}
+                      href={`#${relatedId}`}
+                      className="text-xs text-blue-600 hover:underline bg-blue-50 px-3 py-1 rounded"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {relatedFaq?.question || '이동'} →
+                    </a>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -96,7 +99,7 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
           {/* 면책 조항 */}
           <div className="mt-4 pt-4 border-t bg-gray-50 p-3 rounded">
             <p className="text-xs text-gray-500">
-              ⚠️ <strong>면책 조항</strong>: {faq.medicalDisclaimer}
+              ⚠️ {faq.medicalDisclaimer}
             </p>
             <p className="text-xs text-gray-400 mt-1">
               최종 업데이트: {faq.lastUpdated}

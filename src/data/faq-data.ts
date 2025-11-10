@@ -286,9 +286,16 @@ export const faqData: FAQItem[] = [
         type: 'reference',
       },
       {
-        name: '해열제정보 (본 사이트)',
-        url: '/docs/해열제정보.md',
-        type: 'reference',
+        name: '동아제약 챔프 공식 홈페이지',
+        url: 'https://dpharm.co.kr/champ/info',
+        type: 'official',
+        description: '제품 정보 및 복용 가이드',
+      },
+      {
+        name: '타이레놀 코리아 공식 홈페이지',
+        url: 'https://www.tylenol.co.kr/children-infants/safety/dosage-charts',
+        type: 'official',
+        description: '어린이 복용량 가이드',
       },
     ],
     keywords: ['타이레놀', '부루펜', '차이', '비교', '어떤것'],
@@ -429,9 +436,16 @@ export const faqData: FAQItem[] = [
       '본 정보는 제품 허가사항을 참고한 내용입니다. 제품 변경 시 반드시 약사와 상담하세요.',
     sources: [
       {
-        name: '제품 데이터 (본 사이트)',
-        url: '/data/products.json',
-        type: 'reference',
+        name: '타이레놀 코리아 공식 홈페이지',
+        url: 'https://www.tylenol.co.kr/products/children-infants',
+        type: 'official',
+        description: '어린이 제품 라인업',
+      },
+      {
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=199603002',
+        type: 'official',
+        description: '어린이타이레놀현탁액 허가사항',
       },
       {
         name: '약사 블로그',
@@ -491,9 +505,22 @@ export const faqData: FAQItem[] = [
       '본 정보는 일반적인 참고 자료입니다. 아이의 위장 상태를 고려하여 의사 또는 약사와 상담하세요.',
     sources: [
       {
-        name: '해열제정보 (본 사이트)',
-        url: '/docs/해열제정보.md',
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=199603002',
+        type: 'official',
+        description: '어린이타이레놀현탁액 허가사항',
+      },
+      {
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=198601920',
+        type: 'official',
+        description: '어린이부루펜시럽 허가사항',
+      },
+      {
+        name: '의사신문',
+        url: 'http://www.doctorstimes.com/news/articleView.html?idxno=218101',
         type: 'reference',
+        description: '아세트아미노펜 복약 지도 가이드',
       },
     ],
     keywords: ['공복', '식후', '타이레놀', '부루펜', '복용'],
@@ -564,15 +591,22 @@ export const faqData: FAQItem[] = [
       '본 정보는 제품 허가사항을 참고한 일반적인 가이드라인입니다. 실제 투약 전 반드시 의사 또는 약사와 상담하세요.',
     sources: [
       {
-        name: '식품의약품안전처 허가사항',
-        url: 'https://nedrug.mfds.go.kr',
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=199603002',
         type: 'official',
+        description: '어린이타이레놀현탁액 허가사항',
       },
       {
-        name: '계산 로직 (본 사이트)',
-        url: '/src/lib/dosage-calculator.ts',
+        name: '식품의약품안전처 의약품통합정보시스템',
+        url: 'https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetail?itemSeq=198601920',
+        type: 'official',
+        description: '어린이부루펜시럽 허가사항',
+      },
+      {
+        name: 'K-Health 소아해열제 사용법',
+        url: 'https://www.k-health.com/news/articleView.html?idxno=58679',
         type: 'reference',
-        description: '30kg 미만 25mL 제한 코드',
+        description: '하루 최대 복용 횟수 가이드',
       },
     ],
     keywords: ['하루', '최대', '횟수', '몇번', '용량'],
