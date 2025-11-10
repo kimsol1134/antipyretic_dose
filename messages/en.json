@@ -84,6 +84,24 @@
       "home": "Home"
     }
   },
+  "faqPage": {
+    "title": "Children's Fever Medicine Frequently Asked Questions",
+    "subtitle": "Find accurate information about Tylenol, Motrin, and other children's fever medicines",
+    "disclaimer": "⚠️ This FAQ is for general reference only. Always consult your pediatrician or pharmacist before giving medication.",
+    "breadcrumb": {
+      "home": "Home",
+      "faq": "Frequently Asked Questions"
+    },
+    "cta": {
+      "title": "Need Exact Dosage?",
+      "description": "Enter your child's weight and age to instantly calculate accurate dosage (mL) for each product.",
+      "button": "Use Dosage Calculator →"
+    },
+    "footer": {
+      "info": "This information is based on FDA-approved product labeling and medical institution guidelines, provided for general information purposes only.",
+      "lastUpdated": "Last updated: November 10, 2025"
+    }
+  },
   "footer": {
     "source": "Source: FDA and AAP Guidelines (reviewed 2025-11-10)",
     "creator": "Created by: pinecone",
