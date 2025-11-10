@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import FAQList from '@/app/components/faq/FAQList';
-import { faqData } from '@/data/faq-data';
-import { faqDataEn } from '@/data/faq-data-en';
+import { faqData, categoryLabels } from '@/data/faq-data';
+import { faqDataEn, categoryLabelsEn } from '@/data/faq-data-en';
 
 export async function generateMetadata({
   params,
@@ -64,6 +64,7 @@ export default async function FAQPage({
 
   // Load appropriate FAQ data based on locale
   const currentFaqData = locale === 'en' ? faqDataEn : faqData;
+  const currentCategoryLabels = locale === 'en' ? categoryLabelsEn : categoryLabels;
   const baseUrl =
     locale === 'en'
       ? 'https://antipyretic-dose.vercel.app/en'
@@ -142,7 +143,7 @@ export default async function FAQPage({
         </header>
 
         {/* FAQ 리스트 */}
-        <FAQList faqs={currentFaqData} />
+        <FAQList faqs={currentFaqData} categoryLabels={currentCategoryLabels} />
 
         {/* CTA */}
         <section className="mt-12 bg-blue-50 p-6 rounded-lg text-center border border-blue-200">

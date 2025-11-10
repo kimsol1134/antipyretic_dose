@@ -14,6 +14,7 @@
     "age": {
       "label": "Child's Age",
       "placeholder": "e.g., 18",
+      "unitLabel": "Unit",
       "unit": {
         "months": "months",
         "years": "years"
