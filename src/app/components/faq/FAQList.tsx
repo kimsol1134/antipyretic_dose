@@ -40,7 +40,7 @@ export default function FAQList({ faqs, categoryLabels }: FAQListProps) {
           </h2>
           <div className="space-y-4">
             {categoryFAQs.map((faq) => (
-              <FAQAccordion key={faq.id} faq={faq} />
+              <FAQAccordion key={faq.id} faq={faq} allFaqs={faqs} />
             ))}
           </div>
         </section>

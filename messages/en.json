@@ -126,5 +126,16 @@
     "error": "An error occurred",
     "back": "Back",
     "close": "Close"
+  },
+  "faqAccordion": {
+    "sources": "References:",
+    "relatedQuestions": "Related Questions:",
+    "viewQuestion": "View",
+    "lastUpdated": "Last updated"
+  },
+  "sourceBadge": {
+    "official": "Official",
+    "medical": "Medical",
+    "reference": "Reference"
   }
 }

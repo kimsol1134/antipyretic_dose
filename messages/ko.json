@@ -126,5 +126,16 @@
     "error": "오류가 발생했습니다",
     "back": "뒤로",
     "close": "닫기"
+  },
+  "faqAccordion": {
+    "sources": "참고 출처:",
+    "relatedQuestions": "관련 질문:",
+    "viewQuestion": "이동",
+    "lastUpdated": "최종 업데이트"
+  },
+  "sourceBadge": {
+    "official": "공식",
+    "medical": "의료",
+    "reference": "참고"
   }
 }
