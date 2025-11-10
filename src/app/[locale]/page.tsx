@@ -3,9 +3,9 @@ import path from 'path';
 import Image from 'next/image';
 import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap } from '@/lib/types';
-import DosageForm from './components/DosageForm';
-import DosageResultDisplay from './components/DosageResultDisplay';
-import CoupangBanner from './components/ads/CoupangBanner';
+import DosageForm from '../components/DosageForm';
+import DosageResultDisplay from '../components/DosageResultDisplay';
+import CoupangBanner from '../components/ads/CoupangBanner';
 
 async function getValidatedProducts(): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
