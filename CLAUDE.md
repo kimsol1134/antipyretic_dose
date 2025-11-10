@@ -208,3 +208,98 @@ The application integrates with "e약은요" (Easy Drug) API for additional drug
 2. Read sensitive keys from `process.env` only (never expose to client)
 3. Validate request parameters with Zod schemas
 4. Return typed responses with appropriate HTTP status codes
+
+## Google Indexing API
+
+The project includes Google Indexing API integration to programmatically notify Google about page updates and request indexing.
+
+### Setup
+
+1. **Google Cloud Console**: Create a Service Account and enable Indexing API
+2. **Service Account JSON**: Download the JSON key and add to `.env.local`
+3. **Search Console**: Add the Service Account email as owner
+4. **Detailed Instructions**: See `docs/GOOGLE_INDEXING_SETUP.md`
+
+### Environment Variables
+
+```bash
+# .env.local
+GOOGLE_SERVICE_ACCOUNT_KEY='{"type":"service_account",...}'
+```
+
+### Key Files
+
+- `src/lib/google-indexing.ts` - Client library with `GoogleIndexingClient` class
+- `src/app/api/indexing/route.ts` - API routes for indexing operations
+- `src/app/components/GoogleIndexingPanel.tsx` - Admin UI component
+- `src/app/admin/indexing/page.tsx` - Admin page at `/admin/indexing`
+- `docs/GOOGLE_INDEXING_SETUP.md` - Complete setup guide
+
+### API Endpoints
+
+```bash
+# Index a single URL
+POST /api/indexing
+Body: { "url": "https://example.com/page", "type": "URL_UPDATED" }
+
+# Index multiple URLs
+POST /api/indexing/batch
+Body: { "urls": ["https://example.com/page1", ...], "type": "URL_UPDATED" }
+
+# Index all important pages
+POST /api/indexing/all
+Body: { "baseUrl": "https://example.com", "type": "URL_UPDATED" }
+
+# Get URL indexing status
+GET /api/indexing/status?url=https://example.com/page
+```
+
+### Important Pages Management
+
+Edit `getImportantPageUrls()` in `src/lib/google-indexing.ts` to define which pages should be indexed:
+
+```typescript
+export function getImportantPageUrls(baseUrl: string): string[] {
+  return [
+    normalizedBase,          // Homepage
+    `${normalizedBase}/faq`, // FAQ page
+    // Add more important pages...
+  ];
+}
+```
+
+### Security Considerations
+
+**⚠️ Important**: The API endpoints and admin page have NO authentication by default.
+
+For production:
+1. Add authentication middleware to API routes
+2. Restrict access to `/admin/indexing` page
+3. Use API keys or session-based auth
+4. Never commit Service Account JSON to Git
+
+Example authentication:
+
+```typescript
+// src/app/api/indexing/route.ts
+export async function POST(request: Request) {
+  const apiKey = request.headers.get('x-api-key');
+  if (apiKey !== process.env.INTERNAL_API_KEY) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  // ... rest of the code
+}
+```
+
+### Rate Limits
+
+Google Indexing API has quotas:
+- **Default**: 200 requests per day
+- Check quotas in Google Cloud Console
+
+### Notes
+
+- Indexing requests don't guarantee immediate indexing
+- Typically takes hours to days for Google to index
+- Officially supports JobPosting and BroadcastEvent content types
+- Can be used for general web pages but not officially supported
