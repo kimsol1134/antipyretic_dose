@@ -8,7 +8,9 @@ export const productSchema = z
   .object({
     id: z.string().min(1),
     name: z.string().min(1),
+    nameEn: z.string().min(1).optional(),
     ingredient: z.string().min(1),
+    ingredientEn: z.string().min(1).optional(),
     strength_mg_per_ml: z.number().positive('농도는 0보다 커야 합니다.'),
     min_dose_mg_per_kg: z.number().positive('최소 용량은 0보다 커야 합니다.'),
     max_dose_mg_per_kg: z.number().positive('최대 용량은 0보다 커야 합니다.'),

@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { routing } from '@/i18n/routing';
+import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -195,6 +196,11 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <NextIntlClientProvider messages={messages}>
+          <header className="sticky top-0 z-50 bg-white shadow-sm">
+            <div className="container mx-auto px-4 py-3 flex justify-end">
+              <LanguageSwitcher />
+            </div>
+          </header>
           {children}
         </NextIntlClientProvider>
         <Analytics />

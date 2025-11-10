@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   DOSAGE_RESULTS_MIN_HEIGHT_CLASS,
   ML_ROUNDING_DECIMALS,
@@ -11,7 +11,7 @@ import {
   useDosageResults,
   useDosageStatus,
 } from '@/store/dosage-store';
-import type { SimilarProductsMap, DosageResult } from '@/lib/types';
+import type { SimilarProductsMap, DosageResult, Product } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
@@ -31,10 +31,21 @@ function formatMl(value: number): string {
   return value.toFixed(ML_ROUNDING_DECIMALS);
 }
 
+function getProductName(product: Product, locale: string): string {
+  return locale === 'en' && product.nameEn ? product.nameEn : product.name;
+}
+
+function getIngredientName(product: Product, locale: string): string {
+  return locale === 'en' && product.ingredientEn
+    ? product.ingredientEn
+    : product.ingredient;
+}
+
 export default function DosageResultDisplay({
   similarProductsMap,
 }: DosageResultDisplayProps) {
   const t = useTranslations('result');
+  const locale = useLocale();
   const results = useDosageResults();
   const status = useDosageStatus();
   const [expandedProducts, setExpandedProducts] = useState<Set<string>>(
@@ -87,7 +98,7 @@ export default function DosageResultDisplay({
                 {/* 성분 및 농도 정보 */}
                 <div className="mb-4 pb-3 border-b border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-800">
-                    {result.product.ingredient}
+                    {getIngredientName(result.product, locale)}
                   </h3>
                   <p className="text-sm text-gray-500">
                     {t('concentration')}: {result.product.strength_mg_per_ml} mg/mL
@@ -101,14 +112,14 @@ export default function DosageResultDisplay({
                       <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white shadow-md p-3">
                         <Image
                           src={r.product.image}
-                          alt={r.product.name}
+                          alt={getProductName(r.product, locale)}
                           width={240}
                           height={240}
                           className="object-contain max-w-full max-h-full"
                         />
                       </div>
                       <p className="text-sm font-bold text-gray-800 mt-3 text-center max-w-[200px] sm:max-w-[240px]">
-                        {r.product.name}
+                        {getProductName(r.product, locale)}
                       </p>
                     </div>
                   ))}
