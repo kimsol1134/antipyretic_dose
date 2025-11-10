@@ -1,0 +1,111 @@
+{
+  "home": {
+    "title": "Children's Fever Medicine Dosage Calculator",
+    "subtitle": "Calculate accurate dosage by entering weight and age",
+    "productList": "Tylenol · Motrin · Advil",
+    "productDescription": "Instant weight-based and age-based dosage calculation",
+    "warning": "⚠️ This calculator is for reference only. Always consult your pediatrician before giving medication."
+  },
+  "form": {
+    "weight": {
+      "label": "Child's Weight (kg)",
+      "placeholder": "e.g., 10.5"
+    },
+    "age": {
+      "label": "Child's Age",
+      "placeholder": "e.g., 18",
+      "unit": {
+        "months": "months",
+        "years": "years"
+      }
+    },
+    "submit": "Calculate Dosage"
+  },
+  "result": {
+    "title": "Calculation Result",
+    "concentration": "Concentration",
+    "dosage": {
+      "recommended": "Recommended Single Dose",
+      "range": "Dosage Range",
+      "interval": "Dosing Interval",
+      "hours": "hours",
+      "maxDaily": "Max Daily",
+      "times": "times"
+    },
+    "warning": {
+      "maxDailyDose": "⚠️ Maximum Daily Dose",
+      "checkConcentration": "Important: Check the name and concentration (e.g., 160mg/5mL) of your medication. Different products may require different doses."
+    },
+    "similarProducts": {
+      "show": "Show Similar Products",
+      "hide": "Hide Similar Products",
+      "title": "Similar Products Information",
+      "description": "Check children's fever medicines with the same ingredient and concentration.",
+      "notFound": "No similar products with the same ingredient and concentration found."
+    }
+  },
+  "validation": {
+    "weight": {
+      "required": "Please enter weight as a number.",
+      "positive": "Weight must be greater than 0.",
+      "tooHigh": "Abnormal weight. Please check again."
+    },
+    "age": {
+      "required": "Please enter age as a number.",
+      "positive": "Age must be greater than 0."
+    },
+    "ageUnit": {
+      "required": "Please select months or years."
+    },
+    "product": {
+      "concentrationZero": "Product data error (concentration 0).",
+      "ageTooYoung": "Infants under {minAge} months require doctor consultation.",
+      "cappedToMax": "Adjusted to maximum single dose"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Children's Fever Medicine FAQ",
+    "description": "Find accurate information about fever medicine usage for children",
+    "warning": "⚠️ This FAQ is for general reference. Always consult your pediatrician before giving medication.",
+    "questions": {
+      "tylenolInterval": "❓ What is the dosing interval for Tylenol?",
+      "tylenolBrufenDifference": "❓ What's the difference between Tylenol and Motrin?",
+      "crossDosing": "❓ How to alternate fever medicines?",
+      "feverTemperature": "❓ At what temperature should I give fever medicine?"
+    },
+    "viewAll": "View All FAQs →",
+    "calculatorCta": {
+      "title": "Need Accurate Dosage?",
+      "description": "Calculate exact dosage (mL) for each product by entering weight and age.",
+      "button": "Use Dosage Calculator →"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    }
+  },
+  "footer": {
+    "source": "Source: FDA and AAP Guidelines (reviewed 2025-11-10)",
+    "creator": "Created by: pinecone",
+    "usefulInfo": "📖 Useful Information",
+    "links": {
+      "feverGuide": "When to Give Fever Medicine to Children",
+      "moreInfo": "More Parenting Health Information"
+    },
+    "disclaimer": "This site may receive commissions as part of affiliate marketing activities."
+  },
+  "legal": {
+    "disclaimer": "This calculator is for educational purposes only and does not replace professional medical advice. Always consult your pediatrician before giving medication to your child.",
+    "emergencyWarning": "⚠️ If your child has a fever over 105°F (40.5°C), difficulty breathing, or appears severely ill, seek emergency medical care immediately. Call 911 or go to the nearest emergency room.",
+    "accuracyWarning": "While we strive for accuracy, medication dosing should always be verified with your child's healthcare provider and the medication label.",
+    "noLiability": "The creators of this tool are not liable for any adverse effects from medication use. Use at your own discretion.",
+    "dataPrivacy": "We do not store or share any data you enter. All calculations are performed locally in your browser.",
+    "poisonControl": "In case of overdose, call Poison Control at 1-800-222-1222 immediately."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "close": "Close"
+  }
+}
