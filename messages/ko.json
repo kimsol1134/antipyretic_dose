@@ -1,0 +1,141 @@
+{
+  "home": {
+    "title": "어린이 해열제 복용량 계산기",
+    "subtitle": "체중과 나이를 입력하면 정확한 복용량을 계산해드립니다",
+    "productList": "타이레놀 · 챔프 · 부루펜 · 맥시부펜",
+    "productDescription": "체중별·나이별 즉시 계산",
+    "warning": "⚠️ 이 계산기는 참고용입니다. 실제 투약 전 반드시 의사·약사와 상담하세요."
+  },
+  "form": {
+    "weight": {
+      "label": "체중 (kg)",
+      "placeholder": "예: 10.5"
+    },
+    "age": {
+      "label": "나이",
+      "placeholder": "예: 18",
+      "unitLabel": "단위",
+      "unit": {
+        "months": "개월",
+        "years": "세(만나이)"
+      }
+    },
+    "submit": "계산하기"
+  },
+  "result": {
+    "title": "계산 결과",
+    "concentration": "농도",
+    "dosage": {
+      "recommended": "1회 복용량 (권장)",
+      "range": "복용 가능 범위",
+      "interval": "복용 간격",
+      "hours": "시간",
+      "maxDaily": "1일 최대",
+      "times": "회"
+    },
+    "warning": {
+      "maxDailyDose": "⚠️ 하루 최대 복용량:",
+      "checkConcentration": "중요: 가지고 계신 약의 이름과 농도(예: 160mg/5mL)를 꼭 확인하세요. 다른 감기약의 '아세트아미노펜' / '이부프로펜' 성분 중복을 꼭 확인하세요."
+    },
+    "similarProducts": {
+      "show": "유사 약품 보기",
+      "hide": "유사 약품 숨기기",
+      "title": "유사 약품 정보",
+      "description": "성분과 농도가 같은 어린이용 해열제를 확인해보세요.",
+      "notFound": "성분과 농도가 같은 유사 약품을 찾지 못했습니다."
+    }
+  },
+  "validation": {
+    "weight": {
+      "required": "체중을 숫자로 입력해주세요.",
+      "positive": "체중은 0보다 커야 합니다.",
+      "tooHigh": "비정상적인 체중입니다. 다시 확인해주세요."
+    },
+    "age": {
+      "required": "나이를 숫자로 입력해주세요.",
+      "positive": "나이는 0보다 커야 합니다."
+    },
+    "ageUnit": {
+      "required": "개월 또는 세를 선택해주세요."
+    },
+    "product": {
+      "concentrationZero": "제품 데이터 오류 (농도 0).",
+      "ageTooYoung": "생후 {minAge}개월 미만은 의사 상담이 필요합니다.",
+      "cappedToMax": "최대 1회 복용량으로 조정됨"
+    }
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "subtitle": "어린이 해열제 FAQ",
+    "description": "어린이 해열제 사용법에 대한 정확한 정보를 확인하세요",
+    "warning": "⚠️ 본 FAQ는 참고용입니다. 실제 투약 전 반드시 의사·약사와 상담하세요.",
+    "questions": {
+      "tylenolInterval": "❓ 타이레놀 복용 간격은 몇 시간인가요?",
+      "tylenolBrufenDifference": "❓ 타이레놀과 부루펜의 차이는?",
+      "crossDosing": "❓ 해열제를 교차로 복용하는 방법은?",
+      "feverTemperature": "❓ 열이 몇 도일 때 해열제를 먹여야 하나요?"
+    },
+    "viewAll": "전체 FAQ 보기 →",
+    "calculatorCta": {
+      "title": "정확한 복용량이 필요하신가요?",
+      "description": "체중과 나이를 입력하면 각 제품별 정확한 복용량(mL)을 계산해드립니다.",
+      "button": "복용량 계산기 사용하기 →"
+    },
+    "breadcrumb": {
+      "home": "홈"
+    }
+  },
+  "faqPage": {
+    "title": "어린이 해열제 자주 묻는 질문",
+    "subtitle": "타이레놀, 부루펜 등 어린이 해열제 복용법에 대한 정확한 정보를 확인하세요",
+    "disclaimer": "⚠️ 본 FAQ는 일반적인 참고 자료입니다. 실제 투약 전 반드시 의사·약사와 상담하세요.",
+    "breadcrumb": {
+      "home": "홈",
+      "faq": "자주 묻는 질문"
+    },
+    "cta": {
+      "title": "정확한 복용량이 궁금하신가요?",
+      "description": "체중과 나이만 입력하면 각 제품별 정확한 복용량(mL)을 즉시 계산해드립니다.",
+      "button": "복용량 계산기 사용하기 →"
+    },
+    "footer": {
+      "info": "본 정보는 식품의약품안전처 허가사항 및 의료기관 가이드라인을 참고한 일반적인 정보 제공 목적의 콘텐츠입니다.",
+      "lastUpdated": "최종 업데이트: 2025-11-10"
+    }
+  },
+  "footer": {
+    "source": "출처: 식품의약품안전처 의약품통합정보시스템 (2025-11-10 확인)",
+    "creator": "제작:",
+    "usefulInfo": "📖 유용한 정보",
+    "links": {
+      "feverGuide": "어린이 해열제 복용 시기와 방법",
+      "moreInfo": "더 많은 육아 건강 정보"
+    },
+    "disclaimer": "이 사이트는 쿠팡 파트너스 활동의 일환으로 일정액의 수수료를 제공받을 수 있습니다."
+  },
+  "legal": {
+    "disclaimer": "이 계산기는 교육 목적으로만 제공되며 전문적인 의학적 조언을 대체하지 않습니다. 아이에게 약을 투여하기 전에 항상 소아과 의사와 상담하세요.",
+    "emergencyWarning": "⚠️ 아이의 체온이 40.5°C 이상이거나 호흡곤란, 심한 무기력증이 있다면 즉시 응급실을 방문하세요. 119에 전화하거나 가까운 응급실로 가세요.",
+    "accuracyWarning": "정확성을 위해 노력하고 있지만, 약물 복용량은 항상 아이의 담당 의료진 및 약품 라벨과 확인해야 합니다.",
+    "noLiability": "이 도구의 제작자는 약물 사용으로 인한 부작용에 대해 책임지지 않습니다. 본인의 판단 하에 사용하세요.",
+    "dataPrivacy": "입력한 데이터는 저장하거나 공유하지 않습니다. 모든 계산은 브라우저에서 로컬로 수행됩니다.",
+    "poisonControl": "과량 복용의 경우 즉시 119에 전화하거나 가까운 응급실을 방문하세요."
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "back": "뒤로",
+    "close": "닫기"
+  },
+  "faqAccordion": {
+    "sources": "참고 출처:",
+    "relatedQuestions": "관련 질문:",
+    "viewQuestion": "이동",
+    "lastUpdated": "최종 업데이트"
+  },
+  "sourceBadge": {
+    "official": "공식",
+    "medical": "의료",
+    "reference": "참고"
+  }
+}

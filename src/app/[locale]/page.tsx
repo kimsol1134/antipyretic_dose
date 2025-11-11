@@ -1,11 +1,12 @@
 import fs from 'fs/promises';
 import path from 'path';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap } from '@/lib/types';
-import DosageForm from './components/DosageForm';
-import DosageResultDisplay from './components/DosageResultDisplay';
-import CoupangBanner from './components/ads/CoupangBanner';
+import DosageForm from '../components/DosageForm';
+import DosageResultDisplay from '../components/DosageResultDisplay';
+import CoupangBanner from '../components/ads/CoupangBanner';
 
 async function getValidatedProducts(): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
@@ -36,7 +37,16 @@ async function getSimilarProducts(): Promise<SimilarProductsMap> {
   }
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations('home');
+  const tFaq = await getTranslations('faq');
+  const tFooter = await getTranslations('footer');
+
   const products = await getValidatedProducts();
   const similarProducts = await getSimilarProducts();
 
@@ -44,16 +54,17 @@ export default async function HomePage() {
     <main className="container mx-auto max-w-lg p-4 pt-8 sm:pt-12">
       <header className="text-center mb-8">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-          어린이 해열제 복용량 계산기
+          {t('title')}
         </h1>
         <p className="mt-3 text-lg text-gray-700 font-medium">
-          체중과 나이만 입력하면 정확한 용량을 알 수 있어요
+          {t('subtitle')}
         </p>
         <p className="mt-2 text-base text-gray-600">
-          <span className="font-semibold text-blue-600">타이레놀·챔프·부루펜·맥시부펜</span> 체중별·나이별 복용량 즉시 계산
+          <span className="font-semibold text-blue-600">{t('productList')}</span>{' '}
+          {t('productDescription')}
         </p>
         <p className="mt-4 text-xs text-gray-500 bg-yellow-50 p-3 rounded-lg border border-yellow-200">
-          ⚠️ 이 계산기는 참고용입니다. 실제 투약 전 반드시 의사·약사와 상담하세요.
+          {t('warning')}
         </p>
       </header>
 
@@ -69,57 +80,57 @@ export default async function HomePage() {
       {/* 자주 묻는 질문 섹션 */}
       <section className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">
         <h2 className="text-xl font-bold text-center mb-4 text-gray-900">
-          자주 묻는 질문
+          {tFaq('title')}
         </h2>
         <div className="grid gap-2">
           <a
-            href="/faq#tylenol-interval"
+            href={`${locale === 'en' ? '/en' : ''}/faq#tylenol-interval`}
             className="text-blue-600 hover:underline text-sm"
           >
-            ❓ 타이레놀 복용 간격은?
+            {tFaq('questions.tylenolInterval')}
           </a>
           <a
-            href="/faq#tylenol-brufen-difference"
+            href={`${locale === 'en' ? '/en' : ''}/faq#tylenol-brufen-difference`}
             className="text-blue-600 hover:underline text-sm"
           >
-            ❓ 타이레놀과 부루펜 차이는?
+            {tFaq('questions.tylenolBrufenDifference')}
           </a>
           <a
-            href="/faq#cross-dosing"
+            href={`${locale === 'en' ? '/en' : ''}/faq#cross-dosing`}
             className="text-blue-600 hover:underline text-sm"
           >
-            ❓ 해열제 교차 복용 방법은?
+            {tFaq('questions.crossDosing')}
           </a>
           <a
-            href="/faq#fever-temperature-guide"
+            href={`${locale === 'en' ? '/en' : ''}/faq#fever-temperature-guide`}
             className="text-blue-600 hover:underline text-sm"
           >
-            ❓ 아이 열이 몇 도일 때 먹여야 하나요?
+            {tFaq('questions.feverTemperature')}
           </a>
         </div>
         <a
-          href="/faq"
+          href={`${locale === 'en' ? '/en' : ''}/faq`}
           className="block text-center mt-4 text-blue-600 font-semibold hover:underline"
         >
-          전체 FAQ 보기 →
+          {tFaq('viewAll')}
         </a>
       </section>
 
       <footer className="mt-12 text-center text-xs text-gray-500 space-y-3">
         {/* 출처 정보 */}
-        <p>출처: 식품의약품안전처_의약품개요정보(e약은요) (2025-10-27 검토)</p>
+        <p>{tFooter('source')}</p>
 
         {/* 제작자 정보 (E-A-T) */}
         <div className="pt-3 border-t border-gray-200">
           <div className="flex items-center justify-center gap-2">
             <p className="text-gray-600">
-              제작자:{' '}
+              {tFooter('creator')}{' '}
               <a
                 href="https://litt.ly/solkim"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
-                aria-label="pinecone 프로필"
+                aria-label="pinecone profile"
               >
                 pinecone
               </a>
@@ -128,11 +139,11 @@ export default async function HomePage() {
               href="https://litt.ly/solkim"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="제작자 프로필"
+              aria-label="Creator profile"
             >
               <Image
                 src="/images/profile.png"
-                alt="pinecone 프로필"
+                alt="pinecone profile"
                 width={32}
                 height={32}
                 className="rounded-full hover:opacity-80 transition-opacity"
@@ -143,7 +154,9 @@ export default async function HomePage() {
 
         {/* 유용한 정보 */}
         <div className="pt-3 border-t border-gray-200">
-          <p className="text-gray-600 font-semibold mb-2">📖 유용한 정보</p>
+          <p className="text-gray-600 font-semibold mb-2">
+            {tFooter('usefulInfo')}
+          </p>
           <div className="space-y-1 text-gray-600">
             <p>
               <a
@@ -152,7 +165,7 @@ export default async function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
               >
-                • 아이 열날 때 해열제, 언제 먹여야 할까?
+                • {tFooter('links.feverGuide')}
               </a>
             </p>
             <p>
@@ -162,16 +175,14 @@ export default async function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
               >
-                • 더 많은 육아 건강 정보 보기
+                • {tFooter('links.moreInfo')}
               </a>
             </p>
           </div>
         </div>
 
         {/* 쿠팡 파트너스 고지 */}
-        <p className="text-gray-400 pt-3">
-          이 사이트는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-        </p>
+        <p className="text-gray-400 pt-3">{tFooter('disclaimer')}</p>
       </footer>
     </main>
   );

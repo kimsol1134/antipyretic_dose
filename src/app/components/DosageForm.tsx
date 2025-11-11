@@ -3,6 +3,7 @@
 import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { AGE_INPUT_STEP, WEIGHT_INPUT_STEP } from '@/lib/constants';
 import { dosageInputSchema } from '@/lib/schemas';
 import type { DosageInput, Product } from '@/lib/types';
@@ -15,6 +16,7 @@ type DosageFormProps = {
 };
 
 export default function DosageForm({ products }: DosageFormProps) {
+  const t = useTranslations('form');
   const { calculateAllDosages } = useDosageActions();
   const {
     register,
@@ -39,14 +41,14 @@ export default function DosageForm({ products }: DosageFormProps) {
           htmlFor="weight"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          체중 (kg)
+          {t('weight.label')}
         </label>
         <Input
           id="weight"
           type="tel"
           inputMode="decimal"
           step={WEIGHT_INPUT_STEP}
-          placeholder="예: 10.5"
+          placeholder={t('weight.placeholder')}
           {...register('weight', { valueAsNumber: true })}
         />
         {errors.weight && (
@@ -60,14 +62,14 @@ export default function DosageForm({ products }: DosageFormProps) {
             htmlFor="age"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            나이
+            {t('age.label')}
           </label>
           <Input
             id="age"
             type="tel"
             inputMode="numeric"
             step={AGE_INPUT_STEP}
-            placeholder="예: 18"
+            placeholder={t('age.placeholder')}
             {...register('age', { valueAsNumber: true })}
           />
         </div>
@@ -76,15 +78,15 @@ export default function DosageForm({ products }: DosageFormProps) {
             htmlFor="ageUnit"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            단위
+            {t('age.unitLabel')}
           </label>
           <select
             id="ageUnit"
             {...register('ageUnit')}
             className="block w-full px-4 py-3 text-lg border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="months">개월</option>
-            <option value="years">세(만나이)</option>
+            <option value="months">{t('age.unit.months')}</option>
+            <option value="years">{t('age.unit.years')}</option>
           </select>
         </div>
       </div>
@@ -96,7 +98,7 @@ export default function DosageForm({ products }: DosageFormProps) {
       )}
 
       <Button type="submit" className="text-lg">
-        계산하기
+        {t('submit')}
       </Button>
     </form>
   );

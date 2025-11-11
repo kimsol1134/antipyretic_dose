@@ -2,10 +2,17 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { FAQItem, faqData } from '@/data/faq-data';
+import { useTranslations } from 'next-intl';
+import { FAQItem } from '@/data/faq-data';
 import SourceBadge from '../shared/SourceBadge';
 
-export default function FAQAccordion({ faq }: { faq: FAQItem }) {
+type FAQAccordionProps = {
+  faq: FAQItem;
+  allFaqs: FAQItem[];
+};
+
+export default function FAQAccordion({ faq, allFaqs }: FAQAccordionProps) {
+  const t = useTranslations('faqAccordion');
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -48,7 +55,7 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
           {/* 출처 */}
           <div className="mt-6 pt-4 border-t">
             <p className="text-xs text-gray-700 font-semibold mb-2">
-              📚 참고 출처:
+              📚 {t('sources')}
             </p>
             <ul className="space-y-2">
               {faq.sources.map((source, i) => (
@@ -76,11 +83,11 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
           {faq.relatedFAQs && faq.relatedFAQs.length > 0 && (
             <div className="mt-4 pt-4 border-t">
               <p className="text-xs text-gray-700 font-semibold mb-2">
-                🔗 관련 질문:
+                🔗 {t('relatedQuestions')}
               </p>
               <div className="flex flex-wrap gap-2">
                 {faq.relatedFAQs.map((relatedId) => {
-                  const relatedFaq = faqData.find((f) => f.id === relatedId);
+                  const relatedFaq = allFaqs.find((f) => f.id === relatedId);
                   return (
                     <a
                       key={relatedId}
@@ -88,7 +95,7 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
                       className="text-xs text-blue-600 hover:underline bg-blue-50 px-3 py-1 rounded"
                       onClick={() => setIsOpen(false)}
                     >
-                      {relatedFaq?.question || '이동'} →
+                      {relatedFaq?.question || t('viewQuestion')} →
                     </a>
                   );
                 })}
@@ -102,7 +109,7 @@ export default function FAQAccordion({ faq }: { faq: FAQItem }) {
               ⚠️ {faq.medicalDisclaimer}
             </p>
             <p className="text-xs text-gray-400 mt-1">
-              최종 업데이트: {faq.lastUpdated}
+              {t('lastUpdated')}: {faq.lastUpdated}
             </p>
           </div>
         </div>

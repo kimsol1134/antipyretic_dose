@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   DOSAGE_RESULTS_MIN_HEIGHT_CLASS,
   ML_ROUNDING_DECIMALS,
@@ -10,7 +11,7 @@ import {
   useDosageResults,
   useDosageStatus,
 } from '@/store/dosage-store';
-import type { SimilarProductsMap, DosageResult } from '@/lib/types';
+import type { SimilarProductsMap, DosageResult, Product } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
@@ -30,9 +31,21 @@ function formatMl(value: number): string {
   return value.toFixed(ML_ROUNDING_DECIMALS);
 }
 
+function getProductName(product: Product, locale: string): string {
+  return locale === 'en' && product.nameEn ? product.nameEn : product.name;
+}
+
+function getIngredientName(product: Product, locale: string): string {
+  return locale === 'en' && product.ingredientEn
+    ? product.ingredientEn
+    : product.ingredient;
+}
+
 export default function DosageResultDisplay({
   similarProductsMap,
 }: DosageResultDisplayProps) {
+  const t = useTranslations('result');
+  const locale = useLocale();
   const results = useDosageResults();
   const status = useDosageStatus();
   const [expandedProducts, setExpandedProducts] = useState<Set<string>>(
@@ -76,7 +89,7 @@ export default function DosageResultDisplay({
     <div className={`mt-8 space-y-4 ${DOSAGE_RESULTS_MIN_HEIGHT_CLASS}`}>
       {status === 'calculated' && results.length > 0 && (
         <>
-          <h2 className="text-2xl font-bold text-center">계산 결과</h2>
+          <h2 className="text-2xl font-bold text-center">{t('title')}</h2>
           {groupedResults.map((group) => {
             const result = group.primaryResult;
 
@@ -85,10 +98,10 @@ export default function DosageResultDisplay({
                 {/* 성분 및 농도 정보 */}
                 <div className="mb-4 pb-3 border-b border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-800">
-                    {result.product.ingredient}
+                    {getIngredientName(result.product, locale)}
                   </h3>
                   <p className="text-sm text-gray-500">
-                    농도: {result.product.strength_mg_per_ml} mg/mL
+                    {t('concentration')}: {result.product.strength_mg_per_ml} mg/mL
                   </p>
                 </div>
 
@@ -99,14 +112,14 @@ export default function DosageResultDisplay({
                       <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white shadow-md p-3">
                         <Image
                           src={r.product.image}
-                          alt={r.product.name}
+                          alt={getProductName(r.product, locale)}
                           width={240}
                           height={240}
                           className="object-contain max-w-full max-h-full"
                         />
                       </div>
                       <p className="text-sm font-bold text-gray-800 mt-3 text-center max-w-[200px] sm:max-w-[240px]">
-                        {r.product.name}
+                        {getProductName(r.product, locale)}
                       </p>
                     </div>
                   ))}
@@ -116,7 +129,7 @@ export default function DosageResultDisplay({
                   <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
                     {/* 권장 복용량 */}
                     <div className="mb-3">
-                      <p className="text-sm text-gray-600 mb-1">1회 복용량 (권장)</p>
+                      <p className="text-sm text-gray-600 mb-1">{t('dosage.recommended')}</p>
                       <p className="text-5xl font-extrabold text-blue-600">
                         {formatMl(result.recommended_ml)} mL
                       </p>
@@ -124,7 +137,7 @@ export default function DosageResultDisplay({
 
                     {/* 복용 가능 범위 */}
                     <div className="mb-3">
-                      <p className="text-sm text-gray-500 mb-1">복용 가능 범위</p>
+                      <p className="text-sm text-gray-500 mb-1">{t('dosage.range')}</p>
                       <p className="text-xl font-semibold text-gray-700">
                         {formatMl(result.min_ml)} ~ {formatMl(result.max_ml)} mL
                       </p>
@@ -133,15 +146,15 @@ export default function DosageResultDisplay({
                     {/* 복용 간격 및 횟수 */}
                     <div className="flex flex-wrap gap-4 mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-gray-700">복용 간격:</span>
+                        <span className="text-sm font-medium text-gray-700">{t('dosage.interval')}:</span>
                         <span className="text-base font-semibold text-gray-900">
-                          {result.product.interval_hours}시간
+                          {result.product.interval_hours} {t('dosage.hours')}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-gray-700">1일 최대:</span>
+                        <span className="text-sm font-medium text-gray-700">{t('dosage.maxDaily')}:</span>
                         <span className="text-base font-semibold text-gray-900">
-                          {result.product.max_doses_per_day}회
+                          {result.product.max_doses_per_day} {t('dosage.times')}
                         </span>
                       </div>
                     </div>
@@ -150,7 +163,7 @@ export default function DosageResultDisplay({
                     {result.max_daily_ml !== null && (
                       <div className="mt-3 pt-3 border-t border-blue-200">
                         <p className="text-sm text-red-600 font-medium">
-                          ⚠️ 하루 최대 복용량: <span className="text-lg font-bold">{formatMl(result.max_daily_ml)} mL</span>
+                          {t('warning.maxDailyDose')} <span className="text-lg font-bold">{formatMl(result.max_daily_ml)} mL</span>
                         </p>
                       </div>
                     )}
@@ -185,9 +198,7 @@ export default function DosageResultDisplay({
           })}
 
           <Alert variant="warning" className="mt-6">
-            <span className="font-bold">중요:</span> 가지고 계신 약의 이름과
-            농도(예: 160mg/5mL)를 꼭 확인하세요. 다른 감기약의 &apos;아세트아미노펜&apos; /
-            &apos;이부프로펜&apos; 성분 중복을 꼭 확인하세요.
+            {t('warning.checkConcentration')}
           </Alert>
         </>
       )}
@@ -207,12 +218,13 @@ function SimilarProductsSection({
   isExpanded,
   onToggle,
 }: SimilarProductsSectionProps) {
-  const buttonLabel = isExpanded ? '유사 약품 숨기기' : '유사 약품 보기';
+  const t = useTranslations('result.similarProducts');
+  const buttonLabel = isExpanded ? t('hide') : t('show');
 
   return (
     <div className="mt-5 border-t border-gray-200 pt-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h4 className="text-lg font-semibold text-gray-800">유사 약품 정보</h4>
+        <h4 className="text-lg font-semibold text-gray-800">{t('title')}</h4>
         <Button
           type="button"
           className="w-full sm:w-auto"
@@ -224,7 +236,7 @@ function SimilarProductsSection({
 
       {!isExpanded && (
         <p className="mt-2 text-sm text-gray-500">
-          성분과 농도가 같은 어린이용 해열제를 확인해보세요.
+          {t('description')}
         </p>
       )}
 
@@ -232,7 +244,7 @@ function SimilarProductsSection({
         <div className="mt-4 space-y-3">
           {items.length === 0 ? (
             <p className="text-sm text-gray-500">
-              성분과 농도가 같은 유사 약품을 찾지 못했습니다.
+              {t('notFound')}
             </p>
           ) : (
             items.map((item) => (

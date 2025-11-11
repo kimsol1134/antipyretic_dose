@@ -1,10 +1,15 @@
 'use client';
 
 import { useMemo } from 'react';
-import { FAQItem, categoryLabels } from '@/data/faq-data';
+import { FAQItem, FAQCategory } from '@/data/faq-data';
 import FAQAccordion from './FAQAccordion';
 
-export default function FAQList({ faqs }: { faqs: FAQItem[] }) {
+type FAQListProps = {
+  faqs: FAQItem[];
+  categoryLabels: Record<FAQCategory, string>;
+};
+
+export default function FAQList({ faqs, categoryLabels }: FAQListProps) {
   // 우선순위 정렬
   const sortedFAQs = useMemo(() => {
     return [...faqs].sort((a, b) => a.priority - b.priority);
@@ -35,7 +40,7 @@ export default function FAQList({ faqs }: { faqs: FAQItem[] }) {
           </h2>
           <div className="space-y-4">
             {categoryFAQs.map((faq) => (
-              <FAQAccordion key={faq.id} faq={faq} />
+              <FAQAccordion key={faq.id} faq={faq} allFaqs={faqs} />
             ))}
           </div>
         </section>
