@@ -124,6 +124,8 @@
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
+    "warningTitle": "Warning",
+    "errorTitle": "Error",
     "back": "Back",
     "close": "Close"
   },

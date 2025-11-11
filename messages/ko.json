@@ -124,6 +124,8 @@
   "common": {
     "loading": "로딩 중...",
     "error": "오류가 발생했습니다",
+    "warningTitle": "주의",
+    "errorTitle": "오류",
     "back": "뒤로",
     "close": "닫기"
   },
