@@ -28,3 +28,15 @@ export type DosageStoreState = {
 };
 
 export type SimilarProductsMap = Record<string, EasyDrugItem[]>;
+
+// 미국 시장 관련 제품 타입
+export type RelatedProduct = {
+  name: string;
+  genericName: string;
+  strength: string;
+  manufacturer: string;
+  type: 'brand' | 'generic';
+  note?: string;
+};
+
+export type RelatedProductsMapUS = Record<string, RelatedProduct[]>;

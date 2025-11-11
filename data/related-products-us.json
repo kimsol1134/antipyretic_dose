@@ -1,0 +1,79 @@
+{
+  "acetaminophen_32": [
+    {
+      "name": "Children's Tylenol Oral Suspension",
+      "genericName": "Acetaminophen Oral Suspension",
+      "strength": "160mg/5mL (32mg/mL)",
+      "manufacturer": "Johnson & Johnson",
+      "type": "brand"
+    },
+    {
+      "name": "Infant's Tylenol Oral Suspension",
+      "genericName": "Acetaminophen Oral Suspension",
+      "strength": "160mg/5mL (32mg/mL)",
+      "manufacturer": "Johnson & Johnson",
+      "type": "brand",
+      "note": "Same concentration, designed for infants"
+    },
+    {
+      "name": "CVS Health Children's Pain & Fever Relief",
+      "genericName": "Acetaminophen Oral Suspension",
+      "strength": "160mg/5mL (32mg/mL)",
+      "manufacturer": "CVS Pharmacy",
+      "type": "generic"
+    },
+    {
+      "name": "Walgreens Children's Pain Reliever",
+      "genericName": "Acetaminophen Oral Suspension",
+      "strength": "160mg/5mL (32mg/mL)",
+      "manufacturer": "Walgreens",
+      "type": "generic"
+    },
+    {
+      "name": "Up & Up Children's Pain & Fever Relief",
+      "genericName": "Acetaminophen Oral Suspension",
+      "strength": "160mg/5mL (32mg/mL)",
+      "manufacturer": "Target",
+      "type": "generic",
+      "note": "Target store brand"
+    }
+  ],
+  "ibuprofen_20": [
+    {
+      "name": "Children's Advil Oral Suspension",
+      "genericName": "Ibuprofen Oral Suspension",
+      "strength": "100mg/5mL (20mg/mL)",
+      "manufacturer": "GSK Consumer Healthcare",
+      "type": "brand"
+    },
+    {
+      "name": "Children's Motrin Oral Suspension",
+      "genericName": "Ibuprofen Oral Suspension",
+      "strength": "100mg/5mL (20mg/mL)",
+      "manufacturer": "Johnson & Johnson",
+      "type": "brand"
+    },
+    {
+      "name": "CVS Health Children's Ibuprofen Oral Suspension",
+      "genericName": "Ibuprofen Oral Suspension",
+      "strength": "100mg/5mL (20mg/mL)",
+      "manufacturer": "CVS Pharmacy",
+      "type": "generic"
+    },
+    {
+      "name": "Walgreens Children's Ibuprofen Oral Suspension",
+      "genericName": "Ibuprofen Oral Suspension",
+      "strength": "100mg/5mL (20mg/mL)",
+      "manufacturer": "Walgreens",
+      "type": "generic"
+    },
+    {
+      "name": "Up & Up Children's Ibuprofen Oral Suspension",
+      "genericName": "Ibuprofen Oral Suspension",
+      "strength": "100mg/5mL (20mg/mL)",
+      "manufacturer": "Target",
+      "type": "generic",
+      "note": "Target store brand"
+    }
+  ]
+}

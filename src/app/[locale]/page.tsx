@@ -3,19 +3,26 @@ import path from 'path';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { productsSchema } from '@/lib/schemas';
-import type { Product, SimilarProductsMap } from '@/lib/types';
+import type { Product, SimilarProductsMap, RelatedProductsMapUS } from '@/lib/types';
 import DosageForm from '../components/DosageForm';
 import DosageResultDisplay from '../components/DosageResultDisplay';
 import CoupangBanner from '../components/ads/CoupangBanner';
 
-async function getValidatedProducts(): Promise<Product[]> {
+async function getValidatedProducts(locale: string): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
 
   try {
     const fileContent = await fs.readFile(filePath, 'utf-8');
     const jsonData = JSON.parse(fileContent);
-    const validatedProducts = productsSchema.parse(jsonData);
-    return validatedProducts;
+    const allProducts = productsSchema.parse(jsonData);
+
+    // locale에 따라 필터링
+    const marketKey = locale === 'en' ? 'en' : 'ko';
+    const filteredProducts = allProducts.filter((product) =>
+      product.markets.includes(marketKey)
+    );
+
+    return filteredProducts;
   } catch (error) {
     console.error('======= [빌드 실패] products.json 데이터 검증 실패 =======');
     console.error(error);
@@ -23,7 +30,12 @@ async function getValidatedProducts(): Promise<Product[]> {
   }
 }
 
-async function getSimilarProducts(): Promise<SimilarProductsMap> {
+async function getSimilarProducts(locale: string): Promise<SimilarProductsMap> {
+  // 한국 버전만 e약은요 API 사용
+  if (locale !== 'ko') {
+    return {};
+  }
+
   const filePath = path.join(process.cwd(), 'data', 'similar-products.json');
 
   try {
@@ -32,6 +44,25 @@ async function getSimilarProducts(): Promise<SimilarProductsMap> {
     return jsonData as SimilarProductsMap;
   } catch (error) {
     console.warn('유사 약품 데이터를 불러올 수 없습니다. 빈 데이터를 사용합니다.');
+    console.warn(error);
+    return {};
+  }
+}
+
+async function getRelatedProductsUS(locale: string): Promise<RelatedProductsMapUS> {
+  // 영어 버전만 하드코딩된 관련 제품 사용
+  if (locale !== 'en') {
+    return {};
+  }
+
+  const filePath = path.join(process.cwd(), 'data', 'related-products-us.json');
+
+  try {
+    const fileContent = await fs.readFile(filePath, 'utf-8');
+    const jsonData = JSON.parse(fileContent);
+    return jsonData as RelatedProductsMapUS;
+  } catch (error) {
+    console.warn('관련 제품 데이터를 불러올 수 없습니다. 빈 데이터를 사용합니다.');
     console.warn(error);
     return {};
   }
@@ -47,8 +78,9 @@ export default async function HomePage({
   const tFaq = await getTranslations('faq');
   const tFooter = await getTranslations('footer');
 
-  const products = await getValidatedProducts();
-  const similarProducts = await getSimilarProducts();
+  const products = await getValidatedProducts(locale);
+  const similarProducts = await getSimilarProducts(locale);
+  const relatedProductsUS = await getRelatedProductsUS(locale);
 
   return (
     <main className="container mx-auto max-w-lg p-4 pt-8 sm:pt-12">
@@ -75,7 +107,10 @@ export default async function HomePage({
       {/* ✅ 배너: 계산 폼과 결과 사이에 배치 */}
       <CoupangBanner />
 
-      <DosageResultDisplay similarProductsMap={similarProducts} />
+      <DosageResultDisplay
+        similarProductsMap={similarProducts}
+        relatedProductsMap={relatedProductsUS}
+      />
 
       {/* 자주 묻는 질문 섹션 */}
       <section className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">

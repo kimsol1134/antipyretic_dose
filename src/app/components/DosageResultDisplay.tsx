@@ -11,14 +11,16 @@ import {
   useDosageResults,
   useDosageStatus,
 } from '@/store/dosage-store';
-import type { SimilarProductsMap, DosageResult, Product } from '@/lib/types';
+import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
+import { GenericBrandNotice } from './GenericBrandNotice';
 
 type DosageResultDisplayProps = {
   similarProductsMap: SimilarProductsMap;
+  relatedProductsMap?: RelatedProductsMapUS;
 };
 
 type GroupedResult = {
@@ -43,6 +45,7 @@ function getIngredientName(product: Product, locale: string): string {
 
 export default function DosageResultDisplay({
   similarProductsMap,
+  relatedProductsMap,
 }: DosageResultDisplayProps) {
   const t = useTranslations('result');
   const locale = useLocale();
@@ -185,12 +188,25 @@ export default function DosageResultDisplay({
                   <Alert variant="error">{result.message}</Alert>
                 )}
 
+                {/* Generic Brand Notice (영어 버전만) */}
                 {result.status === 'success' && (
+                  <GenericBrandNotice product={result.product} locale={locale} />
+                )}
+
+                {/* 한국 버전: e약은요 API 유사 제품 */}
+                {result.status === 'success' && locale === 'ko' && (
                   <SimilarProductsSection
                     productId={result.product.id}
                     items={similarProductsMap[result.product.id] ?? []}
                     isExpanded={expandedProducts.has(result.product.id)}
                     onToggle={() => toggleSimilarProducts(result.product.id)}
+                  />
+                )}
+
+                {/* 영어 버전: 하드코딩된 관련 제품 */}
+                {result.status === 'success' && locale === 'en' && relatedProductsMap && (
+                  <RelatedProductsSectionUS
+                    items={getRelatedProductsForResult(result, relatedProductsMap)}
                   />
                 )}
               </Card>
@@ -277,6 +293,78 @@ function SimilarProductsSection({
               </div>
             ))
           )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// 헬퍼 함수: 결과에 대한 관련 제품 가져오기
+function getRelatedProductsForResult(
+  result: DosageResult,
+  relatedProductsMap: RelatedProductsMapUS
+): RelatedProduct[] {
+  const ingredientMap: Record<string, string> = {
+    '아세트아미노펜': 'acetaminophen',
+    'Acetaminophen': 'acetaminophen',
+    '이부프로펜': 'ibuprofen',
+    'Ibuprofen': 'ibuprofen',
+  };
+
+  const ingredient = ingredientMap[result.product.ingredient] ||
+                     ingredientMap[result.product.ingredientEn || ''];
+  const key = `${ingredient}_${result.product.strength_mg_per_ml}`;
+
+  return relatedProductsMap[key] ?? [];
+}
+
+// 미국 시장 관련 제품 섹션
+function RelatedProductsSectionUS({ items }: { items: RelatedProduct[] }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mt-5 border-t border-gray-200 pt-4">
+      <div className="flex items-center justify-between mb-3">
+        <h4 className="text-lg font-semibold text-gray-800">
+          Related Products (Same Strength)
+        </h4>
+        <Button
+          type="button"
+          className="text-sm"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? 'Hide' : 'Show'} ({items.length})
+        </Button>
+      </div>
+
+      {isExpanded && (
+        <div className="space-y-2">
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 bg-white"
+            >
+              <span
+                className={`px-2 py-1 text-xs font-bold rounded ${
+                  item.type === 'generic'
+                    ? 'bg-green-100 text-green-800'
+                    : 'bg-blue-100 text-blue-800'
+                }`}
+              >
+                {item.type.toUpperCase()}
+              </span>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900">{item.name}</p>
+                <p className="text-sm text-gray-600">{item.strength}</p>
+                {item.note && (
+                  <p className="text-xs text-gray-500 mt-1 italic">💡 {item.note}</p>
+                )}
+                <p className="text-xs text-gray-400 mt-1">{item.manufacturer}</p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
