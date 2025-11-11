@@ -45,6 +45,7 @@ export default function DosageResultDisplay({
   similarProductsMap,
 }: DosageResultDisplayProps) {
   const t = useTranslations('result');
+  const tValidation = useTranslations('validation.product');
   const locale = useLocale();
   const results = useDosageResults();
   const status = useDosageStatus();
@@ -178,11 +179,17 @@ export default function DosageResultDisplay({
                 )}
 
                 {result.status === 'age_block' && (
-                  <Alert variant="warning">{result.message}</Alert>
+                  <Alert variant="warning">
+                    {tValidation('ageTooYoung', { minAge: result.product.min_age_months })}
+                  </Alert>
                 )}
 
                 {result.status === 'error' && (
-                  <Alert variant="error">{result.message}</Alert>
+                  <Alert variant="error">
+                    {result.message.includes('농도') || result.message.includes('concentration')
+                      ? tValidation('concentrationZero')
+                      : result.message}
+                  </Alert>
                 )}
 
                 {result.status === 'success' && (
