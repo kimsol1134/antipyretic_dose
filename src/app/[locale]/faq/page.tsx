@@ -35,21 +35,50 @@ export async function generateMetadata({
 
   // English metadata
   return {
-    title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
+    title:
+      "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide - Common Questions Answered",
     description:
-      "Get answers to common questions about children's fever medicine: Tylenol dosing intervals, Motrin vs Advil differences, alternating medicines, and more (FDA/AAP guidelines).",
+      "Get expert answers to common questions about children's fever medicine: Tylenol dosing intervals, Motrin vs Advil differences, alternating medicines, safe temperature thresholds, and maximum doses (FDA/AAP guidelines).",
     keywords: [
       'tylenol dosing interval',
       'motrin vs advil',
       'alternating fever medicine',
       'when to give fever medicine',
       'fever medicine faq',
+      'acetaminophen ibuprofen together',
+      'pediatric fever management',
+      'child fever reducer safety',
     ],
+    alternates: {
+      canonical: 'https://antipyretic-dose.vercel.app/en/faq',
+      languages: {
+        ko: 'https://antipyretic-dose.vercel.app/faq',
+        en: 'https://antipyretic-dose.vercel.app/en/faq',
+      },
+    },
     openGraph: {
-      title: "Children's Fever Medicine FAQ",
+      title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
       description:
-        'Complete guide to children\'s Tylenol and Motrin dosing (FDA/AAP guidelines)',
+        "Complete guide to children's Tylenol and Motrin dosing: answers to common questions about intervals, alternating medicines, and safety (FDA/AAP guidelines)",
       url: 'https://antipyretic-dose.vercel.app/en/faq',
+      siteName: "Children's Fever Medicine Dosage Calculator",
+      locale: 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: "Children's Fever Medicine FAQ",
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
+      description:
+        'Expert answers to common questions about children\'s fever medicine dosing (FDA/AAP guidelines)',
+      images: ['/opengraph-image.png'],
     },
   };
 }

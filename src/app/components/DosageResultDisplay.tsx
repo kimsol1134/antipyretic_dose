@@ -119,7 +119,7 @@ export default function DosageResultDisplay({
                       <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white shadow-md p-3">
                         <Image
                           src={getProductImage(r.product, locale)}
-                          alt={getProductName(r.product, locale)}
+                          alt={`${getProductName(r.product, locale)} - ${getIngredientName(r.product, locale)} ${r.product.strength_mg_per_ml}mg/mL ${locale === 'en' ? 'children\'s fever medicine' : '어린이 해열제'}`}
                           width={240}
                           height={240}
                           className="object-contain max-w-full max-h-full"
@@ -240,6 +240,7 @@ function SimilarProductsSection({
   onToggle,
 }: SimilarProductsSectionProps) {
   const t = useTranslations('result.similarProducts');
+  const locale = useLocale();
   const buttonLabel = isExpanded ? t('hide') : t('show');
 
   return (
@@ -277,7 +278,7 @@ function SimilarProductsSection({
                   {item.itemImage && (
                     <Image
                       src={item.itemImage}
-                      alt={`${item.itemName} 이미지`}
+                      alt={`${item.itemName} ${locale === 'en' ? 'product image' : '제품 이미지'}`}
                       width={60}
                       height={60}
                       unoptimized
