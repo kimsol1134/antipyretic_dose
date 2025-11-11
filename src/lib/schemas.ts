@@ -22,6 +22,7 @@ export const productSchema = z
     interval_hours: z.number().positive(),
     max_doses_per_day: z.number().positive(),
     image: z.string().min(1),
+    imageEn: z.string().min(1).optional(),
     fdaApproved: z.boolean().optional(),
   })
   .refine(

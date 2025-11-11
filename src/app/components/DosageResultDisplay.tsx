@@ -42,6 +42,10 @@ function getIngredientName(product: Product, locale: string): string {
     : product.ingredient;
 }
 
+function getProductImage(product: Product, locale: string): string {
+  return locale === 'en' && product.imageEn ? product.imageEn : product.image;
+}
+
 export default function DosageResultDisplay({
   similarProductsMap,
   relatedProductsMap,
@@ -113,7 +117,7 @@ export default function DosageResultDisplay({
                     <div key={r.product.id} className="flex flex-col items-center">
                       <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] flex items-center justify-center rounded-lg border-2 border-gray-300 bg-white shadow-md p-3">
                         <Image
-                          src={r.product.image}
+                          src={getProductImage(r.product, locale)}
                           alt={getProductName(r.product, locale)}
                           width={240}
                           height={240}

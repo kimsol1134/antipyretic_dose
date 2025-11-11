@@ -15,6 +15,7 @@
     "interval_hours": 4,
     "max_doses_per_day": 5,
     "image": "/images/products/tylenol_susp_100ml_kr.jpg",
+    "imageEn": "/images/products/tylenol_susp_100ml_en.jpg",
     "fdaApproved": true
   },
   {
