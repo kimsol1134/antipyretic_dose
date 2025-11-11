@@ -16,7 +16,6 @@ import type { EasyDrugItem } from '@/lib/easy-drug';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
-import { GenericBrandNotice } from './GenericBrandNotice';
 
 type DosageResultDisplayProps = {
   similarProductsMap: SimilarProductsMap;
@@ -186,11 +185,6 @@ export default function DosageResultDisplay({
 
                 {result.status === 'error' && (
                   <Alert variant="error">{result.message}</Alert>
-                )}
-
-                {/* Generic Brand Notice (영어 버전만) */}
-                {result.status === 'success' && (
-                  <GenericBrandNotice product={result.product} locale={locale} />
                 )}
 
                 {/* 한국 버전: e약은요 API 유사 제품 */}
