@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap, RelatedProductsMapUS } from '@/lib/types';
@@ -213,6 +214,39 @@ export default async function HomePage({
                 • {tFooter('links.moreInfo')}
               </a>
             </p>
+          </div>
+        </div>
+
+        {/* 사이트 정보 링크 */}
+        <div className="pt-3 border-t border-gray-200">
+          <div className="flex flex-wrap justify-center gap-3 text-gray-600">
+            <Link
+              href={`${locale === 'en' ? '/en' : ''}/about`}
+              className="hover:text-blue-600 hover:underline"
+            >
+              {locale === 'en' ? 'About' : '소개'}
+            </Link>
+            <span>•</span>
+            <Link
+              href={`${locale === 'en' ? '/en' : ''}/privacy`}
+              className="hover:text-blue-600 hover:underline"
+            >
+              {locale === 'en' ? 'Privacy' : '개인정보처리방침'}
+            </Link>
+            <span>•</span>
+            <Link
+              href={`${locale === 'en' ? '/en' : ''}/terms`}
+              className="hover:text-blue-600 hover:underline"
+            >
+              {locale === 'en' ? 'Terms' : '이용약관'}
+            </Link>
+            <span>•</span>
+            <Link
+              href={`${locale === 'en' ? '/en' : ''}/contact`}
+              className="hover:text-blue-600 hover:underline"
+            >
+              {locale === 'en' ? 'Contact' : '문의'}
+            </Link>
           </div>
         </div>
 
