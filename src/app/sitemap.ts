@@ -57,5 +57,109 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    // Korean - Privacy Policy
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/privacy`,
+          en: `${baseUrl}/en/privacy`,
+        },
+      },
+    },
+    // English - Privacy Policy
+    {
+      url: `${baseUrl}/en/privacy`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/privacy`,
+          en: `${baseUrl}/en/privacy`,
+        },
+      },
+    },
+    // Korean - About
+    {
+      url: `${baseUrl}/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/about`,
+          en: `${baseUrl}/en/about`,
+        },
+      },
+    },
+    // English - About
+    {
+      url: `${baseUrl}/en/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/about`,
+          en: `${baseUrl}/en/about`,
+        },
+      },
+    },
+    // Korean - Contact
+    {
+      url: `${baseUrl}/contact`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/contact`,
+          en: `${baseUrl}/en/contact`,
+        },
+      },
+    },
+    // English - Contact
+    {
+      url: `${baseUrl}/en/contact`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/contact`,
+          en: `${baseUrl}/en/contact`,
+        },
+      },
+    },
+    // Korean - Terms
+    {
+      url: `${baseUrl}/terms`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/terms`,
+          en: `${baseUrl}/en/terms`,
+        },
+      },
+    },
+    // English - Terms
+    {
+      url: `${baseUrl}/en/terms`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/terms`,
+          en: `${baseUrl}/en/terms`,
+        },
+      },
+    },
   ];
 }

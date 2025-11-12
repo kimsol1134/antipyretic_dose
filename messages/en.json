@@ -139,5 +139,257 @@
     "official": "Official",
     "medical": "Medical",
     "reference": "Reference"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Children's Fever Medicine Dosage Calculator Privacy Policy",
+    "lastUpdated": "Last Updated: November 11, 2025",
+    "sections": {
+      "overview": {
+        "title": "1. Overview",
+        "content": "Children's Fever Medicine Dosage Calculator (the 'Service') values your privacy and is committed to protecting your personal information. This Privacy Policy explains what information we collect and how we use it."
+      },
+      "collection": {
+        "title": "2. Information We Collect",
+        "intro": "We collect the following information:",
+        "items": [
+          "Automatically Collected Information: Anonymized usage statistics such as page views, session duration, and referral paths through Google Analytics and Vercel Analytics",
+          "Advertising: Cookies and advertising identifiers through Google AdSense",
+          "Input Data: Weight and age information entered into the calculator is processed only in your browser and is not stored on our servers"
+        ]
+      },
+      "usage": {
+        "title": "3. How We Use Information",
+        "intro": "The collected information is used only for:",
+        "items": [
+          "Improving the service and optimizing user experience",
+          "Analyzing website traffic and statistics",
+          "Displaying relevant advertisements (Google AdSense)"
+        ]
+      },
+      "sharing": {
+        "title": "4. Information Sharing",
+        "content": "We do not sell or rent your personal information to third parties. Information may be shared only in the following cases:",
+        "items": [
+          "Google Analytics, Vercel Analytics: Anonymized usage statistics",
+          "Google AdSense: Cookie information for ad display",
+          "Legal Obligations: When required by law"
+        ]
+      },
+      "cookies": {
+        "title": "5. Cookies and Tracking Technologies",
+        "content": "We use the following cookies and tracking technologies:",
+        "items": [
+          "Google Analytics: Collect usage statistics",
+          "Google AdSense: Display personalized advertisements",
+          "You can disable cookies in your browser settings, though some features may be limited"
+        ]
+      },
+      "security": {
+        "title": "6. Data Security",
+        "content": "We take the following measures to protect your data:",
+        "items": [
+          "Secure connections via HTTPS",
+          "Calculation data is processed only in your browser and not transmitted to servers",
+          "Regular security audits and updates"
+        ]
+      },
+      "thirdParty": {
+        "title": "7. Third-Party Services",
+        "content": "We use the following third-party services:",
+        "google": {
+          "title": "Google Analytics and AdSense",
+          "content": "Google Privacy Policy:",
+          "link": "https://policies.google.com/privacy"
+        },
+        "vercel": {
+          "title": "Vercel Analytics",
+          "content": "Vercel Privacy Policy:",
+          "link": "https://vercel.com/legal/privacy-policy"
+        }
+      },
+      "rights": {
+        "title": "8. Your Rights",
+        "intro": "You have the following rights:",
+        "items": [
+          "Access: Request access to collected information",
+          "Deletion: Request deletion of personal information",
+          "Correction: Request correction of inaccurate information",
+          "Cookie Opt-Out: Block cookies through browser settings"
+        ]
+      },
+      "children": {
+        "title": "9. Children's Privacy",
+        "content": "We do not knowingly collect personal information from children under 13. Parents or guardians use the calculator, and the weight/age information entered is not stored on our servers."
+      },
+      "changes": {
+        "title": "10. Changes to Privacy Policy",
+        "content": "This Privacy Policy may be updated to reflect changes in applicable laws and services. We will notify you of significant changes through our website."
+      },
+      "contact": {
+        "title": "11. Contact",
+        "content": "If you have questions about this Privacy Policy, please contact us through our Contact page."
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "About Children's Fever Medicine Dosage Calculator",
+    "sections": {
+      "mission": {
+        "title": "Our Mission",
+        "content": "The Children's Fever Medicine Dosage Calculator helps parents and caregivers quickly and easily find accurate fever medicine dosages based on their child's weight and age. Our goal is to protect children's health and safety through proper medication use."
+      },
+      "features": {
+        "title": "Key Features",
+        "items": [
+          "Accurate dosage calculation by weight and age",
+          "Support for major fever medicines: Tylenol (acetaminophen), Motrin, and Advil (ibuprofen)",
+          "Calculations based on FDA-approved product labeling",
+          "Dosing interval and maximum dose guidance",
+          "Related product information (US version)"
+        ]
+      },
+      "safety": {
+        "title": "Safety",
+        "content": "This calculator was developed with reference to IEC 62304 medical device software safety standards. All calculations are based on FDA-approved product labeling, and data validation is performed at build time to prevent incorrect information from being deployed."
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "content": "This calculator is a reference tool. Always consult with a doctor or pharmacist before administering medication. This service does not replace medical advice and is not liable for adverse effects from medication use."
+      },
+      "creator": {
+        "title": "Creator",
+        "content": "This service is developed and operated by pinecone. More parenting health information is available on the creator's blog.",
+        "link": "https://litt.ly/solkim"
+      },
+      "opensource": {
+        "title": "Technology Stack",
+        "content": "This service is built with Next.js 15, React, TypeScript, and Tailwind CSS, and hosted on Vercel. It uses an architecture designed with medical safety as the top priority."
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About Us"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with any questions",
+    "sections": {
+      "intro": {
+        "content": "If you have questions, feedback, or suggestions for improving the Children's Fever Medicine Dosage Calculator, please contact us using the methods below."
+      },
+      "methods": {
+        "title": "Contact Methods",
+        "blog": {
+          "title": "Visit Blog",
+          "content": "For more parenting health information and inquiries, visit the creator's blog:",
+          "link": "https://blog.naver.com/kimsol1015"
+        },
+        "profile": {
+          "title": "Creator Profile",
+          "content": "More information about the creator:",
+          "link": "https://litt.ly/solkim"
+        }
+      },
+      "response": {
+        "title": "Response Time",
+        "content": "We will review your inquiry and respond as soon as possible. For urgent medical issues, call 911 or visit your nearest emergency room."
+      },
+      "feedback": {
+        "title": "Feedback",
+        "content": "We welcome your feedback for service improvement. Whether it's feature suggestions, bug reports, or user experience feedback, we value all input."
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "contact": "Contact Us"
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "subtitle": "Children's Fever Medicine Dosage Calculator Terms of Service",
+    "lastUpdated": "Last Updated: November 11, 2025",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By using this website (Children's Fever Medicine Dosage Calculator), you agree to be bound by these Terms of Service. If you do not agree, please do not use this service."
+      },
+      "service": {
+        "title": "2. Service Description",
+        "content": "This service is a free online tool that calculates appropriate dosages of fever medicines (Tylenol, Motrin, Advil, etc.) based on a child's weight and age. This service is provided for educational and reference purposes only."
+      },
+      "medical": {
+        "title": "3. Medical Disclaimer",
+        "intro": "This service does not replace professional medical advice, diagnosis, or treatment:",
+        "items": [
+          "Always consult with a doctor or pharmacist before administering medication",
+          "This calculator is for reference only and cannot replace instructions from medical professionals",
+          "In emergency situations (high fever, difficulty breathing, etc.), call 911 or go to the emergency room immediately",
+          "This service is not liable for adverse effects, misuse, or consequences from medication use"
+        ]
+      },
+      "accuracy": {
+        "title": "4. Information Accuracy",
+        "content": "While we strive to provide accurate information based on FDA-approved product labeling, we do not guarantee the completeness, accuracy, or timeliness of all information. Always verify medication dosages with product labels and medical professionals."
+      },
+      "liability": {
+        "title": "5. Limitation of Liability",
+        "content": "To the maximum extent permitted by law, this service is not liable for:",
+        "items": [
+          "Direct, indirect, or incidental damages from using this service",
+          "Health issues from calculation errors",
+          "Content of third-party website links",
+          "Service interruptions, errors, or data loss"
+        ]
+      },
+      "useTerms": {
+        "title": "6. Use Terms",
+        "intro": "When using this service, you must comply with:",
+        "items": [
+          "Prohibition of illegal, harmful, or inappropriate use",
+          "Prohibition of unauthorized modification, reproduction, or distribution of the service",
+          "Prohibition of excessive access through automated systems (bots, crawlers, etc.)",
+          "Prohibition of interfering with other users' access"
+        ]
+      },
+      "privacy": {
+        "title": "7. Privacy",
+        "content": "For details on how we collect and use personal information, please refer to our Privacy Policy. Weight and age data entered is not stored on servers and is processed only in your browser."
+      },
+      "advertising": {
+        "title": "8. Advertising and Affiliates",
+        "content": "This service may include Google AdSense ads and affiliate links. Purchases through affiliate links may result in the service receiving commissions, which are used for service operations."
+      },
+      "intellectual": {
+        "title": "9. Intellectual Property",
+        "content": "All content on this website (text, code, design, etc.) is protected by copyright law. Unauthorized reproduction, distribution, or modification is prohibited without explicit permission from the creator."
+      },
+      "changes": {
+        "title": "10. Changes to Terms",
+        "content": "These Terms of Service may be modified without prior notice. We will notify you of significant changes through our website, and continued use of the service after changes constitutes acceptance of the modified terms."
+      },
+      "termination": {
+        "title": "11. Service Termination",
+        "content": "This service may be suspended temporarily or permanently without prior notice, and we are not liable for any damages resulting from such suspension."
+      },
+      "law": {
+        "title": "12. Governing Law and Jurisdiction",
+        "content": "These terms are governed by the laws of the United States. Disputes related to this service are subject to the jurisdiction of US courts."
+      },
+      "contact": {
+        "title": "13. Contact",
+        "content": "If you have questions about these Terms of Service, please contact us through our Contact page."
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "terms": "Terms of Service"
+    }
   }
 }

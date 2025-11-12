@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 declare global {
   interface Window {
@@ -13,6 +13,7 @@ declare global {
         height: string;
       }) => void;
     };
+    __coupangBannerInitialized?: boolean;
   }
 }
 
@@ -21,6 +22,7 @@ const COUPANG_CONFIG = {
   trackingCode: 'AF3034941',
   template: 'carousel',
   timeout: 5000,
+  containerId: 'coupang-banner-container',
 } as const;
 
 const BANNER_SIZES = {
@@ -30,8 +32,12 @@ const BANNER_SIZES = {
 
 export default function CoupangBanner() {
   const [bannerError, setBannerError] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // 전역 플래그로 중복 초기화 방지
+    if (window.__coupangBannerInitialized) return;
+
     // 스크립트 로드 확인
     if (window.PartnersCoupang) {
       initBanner(window.innerWidth < 768);
@@ -53,11 +59,14 @@ export default function CoupangBanner() {
       }
     }, COUPANG_CONFIG.timeout);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      // cleanup은 하지 않음 - 배너는 SPA 전체에서 유지
+    };
   }, []);
 
   const initBanner = (isMobileView: boolean) => {
-    if (!window.PartnersCoupang) return;
+    if (!window.PartnersCoupang || window.__coupangBannerInitialized) return;
 
     try {
       const sizes = isMobileView ? BANNER_SIZES.mobile : BANNER_SIZES.desktop;
@@ -68,6 +77,9 @@ export default function CoupangBanner() {
         width: sizes.width,
         height: sizes.height,
       });
+
+      // 초기화 완료 플래그 설정
+      window.__coupangBannerInitialized = true;
     } catch (error) {
       console.warn('[CoupangBanner] Initialization failed:', error);
       setBannerError(true);
@@ -78,7 +90,11 @@ export default function CoupangBanner() {
   if (bannerError) return null;
 
   return (
-    <div className="w-full flex justify-center my-6">
+    <div
+      id={COUPANG_CONFIG.containerId}
+      ref={containerRef}
+      className="w-full flex justify-center my-6"
+    >
       {/* 쿠팡 배너 스크립트가 자동으로 광고를 삽입할 컨테이너 */}
     </div>
   );
