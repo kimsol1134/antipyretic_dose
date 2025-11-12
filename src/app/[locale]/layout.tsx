@@ -23,7 +23,7 @@ export async function generateMetadata({
     return {
       title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표 (체중별)',
       description:
-        '어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
+        '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
       metadataBase: new URL('https://antipyretic-dose.vercel.app'),
       category: 'medical',
       creator: 'pinecone',
@@ -57,7 +57,7 @@ export async function generateMetadata({
       openGraph: {
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
-          '체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
+          '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
         url: 'https://antipyretic-dose.vercel.app',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
@@ -75,7 +75,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
-          '체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
+          '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
         images: ['/opengraph-image.png'],
       },
     };
@@ -171,7 +171,7 @@ export default async function LocaleLayout({
           name: '어린이 해열제 복용량 계산기',
           alternateName: '소아 해열제 용량 계산기',
           description:
-            '체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
+            '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
           url: 'https://antipyretic-dose.vercel.app',
           inLanguage: 'ko-KR',
           applicationCategory: 'HealthApplication',
@@ -193,7 +193,8 @@ export default async function LocaleLayout({
           },
           author: {
             '@type': 'Person',
-            name: 'pinecone',
+            name: 'Dr. pinecone (의사)',
+            jobTitle: '의사',
             url: 'https://litt.ly/solkim',
           },
           publisher: {
@@ -257,7 +258,8 @@ export default async function LocaleLayout({
           },
           author: {
             '@type': 'Person',
-            name: 'pinecone',
+            name: 'Dr. pinecone (의사)',
+            jobTitle: '의사',
             url: 'https://litt.ly/solkim',
           },
           publisher: {
