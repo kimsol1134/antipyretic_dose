@@ -61,43 +61,14 @@ export default function CoupangBanner() {
 
     return () => {
       clearTimeout(timeout);
-      // cleanup: 쿠팡 배너가 생성한 모든 요소 제거
-      cleanupBanner();
+      // cleanup은 하지 않음 - 배너는 SPA 전체에서 유지
     };
   }, []);
-
-  const cleanupBanner = () => {
-    // 컨테이너 내부 정리
-    if (containerRef.current) {
-      containerRef.current.innerHTML = '';
-    }
-
-    // 쿠팡 스크립트가 생성한 iframe, ins 태그 등 모두 제거
-    const container = document.getElementById(COUPANG_CONFIG.containerId);
-    if (container) {
-      // iframe 제거
-      const iframes = container.querySelectorAll('iframe');
-      iframes.forEach((iframe) => iframe.remove());
-
-      // ins 태그 제거
-      const insElements = container.querySelectorAll('ins');
-      insElements.forEach((ins) => ins.remove());
-
-      // 기타 자식 요소 모두 제거
-      container.innerHTML = '';
-    }
-
-    // 전역 플래그 리셋
-    window.__coupangBannerInitialized = false;
-  };
 
   const initBanner = (isMobileView: boolean) => {
     if (!window.PartnersCoupang || window.__coupangBannerInitialized) return;
 
     try {
-      // 기존 배너 완전히 제거
-      cleanupBanner();
-
       const sizes = isMobileView ? BANNER_SIZES.mobile : BANNER_SIZES.desktop;
       new window.PartnersCoupang.G({
         id: COUPANG_CONFIG.id,
