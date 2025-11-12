@@ -12,6 +12,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Root metadataBase 설정
+const metadataBase = new URL('https://antipyretic-dose.vercel.app');
+
 export async function generateMetadata({
   params,
 }: {
@@ -24,7 +27,7 @@ export async function generateMetadata({
       title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표 (체중별)',
       description:
         '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-      metadataBase: new URL('https://antipyretic-dose.vercel.app'),
+      metadataBase,
       category: 'medical',
       creator: 'pinecone',
       publisher: 'pinecone',
@@ -64,7 +67,7 @@ export async function generateMetadata({
         type: 'website',
         images: [
           {
-            url: '/opengraph-image.png',
+            url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
             width: 1200,
             height: 630,
             alt: '어린이 해열제 복용량 계산기',
@@ -76,7 +79,7 @@ export async function generateMetadata({
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
           '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-        images: ['/opengraph-image.png'],
+        images: ['https://antipyretic-dose.vercel.app/opengraph-image.png'],
       },
     };
   }
@@ -87,7 +90,7 @@ export async function generateMetadata({
       "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart by Weight",
     description:
       "Accurate children's fever medicine dosage calculator by weight and age. Calculate Tylenol (acetaminophen), Motrin, and Advil (ibuprofen) doses instantly. Safe dosing intervals and maximum doses based on FDA and AAP guidelines.",
-    metadataBase: new URL('https://antipyretic-dose.vercel.app'),
+    metadataBase,
     category: 'medical',
     creator: 'pinecone',
     publisher: 'pinecone',
@@ -128,7 +131,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: '/opengraph-image.png',
+          url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
           width: 1200,
           height: 630,
           alt: "Children's Fever Medicine Dosage Calculator",
@@ -141,7 +144,7 @@ export async function generateMetadata({
         "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart",
       description:
         "Calculate accurate dosages for children's fever medicines by weight and age. Instant Tylenol, Motrin, and Advil dose calculation with safe dosing intervals (FDA/AAP guidelines).",
-      images: ['/opengraph-image.png'],
+      images: ['https://antipyretic-dose.vercel.app/opengraph-image.png'],
     },
   };
 }
