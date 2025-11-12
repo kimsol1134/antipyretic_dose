@@ -13,6 +13,7 @@ declare global {
         height: string;
       }) => void;
     };
+    __coupangBannerInitialized?: boolean;
   }
 }
 
@@ -21,6 +22,7 @@ const COUPANG_CONFIG = {
   trackingCode: 'AF3034941',
   template: 'carousel',
   timeout: 5000,
+  containerId: 'coupang-banner-container',
 } as const;
 
 const BANNER_SIZES = {
@@ -31,11 +33,10 @@ const BANNER_SIZES = {
 export default function CoupangBanner() {
   const [bannerError, setBannerError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInitializedRef = useRef(false);
 
   useEffect(() => {
-    // 이미 초기화되었으면 중복 실행 방지
-    if (isInitializedRef.current) return;
+    // 전역 플래그로 중복 초기화 방지
+    if (window.__coupangBannerInitialized) return;
 
     // 스크립트 로드 확인
     if (window.PartnersCoupang) {
@@ -60,22 +61,42 @@ export default function CoupangBanner() {
 
     return () => {
       clearTimeout(timeout);
-      // cleanup: 컨테이너 내용 제거
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-      }
-      isInitializedRef.current = false;
+      // cleanup: 쿠팡 배너가 생성한 모든 요소 제거
+      cleanupBanner();
     };
   }, []);
 
+  const cleanupBanner = () => {
+    // 컨테이너 내부 정리
+    if (containerRef.current) {
+      containerRef.current.innerHTML = '';
+    }
+
+    // 쿠팡 스크립트가 생성한 iframe, ins 태그 등 모두 제거
+    const container = document.getElementById(COUPANG_CONFIG.containerId);
+    if (container) {
+      // iframe 제거
+      const iframes = container.querySelectorAll('iframe');
+      iframes.forEach((iframe) => iframe.remove());
+
+      // ins 태그 제거
+      const insElements = container.querySelectorAll('ins');
+      insElements.forEach((ins) => ins.remove());
+
+      // 기타 자식 요소 모두 제거
+      container.innerHTML = '';
+    }
+
+    // 전역 플래그 리셋
+    window.__coupangBannerInitialized = false;
+  };
+
   const initBanner = (isMobileView: boolean) => {
-    if (!window.PartnersCoupang || isInitializedRef.current) return;
+    if (!window.PartnersCoupang || window.__coupangBannerInitialized) return;
 
     try {
-      // 이전 배너 제거
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-      }
+      // 기존 배너 완전히 제거
+      cleanupBanner();
 
       const sizes = isMobileView ? BANNER_SIZES.mobile : BANNER_SIZES.desktop;
       new window.PartnersCoupang.G({
@@ -86,7 +107,8 @@ export default function CoupangBanner() {
         height: sizes.height,
       });
 
-      isInitializedRef.current = true;
+      // 초기화 완료 플래그 설정
+      window.__coupangBannerInitialized = true;
     } catch (error) {
       console.warn('[CoupangBanner] Initialization failed:', error);
       setBannerError(true);
@@ -97,7 +119,11 @@ export default function CoupangBanner() {
   if (bannerError) return null;
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center my-6">
+    <div
+      id={COUPANG_CONFIG.containerId}
+      ref={containerRef}
+      className="w-full flex justify-center my-6"
+    >
       {/* 쿠팡 배너 스크립트가 자동으로 광고를 삽입할 컨테이너 */}
     </div>
   );
