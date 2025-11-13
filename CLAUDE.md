@@ -208,3 +208,112 @@ The application integrates with "e약은요" (Easy Drug) API for additional drug
 2. Read sensitive keys from `process.env` only (never expose to client)
 3. Validate request parameters with Zod schemas
 4. Return typed responses with appropriate HTTP status codes
+
+## Analytics & Tracking
+
+### Google Analytics 4 Setup
+
+This application uses Google Analytics 4 for user behavior tracking. GA4 is implemented alongside Vercel Analytics for comprehensive insights.
+
+#### Environment Variables
+
+Create a `.env.local` file in the root directory (use `.env.example` as reference):
+
+```bash
+# Google Analytics 4 Measurement ID
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
+# Easy Drug API Key (optional for Korean version)
+EASY_DRUG_API_KEY=your_api_key_here
+```
+
+**Important**: The `NEXT_PUBLIC_` prefix makes the variable available in the browser. Never use this prefix for API keys or secrets.
+
+#### Getting Your GA4 Measurement ID
+
+1. Go to [Google Analytics](https://analytics.google.com/)
+2. Create a new GA4 property (or use existing)
+3. Navigate to Admin → Data Streams → Web
+4. Copy your Measurement ID (format: `G-XXXXXXXXXX`)
+5. Add it to `.env.local`
+
+#### Implementation Files
+
+- **Analytics Utilities**: `src/lib/analytics.ts` - Event tracking functions and GA4 helpers
+- **GA4 Component**: `src/app/components/GoogleAnalytics.tsx` - Script loader and page view tracking
+- **Layout Integration**: `src/app/[locale]/layout.tsx` - GA4 component is mounted here
+
+#### Tracked Events
+
+The following user interactions are automatically tracked:
+
+1. **Dosage Calculation** (`calculate_dosage`)
+   - Weight and age parameters
+   - Location: `DosageForm.tsx`
+
+2. **Results Display** (`results_displayed`)
+   - Number of products shown
+   - Location: `DosageResultDisplay.tsx`
+
+3. **FAQ Interactions** (`faq_opened`, `faq_closed`)
+   - Question text
+   - Location: `FAQAccordion.tsx`
+
+4. **Language Switch** (`language_switch`)
+   - From/to language pair
+   - Location: `LanguageSwitcher.tsx`
+
+5. **Similar Product Clicks** (`similar_product_click`)
+   - Product name and ingredient
+   - Location: Custom implementation (future)
+
+#### Adding New Events
+
+To track a new user interaction:
+
+```typescript
+import { event } from '@/lib/analytics';
+
+// Example: Track a button click
+const handleClick = () => {
+  event({
+    action: 'button_click',
+    category: 'UserInteraction',
+    label: 'Download PDF',
+    value: 1,
+  });
+};
+```
+
+Or use predefined helper functions from `src/lib/analytics.ts`:
+
+```typescript
+import { trackOutboundLink } from '@/lib/analytics';
+
+trackOutboundLink('https://example.com', 'External Resource Link');
+```
+
+#### Privacy Considerations
+
+- GA4 is configured with default privacy settings
+- No personally identifiable information (PII) is tracked
+- IP anonymization is enabled by default in GA4
+- Privacy policy is updated to reflect GA4 usage
+- See `src/app/[locale]/privacy/page.tsx` for user-facing disclosures
+
+#### Development vs Production
+
+- **Development**: GA4 events are logged to console but not sent (see `src/lib/analytics.ts`)
+- **Production**: Events are sent to Google Analytics when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is set
+- **Vercel Analytics**: Always active (separate from GA4)
+
+#### Debugging Analytics
+
+To verify events are firing correctly:
+
+1. Open browser DevTools → Network tab
+2. Filter by "google-analytics.com" or "analytics"
+3. Perform actions (calculate dosage, toggle FAQ, etc.)
+4. Check for network requests with event data
+
+Alternatively, install the [GA Debugger Chrome Extension](https://chrome.google.com/webstore/detail/google-analytics-debugger)

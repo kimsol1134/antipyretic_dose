@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   DOSAGE_RESULTS_MIN_HEIGHT_CLASS,
@@ -13,6 +13,7 @@ import {
 } from '@/store/dosage-store';
 import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
+import { trackResultsDisplayed, trackSimilarProductClick, trackRelatedProductClick } from '@/lib/analytics';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
@@ -79,6 +80,13 @@ export default function DosageResultDisplay({
 
     return Array.from(groups.values());
   }, [results]);
+
+  // 결과 표시 이벤트 추적
+  useEffect(() => {
+    if (status === 'calculated' && results.length > 0) {
+      trackResultsDisplayed(results.length);
+    }
+  }, [status, results.length]);
 
   const toggleSimilarProducts = (productId: string) => {
     setExpandedProducts((prev) => {

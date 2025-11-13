@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { routing } from '@/i18n/routing';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
+import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -304,6 +305,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className="bg-gray-50 font-sans antialiased">
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

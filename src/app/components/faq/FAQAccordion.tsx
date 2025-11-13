@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { FAQItem } from '@/data/faq-data';
+import { trackFAQToggle } from '@/lib/analytics';
 import SourceBadge from '../shared/SourceBadge';
 
 type FAQAccordionProps = {
@@ -15,6 +16,14 @@ export default function FAQAccordion({ faq, allFaqs }: FAQAccordionProps) {
   const t = useTranslations('faqAccordion');
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleToggle = () => {
+    const newState = !isOpen;
+    setIsOpen(newState);
+
+    // Google Analytics 이벤트 추적
+    trackFAQToggle(faq.question, newState);
+  };
+
   return (
     <div
       id={faq.id}
@@ -22,7 +31,7 @@ export default function FAQAccordion({ faq, allFaqs }: FAQAccordionProps) {
     >
       {/* 질문 */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className="w-full flex items-center justify-between p-4 text-left"
         aria-expanded={isOpen}
       >

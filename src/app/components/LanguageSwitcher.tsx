@@ -3,6 +3,7 @@
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { useState, useTransition } from 'react';
+import { trackLanguageSwitch } from '@/lib/analytics';
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
@@ -13,6 +14,10 @@ export default function LanguageSwitcher() {
 
   const toggleLocale = () => {
     const nextLocale = locale === 'ko' ? 'en' : 'ko';
+
+    // Google Analytics 이벤트 추적
+    trackLanguageSwitch(locale, nextLocale);
+
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
