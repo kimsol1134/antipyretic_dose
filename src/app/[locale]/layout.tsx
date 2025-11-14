@@ -54,8 +54,14 @@ export async function generateMetadata({
         },
       },
       icons: {
-        icon: '/icon.png',
-        apple: '/apple-icon.png',
+        icon: [
+          { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
+          { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+          { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+        ],
+        apple: [
+          { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+        ],
       },
       openGraph: {
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
@@ -68,8 +74,8 @@ export async function generateMetadata({
         images: [
           {
             url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
-            width: 1200,
-            height: 630,
+            width: 1536,
+            height: 768,
             alt: '어린이 해열제 복용량 계산기',
           },
         ],
@@ -117,8 +123,14 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: '/icon.png',
-      apple: '/apple-icon.png',
+      icon: [
+        { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
+        { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+        { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
     },
     openGraph: {
       title:
@@ -132,8 +144,8 @@ export async function generateMetadata({
       images: [
         {
           url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
-          width: 1200,
-          height: 630,
+          width: 1536,
+          height: 768,
           alt: "Children's Fever Medicine Dosage Calculator",
         },
       ],
@@ -303,6 +315,14 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        {/* 네이버 검색 최적화를 위한 추가 메타 태그 */}
+        <meta property="og:image:width" content="1536" />
+        <meta property="og:image:height" content="768" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+      </head>
       <body className="bg-gray-50 font-sans antialiased">
         <script
           type="application/ld+json"
