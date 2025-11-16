@@ -28,7 +28,7 @@ export async function generateMetadata({
         title: '어린이 해열제 자주 묻는 질문 (FAQ)',
         description:
           '타이레놀, 부루펜 등 어린이 해열제 복용법 완벽 가이드 (식약처 기준)',
-        url: 'https://antipyretic-dose.vercel.app/faq',
+        url: 'https://www.kidsfever.xyz/faq',
       },
     };
   }
@@ -50,17 +50,17 @@ export async function generateMetadata({
       'child fever reducer safety',
     ],
     alternates: {
-      canonical: 'https://antipyretic-dose.vercel.app/en/faq',
+      canonical: 'https://www.kidsfever.xyz/en/faq',
       languages: {
-        ko: 'https://antipyretic-dose.vercel.app/faq',
-        en: 'https://antipyretic-dose.vercel.app/en/faq',
+        ko: 'https://www.kidsfever.xyz/faq',
+        en: 'https://www.kidsfever.xyz/en/faq',
       },
     },
     openGraph: {
       title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
       description:
         "Complete guide to children's Tylenol and Motrin dosing: answers to common questions about intervals, alternating medicines, and safety (FDA/AAP guidelines)",
-      url: 'https://antipyretic-dose.vercel.app/en/faq',
+      url: 'https://www.kidsfever.xyz/en/faq',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',
@@ -96,8 +96,8 @@ export default async function FAQPage({
   const currentCategoryLabels = locale === 'en' ? categoryLabelsEn : categoryLabels;
   const baseUrl =
     locale === 'en'
-      ? 'https://antipyretic-dose.vercel.app/en'
-      : 'https://antipyretic-dose.vercel.app';
+      ? 'https://www.kidsfever.xyz/en'
+      : 'https://www.kidsfever.xyz';
 
   // FAQPage 구조화 데이터
   const faqStructuredData = {
