@@ -15,6 +15,14 @@ export async function generateMetadata({
       title: '서비스 소개 | 어린이 해열제 복용량 계산기',
       description:
         '어린이 해열제 복용량 계산기의 미션, 주요 기능, 안전성, 제작자 정보. 식약처 기준 정확한 복용량 계산 도구.',
+      keywords: [
+        '어린이 해열제 계산기 소개',
+        '타이레놀 복용량 계산기',
+        '부루펜 용량 계산',
+        '식약처 기준 해열제',
+        '소아 해열제 안전성',
+        '해열제 앱 개발자',
+      ],
       robots: {
         index: true,
         follow: true,
@@ -26,6 +34,15 @@ export async function generateMetadata({
           en: 'https://www.kidsfever.xyz/en/about',
         },
       },
+      openGraph: {
+        title: '서비스 소개 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기의 미션, 주요 기능, 안전성, 제작자 정보',
+        url: 'https://www.kidsfever.xyz/about',
+        siteName: '어린이 해열제 복용량 계산기',
+        locale: 'ko_KR',
+        type: 'website',
+      },
     };
   }
 
@@ -33,6 +50,14 @@ export async function generateMetadata({
     title: 'About Us | Children\'s Fever Medicine Dosage Calculator',
     description:
       'Learn about Children\'s Fever Medicine Dosage Calculator: our mission, key features, safety standards, and creator information. FDA-based accurate dosage calculation tool.',
+    keywords: [
+      'children fever medicine calculator about',
+      'tylenol dosage calculator',
+      'motrin dose calculator',
+      'FDA based dosing',
+      'pediatric fever reducer safety',
+      'medication calculator features',
+    ],
     robots: {
       index: true,
       follow: true,
@@ -43,6 +68,15 @@ export async function generateMetadata({
         ko: 'https://www.kidsfever.xyz/about',
         en: 'https://www.kidsfever.xyz/en/about',
       },
+    },
+    openGraph: {
+      title: 'About Us | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Learn about our mission, key features, safety standards, and creator information. FDA-based accurate dosage calculation tool.',
+      url: 'https://www.kidsfever.xyz/en/about',
+      siteName: "Children's Fever Medicine Dosage Calculator",
+      locale: 'en_US',
+      type: 'website',
     },
   };
 }

@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { routing } from '@/i18n/routing';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
+import Footer from '@/app/components/Footer';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -313,12 +314,104 @@ export default async function LocaleLayout({
           },
         };
 
+  // WebSite 스키마 (사이트 전체 정보 - E-A-T 강화)
+  const websiteSchema =
+    locale === 'ko'
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          '@id': 'https://www.kidsfever.xyz/#website',
+          url: 'https://www.kidsfever.xyz',
+          name: '어린이 해열제 복용량 계산기',
+          description:
+            '의사가 만든 어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜 용량표',
+          publisher: {
+            '@type': 'Person',
+            '@id': 'https://www.kidsfever.xyz/#author',
+            name: 'Dr. pinecone',
+            jobTitle: '의사',
+            url: 'https://litt.ly/solkim',
+          },
+          inLanguage: ['ko-KR', 'en-US'],
+          copyrightYear: 2025,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate: 'https://www.kidsfever.xyz/faq?q={search_term_string}',
+            },
+            'query-input': 'required name=search_term_string',
+          },
+        }
+      : {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          '@id': 'https://www.kidsfever.xyz/#website',
+          url: 'https://www.kidsfever.xyz',
+          name: "Children's Fever Medicine Dosage Calculator",
+          description:
+            "Doctor-created children's fever medicine dosage calculator - Tylenol, Motrin, Advil dosing chart",
+          publisher: {
+            '@type': 'Person',
+            '@id': 'https://www.kidsfever.xyz/#author',
+            name: 'Dr. pinecone',
+            jobTitle: 'Physician',
+            url: 'https://litt.ly/solkim',
+          },
+          inLanguage: ['ko-KR', 'en-US'],
+          copyrightYear: 2025,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate:
+                'https://www.kidsfever.xyz/en/faq?q={search_term_string}',
+            },
+            'query-input': 'required name=search_term_string',
+          },
+        };
+
+  // Organization/Person 스키마 (저자 정보 - E-A-T 강화)
+  const authorSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://www.kidsfever.xyz/#author',
+    name: 'Dr. pinecone',
+    alternateName: locale === 'ko' ? '솔김 의사' : 'Dr. Sol Kim',
+    jobTitle: locale === 'ko' ? '의사' : 'Physician',
+    url: 'https://litt.ly/solkim',
+    sameAs: ['https://litt.ly/solkim'],
+    knowsAbout:
+      locale === 'ko'
+        ? ['소아과', '소아 약물 투여', '해열제', '아세트아미노펜', '이부프로펜']
+        : [
+            'Pediatrics',
+            'Pediatric Pharmacology',
+            'Antipyretics',
+            'Acetaminophen',
+            'Ibuprofen',
+          ],
+  };
+
   return (
     <html lang={locale}>
       <head>
         {/* 네이버 검색 최적화를 위한 추가 메타 태그 */}
         <meta property="og:image:width" content="1536" />
         <meta property="og:image:height" content="768" />
+        {/* PWA 지원을 위한 메타 태그 */}
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta
+          name="apple-mobile-web-app-title"
+          content={
+            locale === 'ko'
+              ? '해열제 계산기'
+              : 'Fever Med Calculator'
+          }
+        />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
@@ -328,6 +421,14 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <header className="sticky top-0 z-50 bg-white shadow-sm">
             <div className="container mx-auto px-4 py-3 flex justify-end">
@@ -335,6 +436,7 @@ export default async function LocaleLayout({
             </div>
           </header>
           {children}
+          <Footer />
         </NextIntlClientProvider>
         <Analytics />
       </body>

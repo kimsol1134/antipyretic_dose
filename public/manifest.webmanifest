@@ -1,0 +1,58 @@
+{
+  "name": "어린이 해열제 복용량 계산기 | Children's Fever Medicine Dosage Calculator",
+  "short_name": "해열제 계산기",
+  "description": "의사가 만든 어린이 해열제 복용량 계산기. 체중별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. Doctor-created children's fever medicine dosage calculator.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "lang": "ko",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "medical", "utilities"],
+  "prefer_related_applications": false,
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "계산기 | Calculator",
+      "short_name": "계산기",
+      "description": "해열제 복용량 계산하기",
+      "url": "/",
+      "icons": [{ "src": "/icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "description": "자주 묻는 질문",
+      "url": "/faq",
+      "icons": [{ "src": "/icon.png", "sizes": "192x192" }]
+    }
+  ]
+}
