@@ -20,10 +20,10 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://antipyretic-dose.vercel.app/about',
+        canonical: 'https://www.kidsfever.xyz/about',
         languages: {
-          ko: 'https://antipyretic-dose.vercel.app/about',
-          en: 'https://antipyretic-dose.vercel.app/en/about',
+          ko: 'https://www.kidsfever.xyz/about',
+          en: 'https://www.kidsfever.xyz/en/about',
         },
       },
     };
@@ -38,10 +38,10 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://antipyretic-dose.vercel.app/en/about',
+      canonical: 'https://www.kidsfever.xyz/en/about',
       languages: {
-        ko: 'https://antipyretic-dose.vercel.app/about',
-        en: 'https://antipyretic-dose.vercel.app/en/about',
+        ko: 'https://www.kidsfever.xyz/about',
+        en: 'https://www.kidsfever.xyz/en/about',
       },
     },
   };

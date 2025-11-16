@@ -13,7 +13,7 @@ export function generateStaticParams() {
 }
 
 // Root metadataBase 설정
-const metadataBase = new URL('https://antipyretic-dose.vercel.app');
+const metadataBase = new URL('https://www.kidsfever.xyz');
 
 export async function generateMetadata({
   params,
@@ -40,10 +40,10 @@ export async function generateMetadata({
         },
       },
       alternates: {
-        canonical: 'https://antipyretic-dose.vercel.app',
+        canonical: 'https://www.kidsfever.xyz',
         languages: {
-          ko: 'https://antipyretic-dose.vercel.app',
-          en: 'https://antipyretic-dose.vercel.app/en',
+          ko: 'https://www.kidsfever.xyz',
+          en: 'https://www.kidsfever.xyz/en',
         },
       },
       verification: {
@@ -67,13 +67,13 @@ export async function generateMetadata({
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
           '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-        url: 'https://antipyretic-dose.vercel.app',
+        url: 'https://www.kidsfever.xyz',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
         images: [
           {
-            url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
+            url: 'https://www.kidsfever.xyz/opengraph-image.png',
             width: 1536,
             height: 768,
             alt: '어린이 해열제 복용량 계산기',
@@ -85,7 +85,7 @@ export async function generateMetadata({
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
           '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-        images: ['https://antipyretic-dose.vercel.app/opengraph-image.png'],
+        images: ['https://www.kidsfever.xyz/opengraph-image.png'],
       },
     };
   }
@@ -109,10 +109,10 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: 'https://antipyretic-dose.vercel.app/en',
+      canonical: 'https://www.kidsfever.xyz/en',
       languages: {
-        ko: 'https://antipyretic-dose.vercel.app',
-        en: 'https://antipyretic-dose.vercel.app/en',
+        ko: 'https://www.kidsfever.xyz',
+        en: 'https://www.kidsfever.xyz/en',
       },
     },
     verification: {
@@ -137,13 +137,13 @@ export async function generateMetadata({
         "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart",
       description:
         "Calculate accurate dosages for children's fever medicines by weight and age. Instant Tylenol, Motrin, and Advil dose calculation with safe dosing intervals (FDA/AAP guidelines).",
-      url: 'https://antipyretic-dose.vercel.app/en',
+      url: 'https://www.kidsfever.xyz/en',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',
       images: [
         {
-          url: 'https://antipyretic-dose.vercel.app/opengraph-image.png',
+          url: 'https://www.kidsfever.xyz/opengraph-image.png',
           width: 1536,
           height: 768,
           alt: "Children's Fever Medicine Dosage Calculator",
@@ -156,7 +156,7 @@ export async function generateMetadata({
         "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart",
       description:
         "Calculate accurate dosages for children's fever medicines by weight and age. Instant Tylenol, Motrin, and Advil dose calculation with safe dosing intervals (FDA/AAP guidelines).",
-      images: ['https://antipyretic-dose.vercel.app/opengraph-image.png'],
+      images: ['https://www.kidsfever.xyz/opengraph-image.png'],
     },
   };
 }
@@ -187,7 +187,7 @@ export default async function LocaleLayout({
           alternateName: '소아 해열제 용량 계산기',
           description:
             '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-          url: 'https://antipyretic-dose.vercel.app',
+          url: 'https://www.kidsfever.xyz',
           inLanguage: 'ko-KR',
           applicationCategory: 'HealthApplication',
           operatingSystem: 'Web',
@@ -221,7 +221,7 @@ export default async function LocaleLayout({
           isPartOf: {
             '@type': 'WebSite',
             name: '어린이 해열제 복용량 계산기',
-            url: 'https://antipyretic-dose.vercel.app',
+            url: 'https://www.kidsfever.xyz',
           },
           about: {
             '@type': 'MedicalEntity',
@@ -247,7 +247,7 @@ export default async function LocaleLayout({
           alternateName: 'Pediatric Fever Reducer Dosage Calculator',
           description:
             "Calculate accurate dosages for children's fever medicines (Tylenol, Motrin, Advil) by weight and age. Instant dose calculation with safe dosing intervals and maximum doses based on FDA and AAP guidelines.",
-          url: 'https://antipyretic-dose.vercel.app/en',
+          url: 'https://www.kidsfever.xyz/en',
           inLanguage: 'en-US',
           applicationCategory: 'HealthApplication',
           operatingSystem: 'Web',
@@ -286,7 +286,7 @@ export default async function LocaleLayout({
           isPartOf: {
             '@type': 'WebSite',
             name: "Children's Fever Medicine Dosage Calculator",
-            url: 'https://antipyretic-dose.vercel.app',
+            url: 'https://www.kidsfever.xyz',
           },
           about: {
             '@type': 'MedicalEntity',

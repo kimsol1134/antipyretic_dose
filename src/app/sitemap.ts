@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://antipyretic-dose.vercel.app';
+  const baseUrl = 'https://www.kidsfever.xyz';
   const lastModified = new Date();
 
   return [
