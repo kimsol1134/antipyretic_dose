@@ -19,6 +19,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/api/',
       },
     ],
-    sitemap: 'https://antipyretic-dose.vercel.app/sitemap.xml',
+    sitemap: 'https://www.kidsfever.xyz/sitemap.xml',
   };
 }

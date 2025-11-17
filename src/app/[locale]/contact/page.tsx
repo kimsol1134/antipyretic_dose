@@ -14,6 +14,13 @@ export async function generateMetadata({
       title: '문의하기 | 어린이 해열제 복용량 계산기',
       description:
         '어린이 해열제 복용량 계산기에 대한 문의, 피드백, 개선 제안을 보내주세요. 블로그 및 프로필을 통해 연락 가능합니다.',
+      keywords: [
+        '해열제 계산기 문의',
+        '타이레놀 복용량 질문',
+        '부루펜 용량 피드백',
+        '어린이 해열제 도움',
+        '소아 약물 상담',
+      ],
       robots: {
         index: true,
         follow: true,
@@ -25,6 +32,15 @@ export async function generateMetadata({
           en: 'https://www.kidsfever.xyz/en/contact',
         },
       },
+      openGraph: {
+        title: '문의하기 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기에 대한 문의, 피드백, 개선 제안을 보내주세요',
+        url: 'https://www.kidsfever.xyz/contact',
+        siteName: '어린이 해열제 복용량 계산기',
+        locale: 'ko_KR',
+        type: 'website',
+      },
     };
   }
 
@@ -32,6 +48,13 @@ export async function generateMetadata({
     title: 'Contact Us | Children\'s Fever Medicine Dosage Calculator',
     description:
       'Contact us with questions, feedback, or suggestions about Children\'s Fever Medicine Dosage Calculator. Reach us via blog or profile.',
+    keywords: [
+      'fever medicine calculator contact',
+      'tylenol dosage help',
+      'motrin calculator feedback',
+      'pediatric dosing questions',
+      'children medication support',
+    ],
     robots: {
       index: true,
       follow: true,
@@ -42,6 +65,15 @@ export async function generateMetadata({
         ko: 'https://www.kidsfever.xyz/contact',
         en: 'https://www.kidsfever.xyz/en/contact',
       },
+    },
+    openGraph: {
+      title: 'Contact Us | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Contact us with questions, feedback, or suggestions about Children\'s Fever Medicine Dosage Calculator',
+      url: 'https://www.kidsfever.xyz/en/contact',
+      siteName: "Children's Fever Medicine Dosage Calculator",
+      locale: 'en_US',
+      type: 'website',
     },
   };
 }

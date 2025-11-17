@@ -24,11 +24,36 @@ export async function generateMetadata({
         '아기 열 몇 도',
         '해열제 FAQ',
       ],
+      alternates: {
+        canonical: 'https://www.kidsfever.xyz/faq',
+        languages: {
+          ko: 'https://www.kidsfever.xyz/faq',
+          en: 'https://www.kidsfever.xyz/en/faq',
+        },
+      },
       openGraph: {
         title: '어린이 해열제 자주 묻는 질문 (FAQ)',
         description:
           '타이레놀, 부루펜 등 어린이 해열제 복용법 완벽 가이드 (식약처 기준)',
         url: 'https://www.kidsfever.xyz/faq',
+        siteName: '어린이 해열제 복용량 계산기',
+        locale: 'ko_KR',
+        type: 'website',
+        images: [
+          {
+            url: '/opengraph-image.png',
+            width: 1200,
+            height: 630,
+            alt: '어린이 해열제 자주 묻는 질문 (FAQ)',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: '어린이 해열제 자주 묻는 질문 (FAQ) | 타이레놀·부루펜 복용 가이드',
+        description:
+          '타이레놀, 부루펜 등 어린이 해열제 복용법 완벽 가이드 (식약처 기준)',
+        images: ['/opengraph-image.png'],
       },
     };
   }

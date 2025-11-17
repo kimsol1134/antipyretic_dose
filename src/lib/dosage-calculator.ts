@@ -78,7 +78,7 @@ function calculateSingleDosage(
   const maxSingleMl = product.max_single_mg / product.strength_mg_per_ml;
 
   // 하루 최대 용량 계산 (mg → mL)
-  let maxDailyMg = weightKg * product.max_daily_mg_per_kg;
+  const maxDailyMg = weightKg * product.max_daily_mg_per_kg;
   let maxDailyMl = maxDailyMg / product.strength_mg_per_ml;
 
   // 이부프로펜과 덱시부프로펜의 경우 30kg 미만 소아는 25mL로 제한
