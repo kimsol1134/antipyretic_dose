@@ -416,6 +416,17 @@ export default async function LocaleLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+        {/* RSS Feed Links */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={
+            locale === 'ko'
+              ? '키즈피버 RSS 피드'
+              : 'KidsFever RSS Feed'
+          }
+          href={locale === 'ko' ? '/rss.xml' : '/en/rss.xml'}
+        />
       </head>
       <body className="bg-gray-50 font-sans antialiased">
         <script
