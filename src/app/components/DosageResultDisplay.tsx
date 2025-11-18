@@ -13,6 +13,7 @@ import {
 } from '@/store/dosage-store';
 import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
+import { trackDrugInfoView } from '@/lib/analytics';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
@@ -202,6 +203,7 @@ export default function DosageResultDisplay({
                 {result.status === 'success' && locale === 'ko' && (
                   <SimilarProductsSection
                     productId={result.product.id}
+                    productName={result.product.name}
                     items={similarProductsMap[result.product.id] ?? []}
                     isExpanded={expandedProducts.has(result.product.id)}
                     onToggle={() => toggleSimilarProducts(result.product.id)}
@@ -229,12 +231,14 @@ export default function DosageResultDisplay({
 
 type SimilarProductsSectionProps = {
   productId: string;
+  productName: string;
   items: EasyDrugItem[];
   isExpanded: boolean;
   onToggle: () => void;
 };
 
 function SimilarProductsSection({
+  productName,
   items,
   isExpanded,
   onToggle,
@@ -243,6 +247,13 @@ function SimilarProductsSection({
   const locale = useLocale();
   const buttonLabel = isExpanded ? t('hide') : t('show');
 
+  const handleToggle = () => {
+    if (!isExpanded) {
+      trackDrugInfoView(productName);
+    }
+    onToggle();
+  };
+
   return (
     <div className="mt-5 border-t border-gray-200 pt-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -250,7 +261,7 @@ function SimilarProductsSection({
         <Button
           type="button"
           className="w-full sm:w-auto"
-          onClick={onToggle}
+          onClick={handleToggle}
         >
           {buttonLabel}
         </Button>
