@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   creator: '어린이 해열제 복용량 계산기',
   publisher: '어린이 해열제 복용량 계산기',
 
+  // Canonical URL
+  alternates: {
+    canonical: 'https://www.kidsfever.xyz',
+  },
+
   // Open Graph 메타데이터 (네이버, 카카오톡 등)
   openGraph: {
     type: 'website',
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
       '의사가 만든 어린이 해열제 복용량 계산기. 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량을 즉시 계산합니다.',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: 'https://www.kidsfever.xyz/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: '어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜',
@@ -52,7 +57,7 @@ export const metadata: Metadata = {
     title: '어린이 해열제 복용량 계산기',
     description:
       '의사가 만든 어린이 해열제 복용량 계산기. 체중별·나이별 정확한 용량 즉시 계산.',
-    images: ['/twitter-image.png'],
+    images: ['https://www.kidsfever.xyz/twitter-image.png'],
   },
 
   // 아이콘 설정
