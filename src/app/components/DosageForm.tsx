@@ -8,6 +8,7 @@ import { AGE_INPUT_STEP, WEIGHT_INPUT_STEP } from '@/lib/constants';
 import { dosageInputSchema } from '@/lib/schemas';
 import type { DosageInput, Product } from '@/lib/types';
 import { useDosageActions } from '@/store/dosage-store';
+import { trackDosageCalculation } from '@/lib/analytics';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 
@@ -32,6 +33,7 @@ export default function DosageForm({ products }: DosageFormProps) {
 
   const onSubmit: SubmitHandler<DosageInput> = (data) => {
     calculateAllDosages(data, products);
+    trackDosageCalculation(data.weight, data.age, data.ageUnit, products.length);
   };
 
   return (
