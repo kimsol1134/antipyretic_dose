@@ -37,15 +37,15 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     url: 'https://kidsfever.xyz',
     siteName: '어린이 해열제 복용량 계산기',
-    title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
+    title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표 (체중별)',
     description:
-      '의사가 만든 어린이 해열제 복용량 계산기. 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량을 즉시 계산합니다.',
+      '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
     images: [
       {
-        url: 'https://kidsfever.xyz/opengraph-image.png',
+        url: 'https://res.cloudinary.com/drqx9gek2/image/upload/v1763828866/blog/ddcf8a02aa2270e4c88ae24eb118f473.png',
         width: 1200,
         height: 630,
-        alt: '어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜',
+        alt: '어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜 체중별 용량표',
         type: 'image/png',
       },
     ],
@@ -54,10 +54,12 @@ export const metadata: Metadata = {
   // Twitter 카드 메타데이터
   twitter: {
     card: 'summary_large_image',
-    title: '어린이 해열제 복용량 계산기',
+    title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
     description:
-      '의사가 만든 어린이 해열제 복용량 계산기. 체중별·나이별 정확한 용량 즉시 계산.',
-    images: ['https://kidsfever.xyz/twitter-image.png'],
+      '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산.',
+    images: [
+      'https://res.cloudinary.com/drqx9gek2/image/upload/v1763828866/blog/ddcf8a02aa2270e4c88ae24eb118f473.png',
+    ],
   },
 
   // 아이콘 설정
