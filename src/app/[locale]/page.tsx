@@ -121,8 +121,6 @@ export default async function HomePage({
         similarProductsMap={similarProducts}
         relatedProductsMap={relatedProductsUS}
       />
-
-      <StaticDosageTable products={products} locale={locale} />
       
       <script
         type="application/ld+json"
@@ -187,6 +185,8 @@ export default async function HomePage({
           {tFaq('viewAll')}
         </a>
       </section>
+
+      <StaticDosageTable products={products} locale={locale} />
 
       <footer className="mt-12 text-center text-xs text-gray-500 space-y-3">
         {/* 출처 정보 */}
