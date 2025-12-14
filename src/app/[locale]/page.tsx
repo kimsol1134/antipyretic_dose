@@ -8,6 +8,7 @@ import type { Product, SimilarProductsMap, RelatedProductsMapUS } from '@/lib/ty
 import DosageForm from '../components/DosageForm';
 import DosageResultDisplay from '../components/DosageResultDisplay';
 import CoupangBanner from '../components/ads/CoupangBanner';
+import StaticDosageTable from '../components/seo/StaticDosageTable';
 
 async function getValidatedProducts(locale: string): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
@@ -86,6 +87,14 @@ export default async function HomePage({
   return (
     <main className="container mx-auto max-w-lg p-4 pt-8 sm:pt-12">
       <header className="text-center mb-8">
+        <div className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full mb-4">
+          <span className="text-[10px] font-bold text-blue-700 uppercase tracking-wide">
+            {locale === 'ko' ? '의사 검수 완료' : 'Medically Reviewed'}
+          </span>
+          <span className="text-[10px] text-blue-600">
+            {locale === 'ko' ? 'by Dr. Sol Kim' : 'by Dr. Sol Kim'}
+          </span>
+        </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
           {t('title')}
         </h1>
@@ -111,6 +120,33 @@ export default async function HomePage({
       <DosageResultDisplay
         similarProductsMap={similarProducts}
         relatedProductsMap={relatedProductsUS}
+      />
+
+      <StaticDosageTable products={products} locale={locale} />
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            products.map((product) => ({
+              '@context': 'https://schema.org',
+              '@type': 'Drug',
+              name: product.name,
+              activeIngredient: product.ingredient,
+              dosageForm: 'Suspension',
+              mechanismOfAction: 'Analgesic/Antipyretic',
+              warning:
+                locale === 'ko'
+                  ? '반드시 나이와 체중을 확인하고 복용하세요.'
+                  : 'Always check age and weight requirements.',
+              availableStrength: {
+                '@type': 'DrugStrength',
+                strengthValue: product.strength_mg_per_ml,
+                strengthUnit: 'mg/mL',
+              },
+            }))
+          ),
+        }}
       />
 
       {/* 자주 묻는 질문 섹션 */}
