@@ -92,35 +92,7 @@ export default function StaticDosageTable({ products, locale }: StaticDosageTabl
             </table>
           </div>
 
-          {/* Pieceful App CTA */}
-          <div className="mt-8 p-5 bg-blue-50/80 rounded-2xl border border-blue-100 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <div className="flex-shrink-0">
-               {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img 
-                src="/images/pieceful-icon.png" 
-                alt="Pieceful App Icon" 
-                className="w-16 h-16 rounded-xl shadow-md"
-              />
-            </div>
-            <div className="flex-grow">
-              <h3 className="text-lg font-bold text-gray-900 mb-1">
-                {locale === 'ko' ? '초보 엄빠를 위한 AI 육아일기, 피스풀' : 'Pieceful: AI Baby Journal'}
-              </h3>
-              <p className="text-gray-700 text-sm font-medium leading-relaxed">
-                {locale === 'ko' 
-                  ? '방금 먹인 해열제, Pieceful로 3초 만에 기록하고 나중에 진료 받을때 바로 확인하세요' 
-                  : 'Record in 3 seconds with Pieceful and have it ready for the doctor.'}
-              </p>
-            </div>
-            <a 
-              href="https://apps.apple.com/us/app/pieceful-ai-baby-journal/id6756474655" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-sm whitespace-nowrap"
-            >
-              {locale === 'ko' ? '앱 구경하기' : 'View App'}
-            </a>
-          </div>
+
 
           <p className="mt-4 text-xs text-gray-500 text-center leading-relaxed">
             {locale === 'ko' 

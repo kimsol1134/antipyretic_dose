@@ -9,6 +9,7 @@ import DosageForm from '../components/DosageForm';
 import DosageResultDisplay from '../components/DosageResultDisplay';
 import CoupangBanner from '../components/ads/CoupangBanner';
 import StaticDosageTable from '../components/seo/StaticDosageTable';
+import PiecefulBanner from '../components/ads/PiecefulBanner';
 
 async function getValidatedProducts(locale: string): Promise<Product[]> {
   const filePath = path.join(process.cwd(), 'data', 'products.json');
@@ -146,6 +147,8 @@ export default async function HomePage({
           ),
         }}
       />
+
+      <PiecefulBanner locale={locale} />
 
       {/* 자주 묻는 질문 섹션 */}
       <section className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">

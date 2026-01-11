@@ -90,12 +90,15 @@ export default function CoupangBanner() {
   if (bannerError) return null;
 
   return (
-    <div
-      id={COUPANG_CONFIG.containerId}
-      ref={containerRef}
-      className="w-full flex justify-center my-6"
-    >
-      {/* 쿠팡 배너 스크립트가 자동으로 광고를 삽입할 컨테이너 */}
+    <div className="w-full flex flex-col items-center my-8">
+
+      <div
+        id={COUPANG_CONFIG.containerId}
+        ref={containerRef}
+        className="w-full flex justify-center"
+      >
+        {/* 쿠팡 배너 스크립트가 자동으로 광고를 삽입할 컨테이너 */}
+      </div>
     </div>
   );
 }
