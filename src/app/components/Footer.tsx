@@ -13,12 +13,14 @@ export default function Footer() {
   const mainLinks = isKorean
     ? [
         { href: `${baseUrl}/`, label: '계산기', title: '어린이 해열제 복용량 계산기' },
+        { href: `${baseUrl}/blog`, label: '블로그', title: '발열 관리 가이드' },
         { href: `${baseUrl}/faq`, label: 'FAQ', title: '자주 묻는 질문' },
         { href: `${baseUrl}/about`, label: '소개', title: '서비스 소개' },
         { href: `${baseUrl}/contact`, label: '문의', title: '문의하기' },
       ]
     : [
         { href: `${baseUrl}/`, label: 'Calculator', title: "Children's Fever Medicine Dosage Calculator" },
+        { href: `${baseUrl}/blog`, label: 'Blog', title: 'Fever Management Guide' },
         { href: `${baseUrl}/faq`, label: 'FAQ', title: 'Frequently Asked Questions' },
         { href: `${baseUrl}/about`, label: 'About', title: 'About Us' },
         { href: `${baseUrl}/contact`, label: 'Contact', title: 'Contact Us' },

@@ -1,8 +1,38 @@
 import { MetadataRoute } from 'next';
+import { getAllBlogSlugs } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://kidsfever.xyz';
   const lastModified = new Date();
+
+  // 블로그 포스트 동적 생성
+  const blogSlugs = getAllBlogSlugs();
+  const blogEntries: MetadataRoute.Sitemap = blogSlugs.flatMap((slug) => [
+    {
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/blog/${slug}`,
+          en: `${baseUrl}/en/blog/${slug}`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/en/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/blog/${slug}`,
+          en: `${baseUrl}/en/blog/${slug}`,
+        },
+      },
+    },
+  ]);
 
   return [
     // Korean (default locale) - Home page
@@ -161,5 +191,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    // Korean - Blog
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/blog`,
+          en: `${baseUrl}/en/blog`,
+        },
+      },
+    },
+    // English - Blog
+    {
+      url: `${baseUrl}/en/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          ko: `${baseUrl}/blog`,
+          en: `${baseUrl}/en/blog`,
+        },
+      },
+    },
+    // Blog posts (dynamically generated)
+    ...blogEntries,
   ];
 }
