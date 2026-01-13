@@ -57,9 +57,10 @@ export async function generateMetadata({
       },
       icons: {
         icon: [
-          { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
-          { url: '/icon.png', sizes: '192x192', type: 'image/png' },
-          { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+          { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+          { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+          { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
         ],
         apple: [
           { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
@@ -76,8 +77,8 @@ export async function generateMetadata({
         images: [
           {
             url: 'https://www.kidsfever.xyz/opengraph-image.png',
-            width: 1536,
-            height: 768,
+            width: 1200,
+            height: 630,
             alt: '어린이 해열제 복용량 계산기',
           },
         ],
@@ -126,9 +127,10 @@ export async function generateMetadata({
     },
     icons: {
       icon: [
-        { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
-        { url: '/icon.png', sizes: '192x192', type: 'image/png' },
-        { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+        { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+        { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
       ],
       apple: [
         { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
@@ -146,8 +148,8 @@ export async function generateMetadata({
       images: [
         {
           url: 'https://www.kidsfever.xyz/opengraph-image.png',
-          width: 1536,
-          height: 768,
+          width: 1200,
+          height: 630,
           alt: "Children's Fever Medicine Dosage Calculator",
         },
       ],
@@ -426,6 +428,12 @@ export default async function LocaleLayout({
               : 'KidsFever RSS Feed'
           }
           href={locale === 'ko' ? '/rss.xml' : '/en/rss.xml'}
+        />
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648788643644962"
+          crossOrigin="anonymous"
         />
       </head>
       <body className="bg-gray-50 font-sans antialiased">

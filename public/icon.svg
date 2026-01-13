@@ -1,24 +1,18 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- 배경 - 둥근 사각형, 진한 파란색 -->
+
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background - rounded square -->
   <rect width="512" height="512" rx="108" fill="#1E40AF"/>
 
-  <!-- 온도계 - 굵고 선명하게 -->
-  <rect x="140" y="80" width="90" height="280" rx="45" fill="white"/>
-  <circle cx="185" cy="385" r="70" fill="white"/>
+  <!-- Simple thermometer - optimized for small sizes -->
+  <!-- White stem -->
+  <rect x="180" y="80" width="70" height="200" rx="35" fill="#FFFFFF"/>
+  <!-- White bulb -->
+  <circle cx="215" cy="340" r="90" fill="#FFFFFF"/>
 
-  <!-- 온도계 내부 - 빨간색 (열/발열 표시) -->
-  <rect x="165" y="180" width="40" height="180" fill="#EF4444"/>
-  <circle cx="185" cy="385" r="52" fill="#EF4444"/>
+  <!-- Red mercury -->
+  <rect x="195" y="160" width="40" height="120" fill="#EF4444"/>
+  <circle cx="215" cy="340" r="70" fill="#EF4444"/>
 
-  <!-- 눈금 표시 (3개만 - 단순화) -->
-  <rect x="230" y="120" width="50" height="12" rx="6" fill="white" opacity="0.9"/>
-  <rect x="230" y="180" width="50" height="12" rx="6" fill="white" opacity="0.9"/>
-  <rect x="230" y="240" width="50" height="12" rx="6" fill="white" opacity="0.9"/>
-
-  <!-- 계산 결과 = mL (오른쪽) -->
-  <rect x="310" y="180" width="120" height="24" rx="12" fill="white"/>
-  <rect x="310" y="224" width="120" height="24" rx="12" fill="white"/>
-
-  <!-- mL 단위 표시 -->
-  <text x="370" y="380" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="900" fill="white" text-anchor="middle">mL</text>
+  <!-- Simple mL text on right -->
+  <text x="370" y="320" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="900" fill="#FFFFFF" text-anchor="middle">mL</text>
 </svg>
