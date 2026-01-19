@@ -12,6 +12,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // non-www to www redirect
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'kidsfever.xyz' }],
+        destination: 'https://www.kidsfever.xyz/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

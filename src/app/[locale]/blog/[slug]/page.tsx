@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = getBlogPostBySlug(slug, locale);
 
   if (!post) {
     return {
@@ -147,7 +147,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = getBlogPostBySlug(slug, locale);
 
   if (!post) {
     notFound();

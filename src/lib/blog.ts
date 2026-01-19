@@ -22,8 +22,9 @@ export function getAllBlogPosts(): BlogPost[] {
 
   const fileNames = fs.readdirSync(blogDirectory);
   
+  // Only process .md files, ignoring .en.md for the base list to avoid duplicates
   const posts = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
+    .filter((fileName) => fileName.endsWith('.md') && !fileName.endsWith('.en.md'))
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, '');
       const fullPath = path.join(blogDirectory, fileName);
@@ -47,7 +48,30 @@ export function getAllBlogPosts(): BlogPost[] {
   return posts;
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost | null {
+export function getBlogPostBySlug(slug: string, locale: string = 'ko'): BlogPost | null {
+  // Check for localized file first
+  if (locale === 'en') {
+    const enFileName = `${slug}.en.md`;
+    const enFullPath = path.join(blogDirectory, enFileName);
+    
+    if (fs.existsSync(enFullPath)) {
+      const fileContents = fs.readFileSync(enFullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      return {
+        slug: slug, // Keep original slug
+        title: data.title || '',
+        description: data.description || '',
+        author: data.author || '',
+        date: data.date || '',
+        category: data.category || '',
+        keywords: data.keywords || [],
+        content,
+      };
+    }
+  }
+
+  // Fallback to default (Korean)
   const posts = getAllBlogPosts();
   return posts.find((post) => post.slug === slug) || null;
 }

@@ -143,6 +143,12 @@ export default async function HomePage({
                 strengthValue: product.strength_mg_per_ml,
                 strengthUnit: 'mg/mL',
               },
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: locale === 'ko' ? 'KRW' : 'USD',
+                availability: 'https://schema.org/InStock',
+              },
             }))
           ),
         }}
