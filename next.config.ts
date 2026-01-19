@@ -12,17 +12,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      // non-www to www redirect
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'kidsfever.xyz' }],
-        destination: 'https://www.kidsfever.xyz/:path*',
-        permanent: true,
-      },
-    ];
-  },
+  // Note: www redirect is handled by Vercel domain settings
+  // Do NOT add redirect here to avoid infinite loop
 };
 
 export default withNextIntl(nextConfig);
