@@ -25,6 +25,30 @@ export async function generateMetadata({
           en: 'https://kidsfever.xyz/en/terms',
         },
       },
+      openGraph: {
+        title: '이용약관 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기 이용약관. 서비스 사용 조건, 의료 면책 조항, 책임의 제한, 개인정보 보호 등.',
+        url: 'https://kidsfever.xyz/terms',
+        siteName: '어린이 해열제 복용량 계산기',
+        locale: 'ko_KR',
+        type: 'website',
+        images: [
+          {
+            url: 'https://kidsfever.xyz/opengraph-image.png',
+            width: 1200,
+            height: 630,
+            alt: '이용약관 | 어린이 해열제 복용량 계산기',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: '이용약관 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기 이용약관. 서비스 사용 조건, 의료 면책 조항, 책임의 제한, 개인정보 보호 등.',
+        images: ['https://kidsfever.xyz/opengraph-image.png'],
+      },
     };
   }
 
@@ -42,6 +66,30 @@ export async function generateMetadata({
         ko: 'https://kidsfever.xyz/terms',
         en: 'https://kidsfever.xyz/en/terms',
       },
+    },
+    openGraph: {
+      title: 'Terms of Service | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Terms of Service for Children\'s Fever Medicine Dosage Calculator. Service conditions, medical disclaimer, limitation of liability, privacy, and more.',
+      url: 'https://kidsfever.xyz/en/terms',
+      siteName: "Children's Fever Medicine Dosage Calculator",
+      locale: 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: 'https://kidsfever.xyz/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Terms of Service | Children\'s Fever Medicine Dosage Calculator',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Terms of Service | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Terms of Service for Children\'s Fever Medicine Dosage Calculator. Service conditions, medical disclaimer, limitation of liability, privacy, and more.',
+      images: ['https://kidsfever.xyz/opengraph-image.png'],
     },
   };
 }

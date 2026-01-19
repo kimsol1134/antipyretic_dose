@@ -25,6 +25,30 @@ export async function generateMetadata({
           en: 'https://kidsfever.xyz/en/privacy',
         },
       },
+      openGraph: {
+        title: '개인정보 처리방침 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기의 개인정보 수집 및 사용 정책. Google Analytics, AdSense 사용 및 데이터 보안 정보.',
+        url: 'https://kidsfever.xyz/privacy',
+        siteName: '어린이 해열제 복용량 계산기',
+        locale: 'ko_KR',
+        type: 'website',
+        images: [
+          {
+            url: 'https://kidsfever.xyz/opengraph-image.png',
+            width: 1200,
+            height: 630,
+            alt: '개인정보 처리방침 | 어린이 해열제 복용량 계산기',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: '개인정보 처리방침 | 어린이 해열제 복용량 계산기',
+        description:
+          '어린이 해열제 복용량 계산기의 개인정보 수집 및 사용 정책. Google Analytics, AdSense 사용 및 데이터 보안 정보.',
+        images: ['https://kidsfever.xyz/opengraph-image.png'],
+      },
     };
   }
 
@@ -42,6 +66,30 @@ export async function generateMetadata({
         ko: 'https://kidsfever.xyz/privacy',
         en: 'https://kidsfever.xyz/en/privacy',
       },
+    },
+    openGraph: {
+      title: 'Privacy Policy | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Privacy Policy for Children\'s Fever Medicine Dosage Calculator. Information on data collection, Google Analytics, AdSense, and data security.',
+      url: 'https://kidsfever.xyz/en/privacy',
+      siteName: "Children's Fever Medicine Dosage Calculator",
+      locale: 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: 'https://kidsfever.xyz/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Privacy Policy | Children\'s Fever Medicine Dosage Calculator',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Privacy Policy | Children\'s Fever Medicine Dosage Calculator',
+      description:
+        'Privacy Policy for Children\'s Fever Medicine Dosage Calculator. Information on data collection, Google Analytics, AdSense, and data security.',
+      images: ['https://kidsfever.xyz/opengraph-image.png'],
     },
   };
 }
