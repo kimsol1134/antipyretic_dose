@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { faqData } from '@/data/faq-data';
 
-const SITE_URL = 'https://www.kidsfever.xyz';
+const SITE_URL = 'https://kidsfever.xyz';
 const SITE_TITLE = '키즈피버 - 소아 해열제 용량 계산기';
 const SITE_DESCRIPTION =
   '어린이 체중과 나이에 맞는 정확한 해열제 용량을 계산해드립니다. 타이레놀, 챔프, 부루펜, 맥시부펜 등 한국에서 많이 사용되는 소아 해열제의 안전한 복용량을 확인하세요.';

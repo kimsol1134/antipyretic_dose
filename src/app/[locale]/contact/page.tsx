@@ -26,17 +26,17 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/contact',
+        canonical: 'https://kidsfever.xyz/contact',
         languages: {
-          ko: 'https://www.kidsfever.xyz/contact',
-          en: 'https://www.kidsfever.xyz/en/contact',
+          ko: 'https://kidsfever.xyz/contact',
+          en: 'https://kidsfever.xyz/en/contact',
         },
       },
       openGraph: {
         title: '문의하기 | 어린이 해열제 복용량 계산기',
         description:
           '어린이 해열제 복용량 계산기에 대한 문의, 피드백, 개선 제안을 보내주세요',
-        url: 'https://www.kidsfever.xyz/contact',
+        url: 'https://kidsfever.xyz/contact',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
@@ -60,17 +60,17 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/contact',
+      canonical: 'https://kidsfever.xyz/en/contact',
       languages: {
-        ko: 'https://www.kidsfever.xyz/contact',
-        en: 'https://www.kidsfever.xyz/en/contact',
+        ko: 'https://kidsfever.xyz/contact',
+        en: 'https://kidsfever.xyz/en/contact',
       },
     },
     openGraph: {
       title: 'Contact Us | Children\'s Fever Medicine Dosage Calculator',
       description:
         'Contact us with questions, feedback, or suggestions about Children\'s Fever Medicine Dosage Calculator',
-      url: 'https://www.kidsfever.xyz/en/contact',
+      url: 'https://kidsfever.xyz/en/contact',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',

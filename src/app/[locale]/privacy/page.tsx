@@ -19,10 +19,10 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/privacy',
+        canonical: 'https://kidsfever.xyz/privacy',
         languages: {
-          ko: 'https://www.kidsfever.xyz/privacy',
-          en: 'https://www.kidsfever.xyz/en/privacy',
+          ko: 'https://kidsfever.xyz/privacy',
+          en: 'https://kidsfever.xyz/en/privacy',
         },
       },
     };
@@ -37,10 +37,10 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/privacy',
+      canonical: 'https://kidsfever.xyz/en/privacy',
       languages: {
-        ko: 'https://www.kidsfever.xyz/privacy',
-        en: 'https://www.kidsfever.xyz/en/privacy',
+        ko: 'https://kidsfever.xyz/privacy',
+        en: 'https://kidsfever.xyz/en/privacy',
       },
     },
   };

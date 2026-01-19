@@ -28,17 +28,17 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/blog',
+        canonical: 'https://kidsfever.xyz/blog',
         languages: {
-          ko: 'https://www.kidsfever.xyz/blog',
-          en: 'https://www.kidsfever.xyz/en/blog',
+          ko: 'https://kidsfever.xyz/blog',
+          en: 'https://kidsfever.xyz/en/blog',
         },
       },
       openGraph: {
         title: '블로그 | 어린이 해열제 복용량 계산기',
         description:
           '의사 아빠가 전하는 어린이 발열 관리 가이드',
-        url: 'https://www.kidsfever.xyz/blog',
+        url: 'https://kidsfever.xyz/blog',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
@@ -63,17 +63,17 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/blog',
+      canonical: 'https://kidsfever.xyz/en/blog',
       languages: {
-        ko: 'https://www.kidsfever.xyz/blog',
-        en: 'https://www.kidsfever.xyz/en/blog',
+        ko: 'https://kidsfever.xyz/blog',
+        en: 'https://kidsfever.xyz/en/blog',
       },
     },
     openGraph: {
       title: "Blog | Children's Fever Medicine Dosage Calculator",
       description:
         "Expert parenting guides on children's fever management",
-      url: 'https://www.kidsfever.xyz/en/blog',
+      url: 'https://kidsfever.xyz/en/blog',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',

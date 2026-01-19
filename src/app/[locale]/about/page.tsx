@@ -28,17 +28,17 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/about',
+        canonical: 'https://kidsfever.xyz/about',
         languages: {
-          ko: 'https://www.kidsfever.xyz/about',
-          en: 'https://www.kidsfever.xyz/en/about',
+          ko: 'https://kidsfever.xyz/about',
+          en: 'https://kidsfever.xyz/en/about',
         },
       },
       openGraph: {
         title: '서비스 소개 | 어린이 해열제 복용량 계산기',
         description:
           '어린이 해열제 복용량 계산기의 미션, 주요 기능, 안전성, 제작자 정보',
-        url: 'https://www.kidsfever.xyz/about',
+        url: 'https://kidsfever.xyz/about',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
@@ -63,17 +63,17 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/about',
+      canonical: 'https://kidsfever.xyz/en/about',
       languages: {
-        ko: 'https://www.kidsfever.xyz/about',
-        en: 'https://www.kidsfever.xyz/en/about',
+        ko: 'https://kidsfever.xyz/about',
+        en: 'https://kidsfever.xyz/en/about',
       },
     },
     openGraph: {
       title: 'About Us | Children\'s Fever Medicine Dosage Calculator',
       description:
         'Learn about our mission, key features, safety standards, and creator information. FDA-based accurate dosage calculation tool.',
-      url: 'https://www.kidsfever.xyz/en/about',
+      url: 'https://kidsfever.xyz/en/about',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',

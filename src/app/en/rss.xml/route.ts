@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { faqDataEn } from '@/data/faq-data-en';
 
-const SITE_URL = 'https://www.kidsfever.xyz';
+const SITE_URL = 'https://kidsfever.xyz';
 const SITE_TITLE = "KidsFever - Children's Fever Medicine Dosage Calculator";
 const SITE_DESCRIPTION =
   "Calculate accurate dosages for children's fever medicines (Tylenol, Motrin, Advil) by weight and age. Safe dosing intervals and maximum doses based on FDA and AAP guidelines.";

@@ -19,10 +19,10 @@ export async function generateMetadata({
         follow: true,
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/terms',
+        canonical: 'https://kidsfever.xyz/terms',
         languages: {
-          ko: 'https://www.kidsfever.xyz/terms',
-          en: 'https://www.kidsfever.xyz/en/terms',
+          ko: 'https://kidsfever.xyz/terms',
+          en: 'https://kidsfever.xyz/en/terms',
         },
       },
     };
@@ -37,10 +37,10 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/terms',
+      canonical: 'https://kidsfever.xyz/en/terms',
       languages: {
-        ko: 'https://www.kidsfever.xyz/terms',
-        en: 'https://www.kidsfever.xyz/en/terms',
+        ko: 'https://kidsfever.xyz/terms',
+        en: 'https://kidsfever.xyz/en/terms',
       },
     },
   };

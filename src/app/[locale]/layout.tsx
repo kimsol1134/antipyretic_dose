@@ -15,7 +15,7 @@ export function generateStaticParams() {
 }
 
 // Root metadataBase 설정
-const metadataBase = new URL('https://www.kidsfever.xyz');
+const metadataBase = new URL('https://kidsfever.xyz');
 
 export async function generateMetadata({
   params,
@@ -42,10 +42,10 @@ export async function generateMetadata({
         },
       },
       alternates: {
-        canonical: 'https://www.kidsfever.xyz',
+        canonical: 'https://kidsfever.xyz',
         languages: {
-          ko: 'https://www.kidsfever.xyz',
-          en: 'https://www.kidsfever.xyz/en',
+          ko: 'https://kidsfever.xyz',
+          en: 'https://kidsfever.xyz/en',
         },
       },
       verification: {
@@ -70,13 +70,13 @@ export async function generateMetadata({
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
           '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-        url: 'https://www.kidsfever.xyz',
+        url: 'https://kidsfever.xyz',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
         images: [
           {
-            url: 'https://www.kidsfever.xyz/opengraph-image.png',
+            url: 'https://kidsfever.xyz/opengraph-image.png',
             width: 1200,
             height: 630,
             alt: '어린이 해열제 복용량 계산기',
@@ -88,7 +88,7 @@ export async function generateMetadata({
         title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
         description:
           '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-        images: ['https://www.kidsfever.xyz/opengraph-image.png'],
+        images: ['https://kidsfever.xyz/opengraph-image.png'],
       },
     };
   }
@@ -112,10 +112,10 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en',
+      canonical: 'https://kidsfever.xyz/en',
       languages: {
-        ko: 'https://www.kidsfever.xyz',
-        en: 'https://www.kidsfever.xyz/en',
+        ko: 'https://kidsfever.xyz',
+        en: 'https://kidsfever.xyz/en',
       },
     },
     verification: {
@@ -141,13 +141,13 @@ export async function generateMetadata({
         "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart",
       description:
         "Calculate accurate dosages for children's fever medicines by weight and age. Instant Tylenol, Motrin, and Advil dose calculation with safe dosing intervals (FDA/AAP guidelines).",
-      url: 'https://www.kidsfever.xyz/en',
+      url: 'https://kidsfever.xyz/en',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',
       images: [
         {
-          url: 'https://www.kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/opengraph-image.png',
           width: 1200,
           height: 630,
           alt: "Children's Fever Medicine Dosage Calculator",
@@ -160,7 +160,7 @@ export async function generateMetadata({
         "Children's Fever Medicine Dosage Calculator | Tylenol, Motrin, Advil Dosing Chart",
       description:
         "Calculate accurate dosages for children's fever medicines by weight and age. Instant Tylenol, Motrin, and Advil dose calculation with safe dosing intervals (FDA/AAP guidelines).",
-      images: ['https://www.kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/opengraph-image.png'],
     },
   };
 }
@@ -191,7 +191,7 @@ export default async function LocaleLayout({
           alternateName: '소아 해열제 용량 계산기',
           description:
             '의사가 만든 안전한 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 복용량(mL)을 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
-          url: 'https://www.kidsfever.xyz',
+          url: 'https://kidsfever.xyz',
           inLanguage: 'ko-KR',
           applicationCategory: 'HealthApplication',
           operatingSystem: 'Web',
@@ -225,7 +225,7 @@ export default async function LocaleLayout({
           isPartOf: {
             '@type': 'WebSite',
             name: '어린이 해열제 복용량 계산기',
-            url: 'https://www.kidsfever.xyz',
+            url: 'https://kidsfever.xyz',
           },
           about: {
             '@type': 'MedicalEntity',
@@ -251,7 +251,7 @@ export default async function LocaleLayout({
           alternateName: 'Pediatric Fever Reducer Dosage Calculator',
           description:
             "Calculate accurate dosages for children's fever medicines (Tylenol, Motrin, Advil) by weight and age. Instant dose calculation with safe dosing intervals and maximum doses based on FDA and AAP guidelines.",
-          url: 'https://www.kidsfever.xyz/en',
+          url: 'https://kidsfever.xyz/en',
           inLanguage: 'en-US',
           applicationCategory: 'HealthApplication',
           operatingSystem: 'Web',
@@ -290,7 +290,7 @@ export default async function LocaleLayout({
           isPartOf: {
             '@type': 'WebSite',
             name: "Children's Fever Medicine Dosage Calculator",
-            url: 'https://www.kidsfever.xyz',
+            url: 'https://kidsfever.xyz',
           },
           about: {
             '@type': 'MedicalEntity',
@@ -323,14 +323,14 @@ export default async function LocaleLayout({
       ? {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          '@id': 'https://www.kidsfever.xyz/#website',
-          url: 'https://www.kidsfever.xyz',
+          '@id': 'https://kidsfever.xyz/#website',
+          url: 'https://kidsfever.xyz',
           name: '어린이 해열제 복용량 계산기',
           description:
             '의사가 만든 어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜 용량표',
           publisher: {
             '@type': 'Person',
-            '@id': 'https://www.kidsfever.xyz/#author',
+            '@id': 'https://kidsfever.xyz/#author',
             name: 'Dr. pinecone',
             jobTitle: '의사',
             url: 'https://litt.ly/solkim',
@@ -341,7 +341,7 @@ export default async function LocaleLayout({
             '@type': 'SearchAction',
             target: {
               '@type': 'EntryPoint',
-              urlTemplate: 'https://www.kidsfever.xyz/faq?q={search_term_string}',
+              urlTemplate: 'https://kidsfever.xyz/faq?q={search_term_string}',
             },
             'query-input': 'required name=search_term_string',
           },
@@ -349,14 +349,14 @@ export default async function LocaleLayout({
       : {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          '@id': 'https://www.kidsfever.xyz/#website',
-          url: 'https://www.kidsfever.xyz',
+          '@id': 'https://kidsfever.xyz/#website',
+          url: 'https://kidsfever.xyz',
           name: "Children's Fever Medicine Dosage Calculator",
           description:
             "Doctor-created children's fever medicine dosage calculator - Tylenol, Motrin, Advil dosing chart",
           publisher: {
             '@type': 'Person',
-            '@id': 'https://www.kidsfever.xyz/#author',
+            '@id': 'https://kidsfever.xyz/#author',
             name: 'Dr. pinecone',
             jobTitle: 'Physician',
             url: 'https://litt.ly/solkim',
@@ -368,7 +368,7 @@ export default async function LocaleLayout({
             target: {
               '@type': 'EntryPoint',
               urlTemplate:
-                'https://www.kidsfever.xyz/en/faq?q={search_term_string}',
+                'https://kidsfever.xyz/en/faq?q={search_term_string}',
             },
             'query-input': 'required name=search_term_string',
           },
@@ -378,7 +378,7 @@ export default async function LocaleLayout({
   const authorSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': 'https://www.kidsfever.xyz/#author',
+    '@id': 'https://kidsfever.xyz/#author',
     name: 'Dr. pinecone',
     alternateName: locale === 'ko' ? '솔김 의사' : 'Dr. Sol Kim',
     jobTitle: locale === 'ko' ? '의사' : 'Physician',
@@ -416,7 +416,7 @@ export default async function LocaleLayout({
         />
         <link rel="manifest" href="/manifest.webmanifest" />
         {/* 네이버 검색 최적화: shortcut icon (최우선 순위, 절대 경로) */}
-        <link rel="shortcut icon" href="https://www.kidsfever.xyz/favicon.ico" />
+        <link rel="shortcut icon" href="https://kidsfever.xyz/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />

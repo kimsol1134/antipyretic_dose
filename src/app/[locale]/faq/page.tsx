@@ -25,17 +25,17 @@ export async function generateMetadata({
         '해열제 FAQ',
       ],
       alternates: {
-        canonical: 'https://www.kidsfever.xyz/faq',
+        canonical: 'https://kidsfever.xyz/faq',
         languages: {
-          ko: 'https://www.kidsfever.xyz/faq',
-          en: 'https://www.kidsfever.xyz/en/faq',
+          ko: 'https://kidsfever.xyz/faq',
+          en: 'https://kidsfever.xyz/en/faq',
         },
       },
       openGraph: {
         title: '어린이 해열제 자주 묻는 질문 (FAQ)',
         description:
           '타이레놀, 부루펜 등 어린이 해열제 복용법 완벽 가이드 (식약처 기준)',
-        url: 'https://www.kidsfever.xyz/faq',
+        url: 'https://kidsfever.xyz/faq',
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
@@ -75,17 +75,17 @@ export async function generateMetadata({
       'child fever reducer safety',
     ],
     alternates: {
-      canonical: 'https://www.kidsfever.xyz/en/faq',
+      canonical: 'https://kidsfever.xyz/en/faq',
       languages: {
-        ko: 'https://www.kidsfever.xyz/faq',
-        en: 'https://www.kidsfever.xyz/en/faq',
+        ko: 'https://kidsfever.xyz/faq',
+        en: 'https://kidsfever.xyz/en/faq',
       },
     },
     openGraph: {
       title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
       description:
         "Complete guide to children's Tylenol and Motrin dosing: answers to common questions about intervals, alternating medicines, and safety (FDA/AAP guidelines)",
-      url: 'https://www.kidsfever.xyz/en/faq',
+      url: 'https://kidsfever.xyz/en/faq',
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',
@@ -121,8 +121,8 @@ export default async function FAQPage({
   const currentCategoryLabels = locale === 'en' ? categoryLabelsEn : categoryLabels;
   const baseUrl =
     locale === 'en'
-      ? 'https://www.kidsfever.xyz/en'
-      : 'https://www.kidsfever.xyz';
+      ? 'https://kidsfever.xyz/en'
+      : 'https://kidsfever.xyz';
 
   // FAQPage 구조화 데이터
   const faqStructuredData = {

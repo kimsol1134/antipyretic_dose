@@ -22,7 +22,7 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = 'https://www.kidsfever.xyz';
+  const baseUrl = 'https://kidsfever.xyz';
   const url = locale === 'en' ? `${baseUrl}/en/blog/${slug}` : `${baseUrl}/blog/${slug}`;
 
   return {
@@ -175,7 +175,7 @@ export default async function BlogPostPage({
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.kidsfever.xyz/blog/${post.slug}`,
+      '@id': `https://kidsfever.xyz/blog/${post.slug}`,
     },
     keywords: post.keywords.join(', '),
   };
@@ -189,19 +189,19 @@ export default async function BlogPostPage({
         '@type': 'ListItem',
         position: 1,
         name: locale === 'en' ? 'Home' : '홈',
-        item: locale === 'en' ? 'https://www.kidsfever.xyz/en' : 'https://www.kidsfever.xyz',
+        item: locale === 'en' ? 'https://kidsfever.xyz/en' : 'https://kidsfever.xyz',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: locale === 'en' ? 'Blog' : '블로그',
-        item: locale === 'en' ? 'https://www.kidsfever.xyz/en/blog' : 'https://www.kidsfever.xyz/blog',
+        item: locale === 'en' ? 'https://kidsfever.xyz/en/blog' : 'https://kidsfever.xyz/blog',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `https://www.kidsfever.xyz/blog/${post.slug}`,
+        item: `https://kidsfever.xyz/blog/${post.slug}`,
       },
     ],
   };
