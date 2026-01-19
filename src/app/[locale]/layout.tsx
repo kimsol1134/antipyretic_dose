@@ -400,8 +400,8 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         {/* 네이버 검색 최적화를 위한 추가 메타 태그 */}
-        <meta property="og:image:width" content="1536" />
-        <meta property="og:image:height" content="768" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         {/* PWA 지원을 위한 메타 태그 */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -415,6 +415,8 @@ export default async function LocaleLayout({
           }
         />
         <link rel="manifest" href="/manifest.webmanifest" />
+        {/* 네이버 검색 최적화: shortcut icon (최우선 순위, 절대 경로) */}
+        <link rel="shortcut icon" href="https://www.kidsfever.xyz/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
