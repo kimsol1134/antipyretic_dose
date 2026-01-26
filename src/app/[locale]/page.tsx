@@ -7,7 +7,7 @@ import { productsSchema } from '@/lib/schemas';
 import type { Product, SimilarProductsMap, RelatedProductsMapUS } from '@/lib/types';
 import DosageForm from '../components/DosageForm';
 import DosageResultDisplay from '../components/DosageResultDisplay';
-import CoupangBanner from '../components/ads/CoupangBanner';
+import KakaoAdFitBanner from '../components/ads/KakaoAdFitBanner';
 import StaticDosageTable from '../components/seo/StaticDosageTable';
 import PiecefulBanner from '../components/ads/PiecefulBanner';
 
@@ -116,7 +116,7 @@ export default async function HomePage({
       </section>
 
       {/* ✅ 배너: 계산 폼과 결과 사이에 배치 */}
-      <CoupangBanner />
+      <KakaoAdFitBanner />
 
       <DosageResultDisplay
         similarProductsMap={similarProducts}
