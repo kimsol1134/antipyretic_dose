@@ -230,7 +230,7 @@ Subject: [블로그명] 독자들을 위한 무료 기고 제안
 
 검토 부탁드립니다.
 
-Dr. pinecone
+solkim
 [Your Site]
 ```
 
@@ -295,7 +295,7 @@ Subject: 대기실 환자 서비스 개선 제안 - 무료 트라이얼
 3개월 무료 트라이얼 제안드립니다.
 관심 있으시면 회신 부탁드립니다.
 
-Dr. pinecone
+solkim
 [연락처]
 ```
 
@@ -489,7 +489,7 @@ Landing → Calculator Used → Result Viewed → Ad Clicked → Purchase
 #### 3. 육아 건강 플랫폼 통합
 
 **브랜드:**
-- "육아 건강 도구 모음" or "Dr. pinecone's Parenting Tools"
+- "육아 건강 도구 모음" or "solkim's Parenting Tools"
 
 **도구:**
 - 해열제 계산기

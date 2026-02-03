@@ -212,7 +212,7 @@ export default async function LocaleLayout({
           },
           author: {
             '@type': 'Person',
-            name: 'Dr. pinecone (의사)',
+            name: 'solkim (의사)',
             jobTitle: '의사',
             url: 'https://litt.ly/solkim',
           },
@@ -273,7 +273,7 @@ export default async function LocaleLayout({
           },
           author: {
             '@type': 'Person',
-            name: 'Dr. pinecone (의사)',
+            name: 'solkim (의사)',
             jobTitle: '의사',
             url: 'https://litt.ly/solkim',
           },
@@ -323,7 +323,7 @@ export default async function LocaleLayout({
           publisher: {
             '@type': 'Person',
             '@id': 'https://kidsfever.xyz/#author',
-            name: 'Dr. pinecone',
+            name: 'solkim',
             jobTitle: '의사',
             url: 'https://litt.ly/solkim',
           },
@@ -349,7 +349,7 @@ export default async function LocaleLayout({
           publisher: {
             '@type': 'Person',
             '@id': 'https://kidsfever.xyz/#author',
-            name: 'Dr. pinecone',
+            name: 'solkim',
             jobTitle: 'Physician',
             url: 'https://litt.ly/solkim',
           },
@@ -371,7 +371,7 @@ export default async function LocaleLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': 'https://kidsfever.xyz/#author',
-    name: 'Dr. pinecone',
+    name: 'solkim',
     alternateName: locale === 'ko' ? '솔김 의사' : 'Dr. Sol Kim',
     jobTitle: locale === 'ko' ? '의사' : 'Physician',
     url: 'https://litt.ly/solkim',

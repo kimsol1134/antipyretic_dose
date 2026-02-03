@@ -139,7 +139,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:text-blue-600 hover:underline"
             >
-              Dr. pinecone
+              solkim
             </a>
           </p>
         </div>

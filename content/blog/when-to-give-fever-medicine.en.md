@@ -1,7 +1,7 @@
 ---
 title: "When to Give Fever Medicine? (Don't Obsess Over '36.5°C')"
 description: "Why you should look at your child's condition, not the thermometer number. Clearing up 3 common misconceptions about fever and sharing American Academy of Pediatrics (AAP) based guidelines from an ER doctor dad's perspective."
-author: "Dr. pinecone"
+author: "solkim"
 date: "2025-01-11"
 category: "Fever Management"
 keywords: ["fever medicine", "baby fever", "38 degrees fever", "fever management", "normal temperature"]
