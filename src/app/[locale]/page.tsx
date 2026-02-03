@@ -143,12 +143,12 @@ export default async function HomePage({
                 strengthValue: product.strength_mg_per_ml,
                 strengthUnit: 'mg/mL',
               },
-              offers: {
-                '@type': 'Offer',
-                price: '0',
-                priceCurrency: locale === 'ko' ? 'KRW' : 'USD',
-                availability: 'https://schema.org/InStock',
-              },
+              image: `https://kidsfever.xyz${product.image}`,
+              description:
+                locale === 'ko'
+                  ? `${product.name}의 체중별/나이별 정확한 권장 복용량 및 안전 정보`
+                  : `Accurate dosage and safety information for ${product.nameEn || product.name}`,
+              offers: undefined, // Merchant Listing 문제 해결을 위해 offers 제거 (판매용이 아님)
             }))
           ),
         }}

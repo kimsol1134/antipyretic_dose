@@ -238,11 +238,7 @@ export default async function LocaleLayout({
             name: '식품의약품안전처 의약품개요정보(e약은요)',
             url: 'https://nedrug.mfds.go.kr',
           },
-          offers: {
-            '@type': 'Offer',
-            price: '0',
-            priceCurrency: 'KRW',
-          },
+
         }
       : {
           '@context': 'https://schema.org',
@@ -310,11 +306,7 @@ export default async function LocaleLayout({
               url: 'https://www.aap.org',
             },
           ],
-          offers: {
-            '@type': 'Offer',
-            price: '0',
-            priceCurrency: 'USD',
-          },
+
         };
 
   // WebSite 스키마 (사이트 전체 정보 - E-A-T 강화)
