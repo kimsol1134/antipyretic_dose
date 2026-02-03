@@ -86,7 +86,7 @@ function parseMarkdown(content: string): string {
 
   // 테이블 처리
   result = result.replace(
-    /\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)+)/g,
+    /\|(.+)\|\n\|[-|: ]+\|\n((?:\|.+\|\n?)+)/g,
     (match, header, body) => {
       const headerCells = header.split('|').filter((c: string) => c.trim());
       const headerRow = `<thead><tr>${headerCells.map((c: string) => `<th class="border border-gray-300 px-4 py-2 bg-gray-50 font-semibold text-left">${c.trim()}</th>`).join('')}</tr></thead>`;
