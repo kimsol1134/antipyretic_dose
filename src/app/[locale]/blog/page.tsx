@@ -59,7 +59,7 @@ export async function generateMetadata({
       'pediatric health',
     ],
     robots: {
-      index: false,
+      index: true,
       follow: true,
     },
     alternates: {

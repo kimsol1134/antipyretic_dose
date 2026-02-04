@@ -3,9 +3,17 @@ title: "When to Give Fever Medicine? (Don't Obsess Over '36.5°C')"
 description: "Why you should look at your child's condition, not the thermometer number. Clearing up 3 common misconceptions about fever and sharing American Academy of Pediatrics (AAP) based guidelines from an ER doctor dad's perspective."
 author: "solkim"
 date: "2025-01-11"
+dateModified: "2026-02-04"
 category: "Fever Management"
 keywords: ["fever medicine", "baby fever", "38 degrees fever", "fever management", "normal temperature"]
 slug: "when-to-give-fever-medicine"
+faqs:
+  - question: "Should I give fever medicine when my child's temperature reaches 38°C (100.4°F)?"
+    answer: "The AAP recommends focusing on your child's comfort rather than a specific temperature number. If your child is playing well and drinking fluids at 38°C, you can continue to monitor. If they are lethargic or fussy even at a lower temperature, consider giving fever medicine."
+  - question: "Can a high fever cause brain damage?"
+    answer: "Fever caused by infection is regulated by the body's thermostat and almost never reaches the dangerous level of 42°C (107.6°F). Brain damage from extreme temperature occurs in hyperthermia (like heatstroke), which has a completely different mechanism from infection-related fever."
+  - question: "Should fever medicine bring the temperature back to normal?"
+    answer: "No. Antipyretics typically lower temperature by 1-1.5°C. If your child's fever drops from 39.5°C to 38.2°C and they become more comfortable, this is a very successful response. The goal is comfort, not a specific number on the thermometer."
 ---
 
 ![Child playing with dad](/images/blog/fever-when-to-treat.png)

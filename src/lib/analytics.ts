@@ -81,3 +81,38 @@ export const trackDrugInfoView = (productName: string): void => {
     product_name: productName,
   });
 };
+
+/**
+ * Track FAQ interaction (open/close)
+ */
+export const trackFAQInteraction = (
+  faqId: string,
+  action: 'open' | 'close'
+): void => {
+  trackEvent('faq_interaction', {
+    faq_id: faqId,
+    action,
+  });
+};
+
+/**
+ * Track blog reading progress via scroll milestones
+ */
+export const trackBlogRead = (
+  slug: string,
+  readPercentage: 25 | 50 | 75 | 100
+): void => {
+  trackEvent('blog_read', {
+    blog_slug: slug,
+    read_percentage: readPercentage,
+  });
+};
+
+/**
+ * Track when user expands similar products section
+ */
+export const trackSimilarProductsExpanded = (productId: string): void => {
+  trackEvent('similar_products_expanded', {
+    product_id: productId,
+  });
+};

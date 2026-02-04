@@ -2,14 +2,21 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+export interface BlogFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
   description: string;
   author: string;
   date: string;
+  dateModified?: string;
   category: string;
   keywords: string[];
+  faqs?: BlogFAQ[];
   content: string;
 }
 
@@ -38,8 +45,10 @@ export function getAllBlogPosts(): BlogPost[] {
         description: data.description || '',
         author: data.author || '',
         date: data.date || '',
+        dateModified: data.dateModified || undefined,
         category: data.category || '',
         keywords: data.keywords || [],
+        faqs: data.faqs || undefined,
         content,
       };
     })
@@ -64,8 +73,10 @@ export function getBlogPostBySlug(slug: string, locale: string = 'ko'): BlogPost
         description: data.description || '',
         author: data.author || '',
         date: data.date || '',
+        dateModified: data.dateModified || undefined,
         category: data.category || '',
         keywords: data.keywords || [],
+        faqs: data.faqs || undefined,
         content,
       };
     }

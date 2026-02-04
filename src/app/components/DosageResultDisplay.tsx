@@ -13,7 +13,7 @@ import {
 } from '@/store/dosage-store';
 import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
-import { trackDrugInfoView } from '@/lib/analytics';
+import { trackDrugInfoView, trackSimilarProductsExpanded } from '@/lib/analytics';
 import { Alert } from './ui/Alert';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
@@ -88,6 +88,7 @@ export default function DosageResultDisplay({
         next.delete(productId);
       } else {
         next.add(productId);
+        trackSimilarProductsExpanded(productId);
       }
       return next;
     });

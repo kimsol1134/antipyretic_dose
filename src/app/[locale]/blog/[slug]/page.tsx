@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/blog';
+import { parseMarkdownToHtml } from '@/lib/markdown';
+import BlogReadTracker from '@/app/components/blog/BlogReadTracker';
 
 export async function generateStaticParams() {
   const slugs = getAllBlogSlugs();
@@ -49,6 +51,7 @@ export async function generateMetadata({
       locale: locale === 'en' ? 'en_US' : 'ko_KR',
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.dateModified || post.date,
       authors: [post.author],
       images: [
         {
@@ -68,88 +71,6 @@ export async function generateMetadata({
   };
 }
 
-// 마크다운 파서 - 테이블, 이미지, 코드 블록 지원
-function parseMarkdown(content: string): string {
-  let result = content;
-
-  // 이미지 처리 (가장 먼저)
-  result = result.replace(
-    /!\[([^\]]*)\]\(([^)]+)\)/g,
-    '<img src="$2" alt="$1" class="w-full rounded-lg my-6 shadow-md" loading="lazy" />'
-  );
-
-  // 코드 블록 (```)
-  result = result.replace(
-    /```([\s\S]*?)```/g,
-    '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4 text-sm"><code>$1</code></pre>'
-  );
-
-  // 테이블 처리
-  result = result.replace(
-    /\|(.+)\|\n\|[-|: ]+\|\n((?:\|.+\|\n?)+)/g,
-    (match, header, body) => {
-      const headerCells = header.split('|').filter((c: string) => c.trim());
-      const headerRow = `<thead><tr>${headerCells.map((c: string) => `<th class="border border-gray-300 px-4 py-2 bg-gray-50 font-semibold text-left">${c.trim()}</th>`).join('')}</tr></thead>`;
-      
-      const bodyRows = body.trim().split('\n').map((row: string) => {
-        const cells = row.split('|').filter((c: string) => c.trim());
-        return `<tr>${cells.map((c: string) => `<td class="border border-gray-300 px-4 py-2">${c.trim()}</td>`).join('')}</tr>`;
-      }).join('');
-      
-      return `<table class="w-full border-collapse my-6 text-sm">${headerRow}<tbody>${bodyRows}</tbody></table>`;
-    }
-  );
-
-  // Headers
-  result = result.replace(/^### (.*$)/gim, '<h3 class="text-lg font-bold text-gray-900 mt-6 mb-3">$1</h3>');
-  result = result.replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold text-gray-900 mt-8 mb-4">$1</h2>');
-  result = result.replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold text-gray-900 mt-8 mb-4">$1</h1>');
-
-  // Bold
-  result = result.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>');
-
-  // Italic
-  result = result.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-  // Blockquotes
-  result = result.replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-blue-500 pl-4 py-2 my-4 bg-blue-50 text-gray-700 italic">$1</blockquote>');
-
-  // Unordered lists - 연속된 항목을 ul로 감싸기
-  result = result.replace(/((?:^- .+$\n?)+)/gm, (match) => {
-    const items = match.trim().split('\n').map(item => {
-      const content = item.replace(/^- /, '');
-      return `<li class="ml-4 mb-1">${content}</li>`;
-    }).join('');
-    return `<ul class="list-disc pl-5 my-4">${items}</ul>`;
-  });
-
-  // Numbered lists
-  result = result.replace(/((?:^\d+\. .+$\n?)+)/gm, (match) => {
-    const items = match.trim().split('\n').map(item => {
-      const content = item.replace(/^\d+\. /, '');
-      return `<li class="ml-4 mb-1">${content}</li>`;
-    }).join('');
-    return `<ol class="list-decimal pl-5 my-4">${items}</ol>`;
-  });
-
-  // Links
-  result = result.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" class="text-blue-600 hover:underline">$1</a>'
-  );
-
-  // Horizontal rules
-  result = result.replace(/^---$/gm, '<hr class="my-8 border-gray-200" />');
-
-  // Paragraphs (double newlines)
-  result = result.replace(/\n\n/g, '</p><p class="text-gray-700 leading-relaxed mb-4">');
-
-  // Single line breaks
-  result = result.replace(/\n/g, '<br />');
-
-  return result;
-}
-
 export default async function BlogPostPage({
   params,
 }: {
@@ -162,7 +83,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const parsedContent = parseMarkdown(post.content);
+  const parsedContent = await parseMarkdownToHtml(post.content);
 
   // Article 구조화 데이터
   const articleStructuredData = {
@@ -177,7 +98,7 @@ export default async function BlogPostPage({
       url: 'https://litt.ly/solkim',
     },
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.dateModified || post.date,
     publisher: {
       '@type': 'Person',
       name: 'solkim',
@@ -215,6 +136,23 @@ export default async function BlogPostPage({
     ],
   };
 
+  // FAQ 구조화 데이터
+  const faqStructuredData =
+    post.faqs && post.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       {/* 구조화 데이터 */}
@@ -226,6 +164,14 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
+      {faqStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+        />
+      )}
+
+      <BlogReadTracker slug={slug} />
 
       <main className="container mx-auto max-w-4xl p-4 pt-8 sm:pt-12">
         {/* Breadcrumb */}
@@ -252,7 +198,7 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
             <p className="text-gray-600 mt-3">{post.description}</p>
-            <div className="flex items-center gap-3 text-sm text-gray-500 mt-4 pt-4 border-t">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mt-4 pt-4 border-t">
               <span className="font-medium">{post.author}</span>
               <span>•</span>
               <time dateTime={post.date}>
@@ -261,6 +207,20 @@ export default async function BlogPostPage({
                   { year: 'numeric', month: 'long', day: 'numeric' }
                 )}
               </time>
+              {post.dateModified && post.dateModified !== post.date && (
+                <>
+                  <span>•</span>
+                  <span className="text-gray-400">
+                    {locale === 'en' ? 'Updated: ' : '수정일: '}
+                    <time dateTime={post.dateModified}>
+                      {new Date(post.dateModified).toLocaleDateString(
+                        locale === 'en' ? 'en-US' : 'ko-KR',
+                        { year: 'numeric', month: 'long', day: 'numeric' }
+                      )}
+                    </time>
+                  </span>
+                </>
+              )}
             </div>
           </header>
 
@@ -268,16 +228,42 @@ export default async function BlogPostPage({
           <div
             className="prose prose-gray max-w-none"
             dangerouslySetInnerHTML={{
-              __html: `<p class="text-gray-700 leading-relaxed mb-4">${parsedContent}</p>`,
+              __html: parsedContent,
             }}
           />
+
+          {/* FAQ Section */}
+          {post.faqs && post.faqs.length > 0 && (
+            <section className="mt-10 pt-8 border-t border-gray-200">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">
+                {locale === 'en' ? 'Frequently Asked Questions' : '자주 묻는 질문'}
+              </h2>
+              <div className="space-y-4">
+                {post.faqs.map((faq, index) => (
+                  <details
+                    key={index}
+                    className="group border border-gray-200 rounded-lg"
+                  >
+                    <summary className="flex items-center justify-between cursor-pointer p-4 font-semibold text-gray-900 hover:bg-gray-50 rounded-lg">
+                      <span>{faq.question}</span>
+                      <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div className="px-4 pb-4 text-gray-700 leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Medical Disclaimer */}
           <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <p className="text-sm text-gray-700">
-              <strong>⚠️ 의료 면책 조항:</strong> 본 글의 내용은 일반적인 정보 제공 목적이며,
-              의학적 조언을 대체하지 않습니다. 아이의 건강에 대한 결정은 반드시 담당 의사와
-              상담하시기 바랍니다.
+              <strong>⚠️ {locale === 'en' ? 'Medical Disclaimer:' : '의료 면책 조항:'}</strong>{' '}
+              {locale === 'en'
+                ? 'This article is for general informational purposes only and does not replace medical advice. Always consult your child\'s doctor for health decisions.'
+                : '본 글의 내용은 일반적인 정보 제공 목적이며, 의학적 조언을 대체하지 않습니다. 아이의 건강에 대한 결정은 반드시 담당 의사와 상담하시기 바랍니다.'}
             </p>
           </div>
         </article>

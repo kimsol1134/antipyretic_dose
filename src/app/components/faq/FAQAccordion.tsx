@@ -5,6 +5,7 @@ import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { FAQItem } from '@/data/faq-data';
 import SourceBadge from '../shared/SourceBadge';
+import { trackFAQInteraction } from '@/lib/analytics';
 
 type FAQAccordionProps = {
   faq: FAQItem;
@@ -22,7 +23,11 @@ export default function FAQAccordion({ faq, allFaqs }: FAQAccordionProps) {
     >
       {/* 질문 */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          const nextState = !isOpen;
+          setIsOpen(nextState);
+          trackFAQInteraction(faq.id, nextState ? 'open' : 'close');
+        }}
         className="w-full flex items-center justify-between p-4 text-left"
         aria-expanded={isOpen}
       >
