@@ -211,9 +211,9 @@ export default async function HomePage({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
-                aria-label="pinecone profile"
+                aria-label="solkim profile"
               >
-                pinecone
+                solkim
               </a>
             </p>
             <a
@@ -224,7 +224,7 @@ export default async function HomePage({
             >
               <Image
                 src="/images/profile.png"
-                alt="pinecone profile"
+                alt="solkim profile"
                 width={32}
                 height={32}
                 className="rounded-full hover:opacity-80 transition-opacity"

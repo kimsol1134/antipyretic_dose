@@ -38,18 +38,18 @@ export default function Footer() {
 
   const medicineLinks = isKorean
     ? [
-        { keyword: '타이레놀 복용량', url: `${baseUrl}/` },
-        { keyword: '부루펜 용량', url: `${baseUrl}/` },
-        { keyword: '챔프 시럽', url: `${baseUrl}/` },
+        { keyword: '타이레놀 복용량', url: `${baseUrl}/blog/tylenol-dosage-by-weight` },
+        { keyword: '부루펜 용량', url: `${baseUrl}/blog/brufen-vs-tylenol-comparison` },
+        { keyword: '챔프 시럽', url: `${baseUrl}/blog/tylenol-vs-champ-syrup` },
         { keyword: '맥시부펜', url: `${baseUrl}/` },
-        { keyword: '해열제 교차 복용', url: `${baseUrl}/faq` },
+        { keyword: '해열제 교차 복용', url: `${baseUrl}/blog/alternating-fever-medicine-guide` },
       ]
     : [
-        { keyword: 'Tylenol Dosage', url: `${baseUrl}/` },
-        { keyword: 'Motrin Dosage', url: `${baseUrl}/` },
+        { keyword: 'Tylenol Dosage', url: `${baseUrl}/blog/tylenol-dosage-by-weight` },
+        { keyword: 'Motrin Dosage', url: `${baseUrl}/blog/brufen-vs-tylenol-comparison` },
         { keyword: 'Advil Dosing', url: `${baseUrl}/` },
         { keyword: 'Acetaminophen Calculator', url: `${baseUrl}/` },
-        { keyword: 'Alternating Medicines', url: `${baseUrl}/faq` },
+        { keyword: 'Alternating Medicines', url: `${baseUrl}/blog/alternating-fever-medicine-guide` },
       ];
 
   return (

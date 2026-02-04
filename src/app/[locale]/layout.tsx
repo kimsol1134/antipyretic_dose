@@ -6,8 +6,9 @@ import { notFound } from 'next/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { routing } from '@/i18n/routing';
-import LanguageSwitcher from '@/app/components/LanguageSwitcher';
+import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
+import CookieConsent from '@/app/components/CookieConsent';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -31,8 +32,8 @@ export async function generateMetadata({
         '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
       metadataBase,
       category: 'medical',
-      creator: 'pinecone',
-      publisher: 'pinecone',
+      creator: 'solkim',
+      publisher: 'solkim',
       robots: {
         index: true,
         follow: true,
@@ -101,8 +102,8 @@ export async function generateMetadata({
       "Accurate children's fever medicine dosage calculator by weight and age. Calculate Tylenol (acetaminophen), Motrin, and Advil (ibuprofen) doses instantly. Safe dosing intervals and maximum doses based on FDA and AAP guidelines.",
     metadataBase,
     category: 'medical',
-    creator: 'pinecone',
-    publisher: 'pinecone',
+    creator: 'solkim',
+    publisher: 'solkim',
     robots: {
       index: true,
       follow: true,
@@ -218,7 +219,7 @@ export default async function LocaleLayout({
           },
           publisher: {
             '@type': 'Person',
-            name: 'pinecone',
+            name: 'solkim',
           },
           datePublished: '2025-01-01',
           dateModified: new Date().toISOString().split('T')[0],
@@ -279,7 +280,7 @@ export default async function LocaleLayout({
           },
           publisher: {
             '@type': 'Person',
-            name: 'pinecone',
+            name: 'solkim',
           },
           datePublished: '2025-01-01',
           dateModified: new Date().toISOString().split('T')[0],
@@ -444,13 +445,10 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
         />
         <NextIntlClientProvider messages={messages}>
-          <header className="sticky top-0 z-50 bg-white shadow-sm">
-            <div className="container mx-auto px-4 py-3 flex justify-end">
-              <LanguageSwitcher />
-            </div>
-          </header>
+          <Navbar />
           {children}
           <Footer />
+          <CookieConsent />
         </NextIntlClientProvider>
         <Analytics />
         <GoogleAnalytics gaId="G-BPSSHZSL1Z" />

@@ -76,6 +76,20 @@ export function getBlogPostBySlug(slug: string, locale: string = 'ko'): BlogPost
   return posts.find((post) => post.slug === slug) || null;
 }
 
+export function getBlogPostsForLocale(locale: string): BlogPost[] {
+  const allPosts = getAllBlogPosts();
+
+  if (locale !== 'en') {
+    return allPosts;
+  }
+
+  // For English, only return posts that have a .en.md translation file
+  return allPosts.filter((post) => {
+    const enFilePath = path.join(blogDirectory, `${post.slug}.en.md`);
+    return fs.existsSync(enFilePath);
+  });
+}
+
 export function getAllBlogSlugs(): string[] {
   const posts = getAllBlogPosts();
   return posts.map((post) => post.slug);

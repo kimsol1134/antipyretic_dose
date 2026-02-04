@@ -148,6 +148,22 @@ export default async function ContactPage({
             {t('sections.methods.title')}
           </h2>
           <div className="space-y-4">
+            {/* Email */}
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+              <h3 className="font-semibold text-gray-800 mb-2">
+                {t('sections.methods.email.title')}
+              </h3>
+              <p className="text-gray-700 mb-2">
+                {t('sections.methods.email.content')}
+              </p>
+              <a
+                href={`mailto:${t('sections.methods.email.address')}`}
+                className="text-blue-600 hover:underline font-semibold"
+              >
+                {t('sections.methods.email.address')}
+              </a>
+            </div>
+
             {/* Blog */}
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
               <h3 className="font-semibold text-gray-800 mb-2">

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { getAllBlogPosts } from '@/lib/blog';
+import { getBlogPostsForLocale } from '@/lib/blog';
 
 export async function generateMetadata({
   params,
@@ -59,7 +59,7 @@ export async function generateMetadata({
       'pediatric health',
     ],
     robots: {
-      index: true,
+      index: false,
       follow: true,
     },
     alternates: {
@@ -88,7 +88,7 @@ export default async function BlogPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations('blog');
-  const posts = getAllBlogPosts();
+  const posts = getBlogPostsForLocale(locale);
 
   return (
     <main className="container mx-auto max-w-4xl p-4 pt-8 sm:pt-12">

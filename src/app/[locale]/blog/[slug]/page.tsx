@@ -180,7 +180,7 @@ export default async function BlogPostPage({
     dateModified: post.date,
     publisher: {
       '@type': 'Person',
-      name: 'pinecone',
+      name: 'solkim',
     },
     mainEntityOfPage: {
       '@type': 'WebPage',

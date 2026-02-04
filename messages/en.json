@@ -1,4 +1,13 @@
 {
+  "nav": {
+    "calculator": "Calculator",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
   "home": {
     "title": "Children's Fever Medicine Dosage Calculator",
     "subtitle": "Calculate accurate dosage by entering weight and age",
@@ -264,7 +273,7 @@
       },
       "creator": {
         "title": "Creator",
-        "content": "This service is developed and operated by pinecone. More parenting health information is available on the creator's blog.",
+        "content": "This service is developed and operated by solkim. More parenting health information is available on the creator's blog.",
         "link": "https://litt.ly/solkim"
       },
       "opensource": {
@@ -286,6 +295,11 @@
       },
       "methods": {
         "title": "Contact Methods",
+        "email": {
+          "title": "Email",
+          "content": "Send us your questions via email:",
+          "address": "kidsfever.xyz@gmail.com"
+        },
         "blog": {
           "title": "Visit Blog",
           "content": "For more parenting health information and inquiries, visit the creator's blog:",

@@ -184,7 +184,7 @@ export default async function AboutPage({
           <div className="flex items-center gap-4">
             <Image
               src="/images/profile.png"
-              alt="pinecone profile"
+              alt="solkim profile"
               width={64}
               height={64}
               className="rounded-full"
