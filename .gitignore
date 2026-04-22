@@ -42,3 +42,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# analytics (GA4 export output — local only)
+/analytics-export/
+
+# service account keys (defense-in-depth; keep keys outside repo)
+*-service-account*.json
+*gcp-key*.json
+antipyretic-analytics-*.json
