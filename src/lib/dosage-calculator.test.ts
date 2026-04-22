@@ -125,4 +125,101 @@ describe('calculateAllDosages', () => {
     // 하지만 30kg 미만이므로 25mL로 제한됨
     expect(result.max_daily_ml).toBe(25);
   });
+
+  it('returns nextDose null when last-dose input is not provided', () => {
+    const tylenol = findProduct('tylenol_susp_100ml_kr');
+    const input: DosageInput = { weight: 10, age: 12, ageUnit: 'months' };
+
+    const [result] = calculateAllDosages(input, [tylenol]);
+
+    expect(result.nextDose).toBeNull();
+  });
+});
+
+describe('calculateAllDosages · next-dose awareness', () => {
+  const findProductLocal = (id: string): Product => {
+    const product = products.find((item) => item.id === id);
+    if (!product) throw new Error(`missing ${id}`);
+    return product;
+  };
+
+  const NOW = new Date('2026-04-22T02:00:00+09:00').getTime();
+  const baseInput = { weight: 15, age: 36, ageUnit: 'months' as const };
+
+  it('marks tylenol as "wait" when same-ingredient dose was 1 hour ago', () => {
+    const tylenol = findProductLocal('tylenol_susp_100ml_kr');
+    const lastDoseAtMs = NOW - 1 * 60 * 60 * 1000; // 1 hour ago
+    const input: DosageInput = {
+      ...baseInput,
+      lastDoseIngredient: 'acetaminophen',
+      lastDoseAtMs,
+    };
+
+    const [result] = calculateAllDosages(input, [tylenol], NOW);
+
+    expect(result.nextDose?.status).toBe('wait');
+    // interval 4h, elapsed 1h → 3h = 180 minutes remaining
+    expect(result.nextDose?.minutesUntilNext).toBe(180);
+    expect(result.nextDose?.nextDoseAtMs).toBe(lastDoseAtMs + 4 * 60 * 60 * 1000);
+  });
+
+  it('marks tylenol as "ready" when same-ingredient dose interval elapsed', () => {
+    const tylenol = findProductLocal('tylenol_susp_100ml_kr');
+    const lastDoseAtMs = NOW - 5 * 60 * 60 * 1000; // 5 hours ago > 4h interval
+    const input: DosageInput = {
+      ...baseInput,
+      lastDoseIngredient: 'acetaminophen',
+      lastDoseAtMs,
+    };
+
+    const [result] = calculateAllDosages(input, [tylenol], NOW);
+
+    expect(result.nextDose?.status).toBe('ready');
+    expect(result.nextDose?.minutesUntilNext).toBe(0);
+  });
+
+  it('marks ibuprofen as "different_ingredient" when last dose was acetaminophen', () => {
+    const ibuprofen = findProductLocal('brufen_susp_100_5_kr');
+    const lastDoseAtMs = NOW - 30 * 60 * 1000; // 30 min ago
+    const input: DosageInput = {
+      ...baseInput,
+      lastDoseIngredient: 'acetaminophen',
+      lastDoseAtMs,
+    };
+
+    const [result] = calculateAllDosages(input, [ibuprofen], NOW);
+
+    expect(result.nextDose?.status).toBe('different_ingredient');
+    expect(result.nextDose?.minutesUntilNext).toBe(0);
+  });
+
+  it('rejects future lastDoseAt gracefully (returns null)', () => {
+    const tylenol = findProductLocal('tylenol_susp_100ml_kr');
+    const lastDoseAtMs = NOW + 10 * 60 * 1000; // 10 min in the future
+    const input: DosageInput = {
+      ...baseInput,
+      lastDoseIngredient: 'acetaminophen',
+      lastDoseAtMs,
+    };
+
+    const [result] = calculateAllDosages(input, [tylenol], NOW);
+
+    expect(result.nextDose).toBeNull();
+  });
+
+  it('handles dexibuprofen 6-hour interval correctly', () => {
+    const dexi = findProductLocal('maxibufen_susp_12_1_kr');
+    const lastDoseAtMs = NOW - 2 * 60 * 60 * 1000; // 2 hours ago
+    const input: DosageInput = {
+      ...baseInput,
+      lastDoseIngredient: 'dexibuprofen',
+      lastDoseAtMs,
+    };
+
+    const [result] = calculateAllDosages(input, [dexi], NOW);
+
+    expect(result.nextDose?.status).toBe('wait');
+    // 6h - 2h = 4h = 240 minutes
+    expect(result.nextDose?.minutesUntilNext).toBe(240);
+  });
 });

@@ -29,7 +29,20 @@
         "years": "세(만나이)"
       }
     },
-    "submit": "계산하기"
+    "submit": "계산하기",
+    "lastDose": {
+      "toggle": "최근에 약을 먹였나요? (선택)",
+      "hide": "최근 복용 정보 닫기",
+      "description": "이전에 먹인 약과 시각을 알려주시면, 언제 다시 먹일 수 있는지 함께 알려드려요.",
+      "ingredientLabel": "먹인 약의 성분",
+      "ingredientPlaceholder": "성분 선택",
+      "ingredient": {
+        "acetaminophen": "아세트아미노펜 (타이레놀·챔프)",
+        "ibuprofen": "이부프로펜 (부루펜·맥시부펜 외)",
+        "dexibuprofen": "덱시부프로펜 (맥시부펜 등)"
+      },
+      "timeLabel": "복용 시각"
+    }
   },
   "result": {
     "title": "계산 결과",
@@ -52,6 +65,14 @@
       "title": "유사 약품 정보",
       "description": "성분과 농도가 같은 어린이용 해열제를 확인해보세요.",
       "notFound": "성분과 농도가 같은 유사 약품을 찾지 못했습니다."
+    },
+    "nextDose": {
+      "waitTitle": "다음 복용 가능 시각",
+      "waitDetail": "{duration} 후에 복용할 수 있어요.",
+      "readyTitle": "지금 복용 가능해요",
+      "readyDetail": "마지막 복용 후 권장 간격이 지났습니다.",
+      "differentTitle": "지금 복용 가능 (다른 성분)",
+      "differentDetail": "최근에 드신 약과 성분이 달라 지금 바로 복용할 수 있어요."
     }
   },
   "validation": {

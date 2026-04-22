@@ -29,7 +29,20 @@
         "years": "years"
       }
     },
-    "submit": "Calculate Dosage"
+    "submit": "Calculate Dosage",
+    "lastDose": {
+      "toggle": "Gave a dose recently? (optional)",
+      "hide": "Hide recent-dose fields",
+      "description": "Enter the medicine and time of the last dose to see when the next dose is safe.",
+      "ingredientLabel": "Medicine given",
+      "ingredientPlaceholder": "Select ingredient",
+      "ingredient": {
+        "acetaminophen": "Acetaminophen (Tylenol)",
+        "ibuprofen": "Ibuprofen (Motrin, Advil)",
+        "dexibuprofen": "Dexibuprofen"
+      },
+      "timeLabel": "Time of last dose"
+    }
   },
   "result": {
     "title": "Calculation Result",
@@ -52,6 +65,14 @@
       "title": "Similar Products Information",
       "description": "Check children's fever medicines with the same ingredient and concentration.",
       "notFound": "No similar products with the same ingredient and concentration found."
+    },
+    "nextDose": {
+      "waitTitle": "Next dose available at",
+      "waitDetail": "You can give the next dose in {duration}.",
+      "readyTitle": "Safe to dose now",
+      "readyDetail": "Enough time has passed since the last dose.",
+      "differentTitle": "Safe to dose now (different ingredient)",
+      "differentDetail": "This is a different ingredient than the last dose, so it can be given now."
     }
   },
   "validation": {

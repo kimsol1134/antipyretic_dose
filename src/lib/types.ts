@@ -7,15 +7,26 @@ export type DosageInput = z.infer<typeof dosageInputSchema>;
 
 export type DosageResultStatus = 'success' | 'age_block' | 'error';
 
+export type IngredientKey = 'acetaminophen' | 'ibuprofen' | 'dexibuprofen';
+
+export type NextDoseStatus = 'different_ingredient' | 'ready' | 'wait';
+
+export type NextDoseInfo = {
+  status: NextDoseStatus;
+  nextDoseAtMs: number;
+  minutesUntilNext: number;
+};
+
 export type DosageResult = {
   product: Product;
   status: DosageResultStatus;
-  recommended_ml: number | null;  // 권장 복용량 (mL)
+  recommended_ml: number | null;
   min_ml: number | null;
   max_ml: number | null;
-  max_single_ml: number | null;  // 1회 최대 복용량 (mL)
-  max_daily_ml: number | null;    // 1일 최대 복용량 (mL)
+  max_single_ml: number | null;
+  max_daily_ml: number | null;
   message: string | null;
+  nextDose: NextDoseInfo | null;
 };
 
 export type DosageStoreState = {

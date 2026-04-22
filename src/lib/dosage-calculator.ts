@@ -2,7 +2,67 @@ import {
   ML_ROUNDING_DECIMALS,
   MONTHS_PER_YEAR,
 } from './constants';
-import type { DosageInput, DosageResult, Product } from './types';
+import type {
+  DosageInput,
+  DosageResult,
+  IngredientKey,
+  NextDoseInfo,
+  Product,
+} from './types';
+
+const MS_PER_MINUTE = 60_000;
+const MS_PER_HOUR = 60 * MS_PER_MINUTE;
+
+const INGREDIENT_TO_KEY: Record<string, IngredientKey> = {
+  '아세트아미노펜': 'acetaminophen',
+  Acetaminophen: 'acetaminophen',
+  '이부프로펜': 'ibuprofen',
+  Ibuprofen: 'ibuprofen',
+  '덱시부프로펜': 'dexibuprofen',
+  Dexibuprofen: 'dexibuprofen',
+};
+
+export function productToIngredientKey(product: Product): IngredientKey | null {
+  return (
+    INGREDIENT_TO_KEY[product.ingredient] ??
+    (product.ingredientEn ? INGREDIENT_TO_KEY[product.ingredientEn] : undefined) ??
+    null
+  );
+}
+
+export function calculateNextDose(
+  product: Product,
+  lastDoseIngredient: IngredientKey,
+  lastDoseAtMs: number,
+  nowMs: number
+): NextDoseInfo | null {
+  if (!Number.isFinite(lastDoseAtMs) || !Number.isFinite(nowMs)) return null;
+  if (!Number.isFinite(product.interval_hours) || product.interval_hours <= 0) return null;
+  if (lastDoseAtMs > nowMs + MS_PER_MINUTE) return null;
+
+  const productKey = productToIngredientKey(product);
+  if (!productKey) return null;
+
+  if (productKey !== lastDoseIngredient) {
+    return {
+      status: 'different_ingredient',
+      nextDoseAtMs: nowMs,
+      minutesUntilNext: 0,
+    };
+  }
+
+  const nextDoseAtMs = lastDoseAtMs + product.interval_hours * MS_PER_HOUR;
+  const diffMs = nextDoseAtMs - nowMs;
+
+  if (diffMs <= 0) {
+    return { status: 'ready', nextDoseAtMs: nowMs, minutesUntilNext: 0 };
+  }
+  return {
+    status: 'wait',
+    nextDoseAtMs,
+    minutesUntilNext: Math.ceil(diffMs / MS_PER_MINUTE),
+  };
+}
 
 function roundMl(value: number): number {
   const factor = 10 ** ML_ROUNDING_DECIMALS;
@@ -21,7 +81,7 @@ function calculateSingleDosage(
   weightKg: number,
   ageMonths: number,
   product: Product
-): Omit<DosageResult, 'product'> {
+): Omit<DosageResult, 'product' | 'nextDose'> {
   if (ageMonths < product.min_age_months) {
     return {
       status: 'age_block',
@@ -115,18 +175,31 @@ function calculateSingleDosage(
 
 export function calculateAllDosages(
   input: DosageInput,
-  products: Product[]
+  products: Product[],
+  nowMs: number = Date.now()
 ): DosageResult[] {
   const ageMonths =
     input.ageUnit === 'years'
       ? input.age * MONTHS_PER_YEAR
       : input.age;
 
+  const hasLastDose =
+    input.lastDoseIngredient !== undefined && input.lastDoseAtMs !== undefined;
+
   return products.map((product) => {
     const result = calculateSingleDosage(input.weight, ageMonths, product);
+    const nextDose = hasLastDose
+      ? calculateNextDose(
+          product,
+          input.lastDoseIngredient as IngredientKey,
+          input.lastDoseAtMs as number,
+          nowMs
+        )
+      : null;
     return {
       product,
       ...result,
+      nextDose,
     };
   });
 }

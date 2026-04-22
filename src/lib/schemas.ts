@@ -83,16 +83,34 @@ export const productSchema = z
 
 export const productsSchema = z.array(productSchema);
 
-export const dosageInputSchema = z.object({
-  weight: z
-    .number({ invalid_type_error: '체중을 숫자로 입력하세요.' })
-    .positive('체중은 0보다 커야 합니다.')
-    .max(MAX_WEIGHT_KG, '비정상적인 체중입니다. 다시 확인해주세요.'),
-  age: z
-    .number({ invalid_type_error: '나이를 숫자로 입력하세요.' })
-    .int()
-    .positive('나이는 0보다 커야 합니다.'),
-  ageUnit: z.enum(['months', 'years'], {
-    errorMap: () => ({ message: '개월 또는 세를 선택하세요.' }),
-  }),
-});
+export const dosageInputSchema = z
+  .object({
+    weight: z
+      .number({ invalid_type_error: '체중을 숫자로 입력하세요.' })
+      .positive('체중은 0보다 커야 합니다.')
+      .max(MAX_WEIGHT_KG, '비정상적인 체중입니다. 다시 확인해주세요.'),
+    age: z
+      .number({ invalid_type_error: '나이를 숫자로 입력하세요.' })
+      .int()
+      .positive('나이는 0보다 커야 합니다.'),
+    ageUnit: z.enum(['months', 'years'], {
+      errorMap: () => ({ message: '개월 또는 세를 선택하세요.' }),
+    }),
+    lastDoseIngredient: z
+      .enum(['acetaminophen', 'ibuprofen', 'dexibuprofen'])
+      .optional(),
+    lastDoseAtMs: z
+      .number()
+      .int()
+      .positive()
+      .optional(),
+  })
+  .refine(
+    (data) =>
+      (data.lastDoseIngredient === undefined && data.lastDoseAtMs === undefined) ||
+      (data.lastDoseIngredient !== undefined && data.lastDoseAtMs !== undefined),
+    {
+      message: '최근 복용 정보는 성분과 시각을 함께 입력해주세요.',
+      path: ['lastDoseAtMs'],
+    }
+  );

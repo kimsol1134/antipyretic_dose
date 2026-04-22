@@ -11,7 +11,7 @@ import {
   useDosageResults,
   useDosageStatus,
 } from '@/store/dosage-store';
-import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct } from '@/lib/types';
+import type { SimilarProductsMap, DosageResult, Product, RelatedProductsMapUS, RelatedProduct, NextDoseInfo } from '@/lib/types';
 import type { EasyDrugItem } from '@/lib/easy-drug';
 import { trackDrugInfoView, trackSimilarProductsExpanded } from '@/lib/analytics';
 import { Alert } from './ui/Alert';
@@ -31,6 +31,26 @@ type GroupedResult = {
 
 function formatMl(value: number): string {
   return value.toFixed(ML_ROUNDING_DECIMALS);
+}
+
+function formatClockTime(ms: number, locale: string): string {
+  const date = new Date(ms);
+  return date.toLocaleTimeString(locale === 'en' ? 'en-US' : 'ko-KR', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function formatDuration(minutes: number, locale: string): string {
+  if (minutes < 60) {
+    return locale === 'en' ? `${minutes} min` : `${minutes}분`;
+  }
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (locale === 'en') {
+    return m === 0 ? `${h} hr` : `${h} hr ${m} min`;
+  }
+  return m === 0 ? `${h}시간` : `${h}시간 ${m}분`;
 }
 
 function getProductName(product: Product, locale: string): string {
@@ -182,6 +202,14 @@ export default function DosageResultDisplay({
                       <p className="mt-3 text-sm text-yellow-700 font-medium bg-yellow-50 p-2 rounded">
                         ℹ️ {result.message}
                       </p>
+                    )}
+
+                    {result.nextDose && (
+                      <NextDoseBanner
+                        info={result.nextDose}
+                        ingredientKey={result.product.ingredient}
+                        locale={locale}
+                      />
                     )}
                   </div>
                 )}
@@ -385,6 +413,52 @@ function RelatedProductsSectionUS({ items }: { items: RelatedProduct[] }) {
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+type NextDoseBannerProps = {
+  info: NextDoseInfo;
+  ingredientKey: string;
+  locale: string;
+};
+
+function NextDoseBanner({ info, locale }: NextDoseBannerProps) {
+  const t = useTranslations('result.nextDose');
+
+  if (info.status === 'wait') {
+    return (
+      <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3">
+        <p className="text-sm font-semibold text-amber-800">
+          ⏰ {t('waitTitle')}
+        </p>
+        <p className="mt-1 text-base font-bold text-amber-900">
+          {formatClockTime(info.nextDoseAtMs, locale)}
+        </p>
+        <p className="mt-1 text-xs text-amber-700">
+          {t('waitDetail', { duration: formatDuration(info.minutesUntilNext, locale) })}
+        </p>
+      </div>
+    );
+  }
+
+  if (info.status === 'ready') {
+    return (
+      <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3">
+        <p className="text-sm font-semibold text-green-800">
+          ✅ {t('readyTitle')}
+        </p>
+        <p className="mt-1 text-xs text-green-700">{t('readyDetail')}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 rounded-lg border border-blue-300 bg-blue-50 p-3">
+      <p className="text-sm font-semibold text-blue-800">
+        🔄 {t('differentTitle')}
+      </p>
+      <p className="mt-1 text-xs text-blue-700">{t('differentDetail')}</p>
     </div>
   );
 }
