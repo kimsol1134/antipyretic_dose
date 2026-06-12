@@ -105,7 +105,7 @@ function generateRSS(): string {
     <lastBuildDate>${buildDate}</lastBuildDate>
     <atom:link href="${SITE_URL}/en/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
-      <url>${SITE_URL}/opengraph-image.png</url>
+      <url>${SITE_URL}/og-image-20260612.png</url>
       <title><![CDATA[${SITE_TITLE}]]></title>
       <link>${SITE_URL}/en</link>
     </image>

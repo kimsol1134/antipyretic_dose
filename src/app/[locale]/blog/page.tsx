@@ -3,6 +3,13 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { getBlogPostsForLocale } from '@/lib/blog';
 
+const ogImage = {
+  url: 'https://kidsfever.xyz/og-image-20260612.png',
+  width: 1200,
+  height: 630,
+  type: 'image/png',
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -42,6 +49,19 @@ export async function generateMetadata({
         siteName: '어린이 해열제 복용량 계산기',
         locale: 'ko_KR',
         type: 'website',
+        images: [
+          {
+            ...ogImage,
+            alt: '블로그 | 어린이 해열제 복용량 계산기',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: '블로그 | 어린이 해열제 복용량 계산기',
+        description:
+          '의사 아빠가 전하는 어린이 발열 관리 가이드',
+        images: [ogImage.url],
       },
     };
   }
@@ -77,6 +97,19 @@ export async function generateMetadata({
       siteName: "Children's Fever Medicine Dosage Calculator",
       locale: 'en_US',
       type: 'website',
+      images: [
+        {
+          ...ogImage,
+          alt: "Blog | Children's Fever Medicine Dosage Calculator",
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: "Blog | Children's Fever Medicine Dosage Calculator",
+      description:
+        "Expert parenting guides on children's fever management",
+      images: [ogImage.url],
     },
   };
 }

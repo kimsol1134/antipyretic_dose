@@ -55,7 +55,7 @@ export async function generateMetadata({
       authors: [post.author],
       images: [
         {
-          url: 'https://kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/og-image-20260612.png',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -66,7 +66,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: ['https://kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/og-image-20260612.png'],
     },
   };
 }

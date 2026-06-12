@@ -35,7 +35,7 @@ export async function generateMetadata({
         type: 'website',
         images: [
           {
-            url: 'https://kidsfever.xyz/opengraph-image.png',
+            url: 'https://kidsfever.xyz/og-image-20260612.png',
             width: 1200,
             height: 630,
             alt: '개인정보 처리방침 | 어린이 해열제 복용량 계산기',
@@ -47,7 +47,7 @@ export async function generateMetadata({
         title: '개인정보 처리방침 | 어린이 해열제 복용량 계산기',
         description:
           '어린이 해열제 복용량 계산기의 개인정보 수집 및 사용 정책. Google Analytics, AdSense 사용 및 데이터 보안 정보.',
-        images: ['https://kidsfever.xyz/opengraph-image.png'],
+        images: ['https://kidsfever.xyz/og-image-20260612.png'],
       },
     };
   }
@@ -77,7 +77,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/og-image-20260612.png',
           width: 1200,
           height: 630,
           alt: 'Privacy Policy | Children\'s Fever Medicine Dosage Calculator',
@@ -89,7 +89,7 @@ export async function generateMetadata({
       title: 'Privacy Policy | Children\'s Fever Medicine Dosage Calculator',
       description:
         'Privacy Policy for Children\'s Fever Medicine Dosage Calculator. Information on data collection, Google Analytics, AdSense, and data security.',
-      images: ['https://kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/og-image-20260612.png'],
     },
   };
 }

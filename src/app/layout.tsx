@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산. 안전한 복용 간격과 최대 용량 확인 (식약처 기준)',
     images: [
       {
-        url: 'https://kidsfever.xyz/opengraph-image.png',
+        url: 'https://kidsfever.xyz/og-image-20260612.png',
         width: 1200,
         height: 630,
         alt: '어린이 해열제 복용량 계산기 - 타이레놀, 챔프, 부루펜, 맥시부펜 체중별 용량표',
@@ -57,25 +57,31 @@ export const metadata: Metadata = {
     title: '어린이 해열제 복용량 계산기 | 타이레놀·챔프·부루펜 용량표',
     description:
       '의사가 만든 어린이 해열제 복용량 계산기 | 체중별·나이별 타이레놀, 챔프, 부루펜, 맥시부펜 정확한 용량 즉시 계산.',
-    images: ['https://kidsfever.xyz/opengraph-image.png'],
+    images: ['https://kidsfever.xyz/og-image-20260612.png'],
   },
 
   // 아이콘 설정
   icons: {
+    shortcut: [
+      {
+        url: 'https://kidsfever.xyz/favicon-20260612.png',
+        sizes: '48x48',
+        type: 'image/png',
+      },
+    ],
     icon: [
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/png' },
+      {
+        url: 'https://kidsfever.xyz/favicon-20260612.png',
+        sizes: '48x48',
+        type: 'image/png',
+      },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
       { url: '/icon.png', sizes: '512x512', type: 'image/png' },
       { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
-
-  // 기타 메타 태그
-  other: {
-    'naver-site-verification': 'a307ecea2f3d2c647746ecd846a6fcb8cfd193ac',
-    'google-site-verification': '',
   },
 
   // 로봇 설정

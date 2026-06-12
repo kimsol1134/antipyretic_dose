@@ -42,7 +42,7 @@ export async function generateMetadata({
         type: 'website',
         images: [
           {
-            url: 'https://kidsfever.xyz/opengraph-image.png',
+            url: 'https://kidsfever.xyz/og-image-20260612.png',
             width: 1200,
             height: 630,
             alt: '문의하기 | 어린이 해열제 복용량 계산기',
@@ -54,7 +54,7 @@ export async function generateMetadata({
         title: '문의하기 | 어린이 해열제 복용량 계산기',
         description:
           '어린이 해열제 복용량 계산기에 대한 문의, 피드백, 개선 제안을 보내주세요',
-        images: ['https://kidsfever.xyz/opengraph-image.png'],
+        images: ['https://kidsfever.xyz/og-image-20260612.png'],
       },
     };
   }
@@ -91,7 +91,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/og-image-20260612.png',
           width: 1200,
           height: 630,
           alt: 'Contact Us | Children\'s Fever Medicine Dosage Calculator',
@@ -103,7 +103,7 @@ export async function generateMetadata({
       title: 'Contact Us | Children\'s Fever Medicine Dosage Calculator',
       description:
         'Contact us with questions, feedback, or suggestions about Children\'s Fever Medicine Dosage Calculator',
-      images: ['https://kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/og-image-20260612.png'],
     },
   };
 }

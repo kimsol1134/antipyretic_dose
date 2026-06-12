@@ -41,7 +41,7 @@ export async function generateMetadata({
         type: 'website',
         images: [
           {
-            url: 'https://kidsfever.xyz/opengraph-image.png',
+            url: 'https://kidsfever.xyz/og-image-20260612.png',
             width: 1200,
             height: 630,
             alt: '어린이 해열제 자주 묻는 질문 (FAQ)',
@@ -53,7 +53,7 @@ export async function generateMetadata({
         title: '어린이 해열제 자주 묻는 질문 (FAQ) | 타이레놀·부루펜 복용 가이드',
         description:
           '타이레놀, 부루펜 등 어린이 해열제 복용법 완벽 가이드 (식약처 기준)',
-        images: ['https://kidsfever.xyz/opengraph-image.png'],
+        images: ['https://kidsfever.xyz/og-image-20260612.png'],
       },
     };
   }
@@ -91,7 +91,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/og-image-20260612.png',
           width: 1200,
           height: 630,
           alt: "Children's Fever Medicine FAQ",
@@ -103,7 +103,7 @@ export async function generateMetadata({
       title: "Children's Fever Medicine FAQ | Tylenol & Motrin Dosing Guide",
       description:
         'Expert answers to common questions about children\'s fever medicine dosing (FDA/AAP guidelines)',
-      images: ['https://kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/og-image-20260612.png'],
     },
   };
 }

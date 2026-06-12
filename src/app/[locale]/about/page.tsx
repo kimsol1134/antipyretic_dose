@@ -44,7 +44,7 @@ export async function generateMetadata({
         type: 'website',
         images: [
           {
-            url: 'https://kidsfever.xyz/opengraph-image.png',
+            url: 'https://kidsfever.xyz/og-image-20260612.png',
             width: 1200,
             height: 630,
             alt: '서비스 소개 | 어린이 해열제 복용량 계산기',
@@ -56,7 +56,7 @@ export async function generateMetadata({
         title: '서비스 소개 | 어린이 해열제 복용량 계산기',
         description:
           '어린이 해열제 복용량 계산기의 미션, 주요 기능, 안전성, 제작자 정보',
-        images: ['https://kidsfever.xyz/opengraph-image.png'],
+        images: ['https://kidsfever.xyz/og-image-20260612.png'],
       },
     };
   }
@@ -94,7 +94,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://kidsfever.xyz/opengraph-image.png',
+          url: 'https://kidsfever.xyz/og-image-20260612.png',
           width: 1200,
           height: 630,
           alt: 'About Us | Children\'s Fever Medicine Dosage Calculator',
@@ -106,7 +106,7 @@ export async function generateMetadata({
       title: 'About Us | Children\'s Fever Medicine Dosage Calculator',
       description:
         'Learn about our mission, key features, safety standards, and creator information. FDA-based accurate dosage calculation tool.',
-      images: ['https://kidsfever.xyz/opengraph-image.png'],
+      images: ['https://kidsfever.xyz/og-image-20260612.png'],
     },
   };
 }
